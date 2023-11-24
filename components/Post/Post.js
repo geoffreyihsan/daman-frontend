@@ -14,21 +14,21 @@ export default function Post({
   return (
     <article className={styles.component}>
       {featuredImage && (
-        <Link href={uri}>
-          <a>
-            <FeaturedImage
-              image={featuredImage}
-              layout="responsive"
-              className={styles.featuredImage}
-            />
-          </a>
-        </Link>
+        (<Link href={uri}>
+
+          <FeaturedImage
+            image={featuredImage}
+            layout="responsive"
+            className={styles.featuredImage}
+          />
+
+        </Link>)
       )}
 
       <Link href={uri}>
-        <a>
-          <h2>{title}</h2>
-        </a>
+
+        <h2>{title}</h2>
+
       </Link>
       <PostInfo date={date} author={author} className={styles.postInfo} />
       <div
