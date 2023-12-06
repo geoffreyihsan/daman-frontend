@@ -53,10 +53,10 @@ export default function HomepageSlider({ homepageSlides }) {
                     fill
                     sizes="100%"
                   />
-                  <div className={cx("excerpt-wrapper")}>
+                  {/* <div className={cx("excerpt-wrapper")}>
                     {homepageSlide?.excerpt}
                   </div>
-                  <div className={cx("bottom-gradient")}></div>
+                  <div className={cx("bottom-gradient")}></div> */}
                 </Link>
               </div>
             </SwiperSlide>
