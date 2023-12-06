@@ -1,0 +1,34 @@
+@import "styles/breakpoints";
+
+.component {
+  width: 100vw;
+  background-color: var(--wpe--color--offwhite);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 0.3rem solid var(--wpe--color--black);
+}
+
+.masthead-wrapper {
+  width: 300px;
+  height: 250px;
+
+  background-color: var(--wpe--color--offwhite);
+  position: relative;
+
+  @media (min-width: $breakpoint-medium) {
+    width: 970px;
+  }
+
+  .desktop-banner {
+    // display: none;
+    display: block;
+    object-fit: contain;
+    object-position: left;
+    background-color: black;
+
+    @media (min-width: $breakpoint-extra-small) {
+      display: block;
+    }
+  }
+}

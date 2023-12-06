@@ -7,14 +7,14 @@
 
 %hidden {
 	// Always visible for smaller viewports.
-	@media (min-width: $breakpoint-small) {
+	@media (min-width: $breakpoint-extra-small) {
 		visibility: hidden;
 		opacity: 0;
 	}
 }
 
 .component {
-	background-color: var(--wpe--navigation-menu--background-color);
+	background-color: var(--wpe--navigation--menu--background--color);
 }
 
 .menu {
@@ -34,8 +34,7 @@
 		width: 100%;
 		flex-direction: column;
 
-		@media (min-width: $breakpoint-small) {
-			width: auto;
+		@media (min-width: $breakpoint-extra-small) {
 			flex-direction: row;
 		}
 
@@ -47,17 +46,18 @@
 	}
 
 	a {
-		color: var(--wpe--navigation-menu--color);
+		color: var(--wpe--navigation--menu--color);
 		padding: 0.5rem;
 		display: block;
 		transition: all 0.2s ease-out;
 		width: 100%;
 		white-space: nowrap;
-		text-align: center;
+		text-align: left;
+		padding-left: 0;
 
 		&:hover,
 		&:focus {
-			color: var(--wpe--navigation-menu--color--hover);
+			font-weight: 700;
 		}
 
 		// Remove link underline when component is inside header.
@@ -68,13 +68,13 @@
 
 	li ul {
 		@extend %hidden;
-		background-color: var(--wpe--dropdown--background-color);
+		background-color: var(--wpe--dropdown--background--color);
 		display: flex;
 		flex-direction: column;
 		gap: 0;
 		width: 100%;
 
-		@media (min-width: $breakpoint-small) {
+		@media (min-width: $breakpoint-extra-small) {
 			position: absolute;
 			left: -10px;
 			top: 100%;
@@ -84,7 +84,7 @@
 			border-radius: 8px;
 			transition: all 0.2s ease-out;
 			width: inherit;
-			border: var(--wpe--border--extra-light);
+			border: var(--wpe--border--extra--light);
 		}
 
 		&:hover {
@@ -92,7 +92,7 @@
 		}
 
 		li + li {
-			@media (min-width: $breakpoint-small) {
+			@media (min-width: $breakpoint-extra-small) {
 				border-top: var(--wpe--border--light);
 				margin-top: 3px; // Make room for default browser focus styles.
 			}

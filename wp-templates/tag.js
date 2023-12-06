@@ -1,37 +1,55 @@
-import { gql } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import { gql } from "@apollo/client";
+import * as MENUS from "../constants/menus";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
   Header,
   Footer,
   Main,
   Container,
   EntryHeader,
-  NavigationMenu,
   FeaturedImage,
   Post,
   SEO,
-} from '../components';
+} from "../components";
 
-export default function Component(props) {
+export default function Tag(props) {
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { name, posts } = props.data.nodeByUri;
+  const { name, posts } = props?.data?.tag;
+
+  // Get menus
+  const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+      secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
+      navigationLocation: MENUS.NAVIGATION_LOCATION,
+      footerLocation: MENUS.FOOTER_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
+  const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
+  const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
+  const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
       <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
+        primaryMenuItems={primaryMenu}
+        secondaryMenuItems={secondaryMenu}
+        thirdMenuItems={thirdMenu}
+        navigationMenuItems={navigationMenu}
+        menusLoading={menusLoading}
       />
       <Main>
         <>
           <EntryHeader title={`Tag: ${name}`} />
-          <Container>
+          <>
             {posts.edges.map((post) => (
               <Post
                 title={post.node.title}
@@ -42,39 +60,36 @@ export default function Component(props) {
                 featuredImage={post.node.featuredImage?.node}
               />
             ))}
-          </Container>
+          </>
         </>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer
+        title={siteTitle}
+        menuItems={footerMenu}
+        menusLoading={menusLoading}
+      />
     </>
   );
 }
 
-Component.query = gql`
+Tag.query = gql`
   ${BlogInfoFragment}
-  ${NavigationMenu.fragments.entry}
   ${FeaturedImage.fragments.entry}
-  query GetTagPage(
-    $uri: String!
-    $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
-  ) {
-    nodeByUri(uri: $uri) {
-      ... on Tag {
-        name
-        posts {
-          edges {
-            node {
-              id
-              title
-              content
-              date
-              uri
-              ...FeaturedImageFragment
-              author {
-                node {
-                  name
-                }
+  query GetTagPage($databaseId: ID!) {
+    tag(id: $databaseId, idType: DATABASE_ID) {
+      name
+      posts {
+        edges {
+          node {
+            id
+            title
+            content
+            date
+            uri
+            ...FeaturedImageFragment
+            author {
+              node {
+                name
               }
             }
           }
@@ -84,23 +99,11 @@ Component.query = gql`
     generalSettings {
       ...BlogInfoFragment
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
   }
 `;
 
-Component.variables = ({ uri }) => {
+Tag.variables = ({ databaseId }) => {
   return {
-    uri,
-    headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
+    databaseId,
   };
 };

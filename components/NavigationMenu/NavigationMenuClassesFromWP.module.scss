@@ -5,7 +5,7 @@
 
 .button {
 	a {
-		@media (min-width: $breakpoint-small) {
+		@media (min-width: $breakpoint-extra-small) {
 			background-color: var(--wpe--color--accent);
 			border-radius: 100px;
 			border: var(--wpe--border--light);

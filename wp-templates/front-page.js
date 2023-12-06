@@ -1,74 +1,206 @@
-import { useQuery, gql } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import { gql, useQuery } from "@apollo/client";
+import * as MENUS from "../constants/menus";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
   Container,
-  NavigationMenu,
-  Hero,
+  FeaturedImage,
   SEO,
-} from '../components';
+  NavigationMenu,
+  HomepageSlider,
+  Updates,
+} from "../components";
+import { useState } from "react";
 
-export default function Component() {
-  const { data } = useQuery(Component.query, {
-    variables: Component.variables(),
-  });
+export default function frontPage(props) {
+  // Loading state for previews
+  if (props.loading) {
+    return <>Loading...</>;
+  }
 
   const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings;
-  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = data?.footerMenuItems?.nodes ?? [];
+    props?.data?.generalSettings;
+  const { homepageSlider } = props?.data?.page ?? [];
+
+  const homepageSlides = [
+    {
+      featuredImage: homepageSlider?.postSlide1?.featuredImage,
+      url: homepageSlider?.postSlide1?.uri,
+      excerpt: homepageSlider?.postSlide1?.excerpt,
+    },
+    {
+      featuredImage: homepageSlider?.postSlide2?.featuredImage,
+      url: homepageSlider?.postSlide2?.uri,
+      excerpt: homepageSlider?.postSlide2?.excerpt,
+    },
+    {
+      featuredImage: homepageSlider?.postSlide3?.featuredImage,
+      url: homepageSlider?.postSlide3?.uri,
+      excerpt: homepageSlider?.postSlide3?.excerpt,
+    },
+    {
+      featuredImage: homepageSlider?.postSlide4?.featuredImage,
+      url: homepageSlider?.postSlide4?.uri,
+      excerpt: homepageSlider?.postSlide4?.excerpt,
+    },
+    {
+      featuredImage: homepageSlider?.postSlide5?.featuredImage,
+      url: homepageSlider?.postSlide5?.uri,
+      excerpt: homepageSlider?.postSlide5?.excerpt,
+    },
+  ];
+
+  // useEffect(() => {
+  //   const filteredHomepageSlide = HomepageSlider.filter((item) => item.type !== null)
+
+  //   if (filteredHomepageSlide.length > 0) {
+  //     const randomIndex = Math.floor(Math.random() * filteredHomepageSlide.length)
+  //     setCurrentHomepageSlide(filteredHomepageSlide[randomIndex])
+  //   }
+  // }, [])
+
+  // Get menus
+  const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+      secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
+      navigationLocation: MENUS.NAVIGATION_LOCATION,
+      footerLocation: MENUS.FOOTER_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
+  const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
+  const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
+  const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
       <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
+        primaryMenuItems={primaryMenu}
+        secondaryMenuItems={secondaryMenu}
+        thirdMenuItems={thirdMenu}
+        navigationMenuItems={navigationMenu}
+        menusLoading={menusLoading}
       />
       <Main>
-        <Container>
-          <Hero title={'Front Page'} />
-          <div className="text-center">
-            <p>This page is utilizing the "front-page" WordPress template.</p>
-            <code>wp-templates/front-page.js</code>
-          </div>
-        </Container>
+        <>
+          <HomepageSlider homepageSlides={homepageSlides} />
+          <Updates />
+        </>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      {/* <Footer
+        title={siteTitle}
+        menuItems={footerMenu}
+        menusLoading={menusLoading}
+      /> */}
     </>
   );
 }
 
-Component.query = gql`
+frontPage.query = gql`
   ${BlogInfoFragment}
-  ${NavigationMenu.fragments.entry}
-  query GetPageData(
-    $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
-  ) {
+  ${FeaturedImage.fragments.entry}
+  query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
+    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      title
+      content
+      ...FeaturedImageFragment
+      homepageSlider {
+        postSlide1 {
+          ... on Post {
+            id
+            title
+            excerpt
+            date
+            uri
+            author {
+              node {
+                name
+              }
+            }
+            ...FeaturedImageFragment
+          }
+        }
+        postSlide2 {
+          ... on Post {
+            id
+            title
+            excerpt
+            date
+            uri
+            author {
+              node {
+                name
+              }
+            }
+            ...FeaturedImageFragment
+          }
+        }
+        postSlide3 {
+          ... on Post {
+            id
+            title
+            excerpt
+            date
+            uri
+            author {
+              node {
+                name
+              }
+            }
+            ...FeaturedImageFragment
+          }
+        }
+        postSlide4 {
+          ... on Post {
+            id
+            title
+            excerpt
+            date
+            uri
+            author {
+              node {
+                name
+              }
+            }
+            ...FeaturedImageFragment
+          }
+        }
+        postSlide5 {
+          ... on Post {
+            id
+            title
+            excerpt
+            date
+            uri
+            author {
+              node {
+                name
+              }
+            }
+            ...FeaturedImageFragment
+          }
+        }
+      }
+    }
     generalSettings {
       ...BlogInfoFragment
-    }
-    headerMenuItems: menuItems(where: { location: $headerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
     }
   }
 `;
 
-Component.variables = () => {
+frontPage.variables = ({ databaseId }, ctx) => {
   return {
-    headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
+    databaseId,
+    asPreview: ctx?.asPreview,
   };
 };

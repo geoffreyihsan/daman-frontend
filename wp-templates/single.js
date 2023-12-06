@@ -1,19 +1,19 @@
-import { gql } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import { gql, useQuery } from "@apollo/client";
+import * as MENUS from "../constants/menus";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
   Container,
   EntryHeader,
-  NavigationMenu,
   ContentWrapper,
   FeaturedImage,
   SEO,
-} from '../components';
+} from "../components";
 
-export default function Component(props) {
+export default function Single(props) {
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -21,9 +21,26 @@ export default function Component(props) {
 
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author } = props.data.post;
+  const { title, content, featuredImage, date, author } = props?.data?.post;
+
+  // Get menus
+  const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+      secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
+      navigationLocation: MENUS.NAVIGATION_LOCATION,
+      footerLocation: MENUS.FOOTER_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
+  const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
+  const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
+  const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
     <>
@@ -33,9 +50,11 @@ export default function Component(props) {
         imageUrl={featuredImage?.node?.sourceUrl}
       />
       <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
+        primaryMenuItems={primaryMenu}
+        secondaryMenuItems={secondaryMenu}
+        thirdMenuItems={thirdMenu}
+        navigationMenuItems={navigationMenu}
+        menusLoading={menusLoading}
       />
       <Main>
         <>
@@ -45,26 +64,24 @@ export default function Component(props) {
             date={date}
             author={author?.node?.name}
           />
-          <Container>
+          <>
             <ContentWrapper content={content} />
-          </Container>
+          </>
         </>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer
+        title={siteTitle}
+        menuItems={footerMenu}
+        menusLoading={menusLoading}
+      />
     </>
   );
 }
 
-Component.query = gql`
+Single.query = gql`
   ${BlogInfoFragment}
-  ${NavigationMenu.fragments.entry}
   ${FeaturedImage.fragments.entry}
-  query GetPost(
-    $databaseId: ID!
-    $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
-    $asPreview: Boolean = false
-  ) {
+  query GetPost($databaseId: ID!, $asPreview: Boolean = false) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
@@ -79,24 +96,12 @@ Component.query = gql`
     generalSettings {
       ...BlogInfoFragment
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
   }
 `;
 
-Component.variables = ({ databaseId }, ctx) => {
+Single.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
-    headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
     asPreview: ctx?.asPreview,
   };
 };

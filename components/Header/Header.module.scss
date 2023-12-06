@@ -1,72 +1,200 @@
-@import 'styles/breakpoints';
+@import "styles/breakpoints";
 
 .component {
-	color: var(--wpe--header--color);
-	background-color: var(--wpe--header--background-color);
-	position: relative;
-	z-index: 2; // Pull dropdown menus to the foreground to sit above <Main />.
+  color: var(--wpe--header--color);
+  background-color: var(--wpe--header--background--color);
+  position: relative;
+  width: 100vw;
+  padding: 0.5rem 1rem;
+  border-bottom: 0.05rem solid var(--wpe--color--grey);
+  z-index: 1000;
+  margin-bottom: 1rem;
+  z-index: 2;
+
+  @media (min-width: $breakpoint-extra-small) {
+    padding: 2rem 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-extra-small) {
+    max-width: var(--wpe--container--max--width);
+  }
+}
+
+.button-header {
+  font-weight: 700;
+  width: 10rem;
+  display: none;
+  text-transform: uppercase;
+
+  @media (min-width: $breakpoint-extra-small) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  a {
+    color: var(--wpe--color--black);
+
+    &:hover {
+      font-weight: 800;
+    }
+  }
 }
 
 .navbar {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	padding: 3rem 0;
-	gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .brand {
-	font-weight: var(--wpe--font-weight--bold);
-	font-size: 1.6rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  width: 8.5rem;
+  height: 3.5rem;
+  position: relative;
+
+  @media (min-width: $breakpoint-extra-small) {
+    width: 17rem;
+  }
+
+  img {
+    height: 1.3rem;
+    object-fit: contain;
+
+    @media (min-width: $breakpoint-extra-small) {
+      height: 1.6rem;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      height: 1.8rem;
+    }
+  }
 }
 
-.title {
-	text-decoration: none;
+.logo {
+  text-decoration: none;
 }
 
-.description {
-	margin: .3rem 0 0 0;
-	font-size: 0.8rem;
-	opacity: 0.9;
+.menu-button {
+  width: 10rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  button svg {
+    height: 2.5rem;
+
+    &:hover path {
+      stroke-width: 3px;
+    }
+  }
 }
 
-.nav-toggle {
-	align-items: center;
-	background-color: transparent;
-	border: 0.1rem solid var(--wpe--color--white);
-	color: var(--wpe--color--black);
-	cursor: pointer;
-	display: flex;
-	margin: 0;
-	padding: 0.5rem 1rem;
-	transition: all 0.2s ease-in;
-	user-select: none;
-	font-size: 2rem;
+.close-button {
+  width: 10rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
-	&:hover,
-	&:focus {
-		background-color: var(--wpe--color--white);
-		color: var(--wpe--color--black);
-	}
+  button svg {
+    height: 2.5rem;
 
-	@media (min-width: $breakpoint-small) {
-		display: none !important;
-	}
+    &:hover path {
+      stroke-width: 4px;
+    }
+  }
 }
 
-.primary-navigation {
-	display: none;
-	width: 100%;
+.main-menu {
+  display: none;
+  width: 100%;
 
-	&.show {
-		display: block;
-	}
+  &.show {
+    display: block;
+  }
+}
 
-	@media (min-width: $breakpoint-small) {
-		display: block;
-		width: auto;
-	}
+.menu-icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.full-menu-wrapper {
+  display: block;
+  width: 100vw;
+  position: absolute;
+  top: -100vh;
+  z-index: 51;
+  background-color: var(--wpe--main--background--color);
+  color: var(--wpe--color--black);
+  margin: 0 auto;
+
+  &.show {
+    padding: 0;
+    gap: 1rem;
+    top: 6rem;
+    transition: top 0.4s ease-in-out;
+
+    @media (min-width: $breakpoint-extra-small) {
+      top: 8rem;
+    }
+  }
+}
+
+.navigation-wrapper {
+  width: 100vw;
+  position: relative;
+  z-index: 999;
+  display: none;
+
+  @media (min-width: $breakpoint-medium) {
+    display: block;
+  }
+}
+
+.navigation-menu {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  @media (min-width: $breakpoint-extra-small) {
+    max-width: var(--wpe--container--max--width);
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+
+    li {
+      width: auto;
+
+      a:hover {
+        font-weight: 700;
+      }
+
+      ul li {
+        border-bottom: 1px solid var(--wpe--color--grey);
+      }
+    }
+  }
 }
