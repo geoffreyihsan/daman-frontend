@@ -12,8 +12,14 @@ import {
   NavigationMenu,
   HomepageSlider,
   Updates,
+  TwoColumns,
+  Masthead,
+  Features,
+  BorderDivider,
+  HalfPage,
+  Left,
+  Right,
 } from "../components";
-import { useState } from "react";
 
 export default function frontPage(props) {
   // Loading state for previews
@@ -94,7 +100,17 @@ export default function frontPage(props) {
       <Main>
         <>
           <HomepageSlider homepageSlides={homepageSlides} />
+          <BorderDivider />
           <Updates />
+          <BorderDivider />
+          <TwoColumns>
+            <Left>
+              <Features />
+            </Left>
+            <Right>
+              <HalfPage />
+            </Right>
+          </TwoColumns>
         </>
       </Main>
       {/* <Footer

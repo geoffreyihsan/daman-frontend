@@ -43,7 +43,7 @@
   transition: transform 0.1s ease-out;
   transition: top 0.4s ease-in-out;
   flex-direction: column;
-  height: calc(-6rem + 100vh);
+  height: calc(-4.531rem + 100vh);
 
   @media (min-width: $breakpoint-extra-small) {
     max-width: var(--wpe--container--max--width);
@@ -134,10 +134,14 @@
 
   .first-wrapper {
     display: block;
-    width: 11.5rem;
+    width: 50%;
     height: 15.625rem;
     border: 0.5rem solid var(--wpe--main--background--color);
     background-color: var(--wpe--color--light--grey);
+
+    @media (min-width: $breakpoint-extra-small) {
+      width: 11.5rem;
+    }
 
     .secondary-navigation {
       ul {
@@ -196,12 +200,11 @@
     flex-direction: column;
     width: 50%;
     padding: 0.5rem;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
 
     @media (min-width: $breakpoint-extra-small) {
       width: 11.5rem;
-      justify-content: flex-start;
     }
 
     .third-navigation {
@@ -218,7 +221,11 @@
       padding-left: 0;
 
       svg {
-        width: 12rem;
+        width: 10rem;
+
+        @media (min-width: $breakpoint-extra-small) {
+          width: 12rem;
+        }
       }
     }
   }

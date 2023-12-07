@@ -1,0 +1,13 @@
+@import "styles/breakpoints";
+
+.component {
+  width: 100vw;
+
+  @media (min-width: $breakpoint-extra-small) {
+    width: 50%;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    width: 60%;
+  }
+}

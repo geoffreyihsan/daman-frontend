@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classNames from "classnames/bind";
 import styles from "./Updates.module.scss";
-import { GetUpdates } from "../../queries/GetUpdates";
+import { GetUpdates } from "../../../queries/GetUpdates";
 import { useQuery } from "@apollo/client";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,7 +12,7 @@ import Image from "next/image";
 export default function Updates({}) {
   const postsPerPage = 6;
 
-  // Get menus
+  // Get Update Posts
   const { data } = useQuery(GetUpdates, {
     variables: {
       first: postsPerPage,
@@ -21,7 +21,7 @@ export default function Updates({}) {
     nextFetchPolicy: "cache-and-network",
   });
 
-  const updatePosts = data?.category?.contentNodes?.edges ?? [];
+  const updatePosts = data?.contentNodes?.edges ?? [];
 
   return (
     <>
@@ -31,11 +31,11 @@ export default function Updates({}) {
         </div>
         <Swiper
           slidesPerView={2.5}
-          spaceBetween={12}
+          spaceBetween={16}
           breakpoints={{
             640: {
               slidesPerView: 3.5,
-              spaceBetween: 12,
+              spaceBetween: 16,
             },
             1024: {
               slidesPerView: 4.5,

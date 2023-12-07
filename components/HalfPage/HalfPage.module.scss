@@ -1,0 +1,26 @@
+@import "styles/breakpoints";
+
+.component {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.half-page-wrapper {
+  width: 300px;
+  height: 600px;
+
+  background-color: var(--wpe--color--offwhite);
+  position: relative;
+
+  .banner {
+    width: 300px;
+    height: 600px;
+    
+    display: block;
+    object-fit: contain;
+    object-position: left;
+    background-color: black;
+  }
+}

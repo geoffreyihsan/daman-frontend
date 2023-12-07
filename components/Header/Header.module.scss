@@ -9,7 +9,15 @@
   border-bottom: 0.05rem solid var(--wpe--color--grey);
   z-index: 1000;
   margin-bottom: 1rem;
-  z-index: 2;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    // additional styling for sticky header
+  }
 
   @media (min-width: $breakpoint-extra-small) {
     padding: 2rem 1rem;
@@ -137,23 +145,24 @@
 }
 
 .full-menu-wrapper {
-  display: block;
+  display: none;
   width: 100vw;
-  position: absolute;
-  top: -100vh;
+  position: sticky; /* Change position to sticky */
+  top: 0; /* Stick to the top */
   z-index: 51;
   background-color: var(--wpe--main--background--color);
   color: var(--wpe--color--black);
   margin: 0 auto;
 
   &.show {
+    display: block;
     padding: 0;
     gap: 1rem;
-    top: 6rem;
     transition: top 0.4s ease-in-out;
+    top: 4.531rem; /* Adjust the top value as needed */
 
     @media (min-width: $breakpoint-extra-small) {
-      top: 8rem;
+      top: 7.55rem;
     }
   }
 }
@@ -161,7 +170,7 @@
 .navigation-wrapper {
   width: 100vw;
   position: relative;
-  z-index: 999;
+  z-index: 50;
   display: none;
 
   @media (min-width: $breakpoint-medium) {

@@ -30,7 +30,8 @@ export default function Header({
   // Add sticky header on scroll
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(window.scrollY > 0);
+      // setIsScrolled after Masthead height
+      setIsScrolled(window.scrollY > 282);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -43,6 +44,7 @@ export default function Header({
   return (
     <>
       <Masthead />
+      {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>
           {!isNavShown ? (
@@ -183,6 +185,7 @@ export default function Header({
           menusLoading={menusLoading}
         />
       </div>
+      {/* Navigation menu */}
       <div className={cx("navigation-wrapper")}>
         <NavigationMenu
           className={cx("navigation-menu")}
