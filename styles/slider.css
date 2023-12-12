@@ -70,7 +70,7 @@
 
 /* pagination style */
 .swiper-custom-pagination {
-  position: relative;
+  position: absolute;
   text-align: center;
   transition: 0.3s opacity;
   transform: translate3d(0, 0, 0);
@@ -88,8 +88,8 @@
 .swiper-pagination-custom,
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
-  top: 0;
-  bottom: 0;
+  width: 100%;
+  bottom: var(--swiper-pagination-bottom, -20px);
 }
 
 .swiper-custom-pagination > .swiper-pagination-bullet {
@@ -98,11 +98,11 @@
   justify-content: center;
   align-items: center;
   margin: 0 10px;
-  border-radius: 50%;
+  border-radius: 0;
   cursor: pointer;
   transition: 0.3s;
-  width: 14px;
-  height: 14px;
+  width: 21px;
+  height: 3px;
   text-align: center;
   line-height: 1.2;
   font-size: 12px;
@@ -122,9 +122,9 @@
 }
 
 .swiper-custom-pagination > .swiper-pagination-bullet {
-  color: #d9d9d9;
-  background: #d9d9d9;
-  padding: 0.5rem;
+  color: #706f6f;
+  background: #706f6f;
+  padding: 0;
   opacity: 1;
 }
 
@@ -152,12 +152,30 @@
   padding: 0 1rem;
 }
 
-@media only screen and (min-width: 640px) {
+.daman-tv-swiper {
+  padding: 0 1rem;
+}
+
+.daman-tv-swiper .swiper-slide img {
+  object-position: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 40%;
+    bottom: var(--swiper-pagination-bottom, -25px);
+  }
+
   .swiper-custom-button-prev,
   .swiper-custom-button-next {
     display: flex;
   }
+}
 
+@media only screen and (min-width: 640px) {
   .swiper-custom-pagination {
     padding-bottom: 2.5rem;
   }

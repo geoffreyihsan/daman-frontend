@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { useQuery } from "@apollo/client";
+import { GetMasthead } from "../../queries/GetMasthead";
 import DaManLogo from "../../assets/logo/daman-logo.png";
 import { FullMenu, Masthead, NavigationMenu } from "..";
 
@@ -27,6 +29,45 @@ export default function Header({
   //   }
   // }, [isNavShown]);
 
+  const topMobile = "masthead-top-mobile";
+  const topDesktop = "masthead-top";
+  const bottomMobile = "masthead-bottom-mobile";
+  const bottomDesktop = "masthead-bottom";
+
+  // Advertorial Var
+  let queryVariables = {
+    slug: topMobile,
+  };
+
+  // if (mastheadTopMobile) {
+  //   // Modify the variables based on the condition
+  //   queryVariables = {
+  //     slug: topMobile, // Change this to the desired value
+  //   };
+  // }
+
+  // if (mastheadTopDesktop) {
+  //   // Modify the variables based on the condition
+  //   queryVariables = {
+  //     slug: topDesktop, // Change this to the desired value
+  //   };
+  // }
+
+  // Get Masthead Banner
+  const { data } = useQuery(GetMasthead, {
+    variables: queryVariables,
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  // Use a regular expression to extract content between <!-- and <!--
+  const match = data?.bannerAdBy?.content.match(/(<!--.*?)<!--/s);
+
+  // Check if there's a match
+  const extractedContent = match ? match[1] : null;
+
+  console.log(extractedContent);
+
   // Add sticky header on scroll
   useEffect(() => {
     function handleScroll() {
@@ -41,9 +82,11 @@ export default function Header({
     };
   }, []);
 
+  console.log(extractedContent)
+
   return (
     <>
-      <Masthead />
+      <Masthead topMobile={extractedContent}/>
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

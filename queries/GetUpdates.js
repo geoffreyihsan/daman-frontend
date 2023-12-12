@@ -29,6 +29,11 @@ export const GetUpdates = gql`
                 node {
                   name
                   uri
+                  parent {
+                    node {
+                      name
+                    }
+                  }
                 }
               }
             }

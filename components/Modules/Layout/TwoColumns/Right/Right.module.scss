@@ -9,11 +9,12 @@
   align-content: center;
   flex-wrap: wrap;
 
-  @media (min-width: $breakpoint-extra-small) {
+  @media (min-width: $breakpoint-small) {
     width: 50%;
   }
 
   @media (min-width: $breakpoint-medium) {
     width: 40%;
+    align-content: flex-end;
   }
 }

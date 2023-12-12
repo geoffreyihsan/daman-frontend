@@ -10,7 +10,7 @@ import {
   FeaturedImage,
   SEO,
   NavigationMenu,
-  HomepageSlider,
+  HeroSlider,
   Updates,
   TwoColumns,
   Masthead,
@@ -19,6 +19,7 @@ import {
   HalfPage,
   Left,
   Right,
+  DamanTv,
 } from "../components";
 
 export default function frontPage(props) {
@@ -29,35 +30,7 @@ export default function frontPage(props) {
 
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const { homepageSlider } = props?.data?.page ?? [];
-
-  const homepageSlides = [
-    {
-      featuredImage: homepageSlider?.postSlide1?.featuredImage,
-      url: homepageSlider?.postSlide1?.uri,
-      excerpt: homepageSlider?.postSlide1?.excerpt,
-    },
-    {
-      featuredImage: homepageSlider?.postSlide2?.featuredImage,
-      url: homepageSlider?.postSlide2?.uri,
-      excerpt: homepageSlider?.postSlide2?.excerpt,
-    },
-    {
-      featuredImage: homepageSlider?.postSlide3?.featuredImage,
-      url: homepageSlider?.postSlide3?.uri,
-      excerpt: homepageSlider?.postSlide3?.excerpt,
-    },
-    {
-      featuredImage: homepageSlider?.postSlide4?.featuredImage,
-      url: homepageSlider?.postSlide4?.uri,
-      excerpt: homepageSlider?.postSlide4?.excerpt,
-    },
-    {
-      featuredImage: homepageSlider?.postSlide5?.featuredImage,
-      url: homepageSlider?.postSlide5?.uri,
-      excerpt: homepageSlider?.postSlide5?.excerpt,
-    },
-  ];
+  const { databaseId, homepageComponent } = props?.data?.page ?? [];
 
   // useEffect(() => {
   //   const filteredHomepageSlide = HomepageSlider.filter((item) => item.type !== null)
@@ -99,9 +72,17 @@ export default function frontPage(props) {
       />
       <Main>
         <>
-          <HomepageSlider homepageSlides={homepageSlides} />
+          <HeroSlider databaseId={databaseId} />
           <BorderDivider />
-          <Updates />
+          <TwoColumns>
+            <Left>
+              <Updates />
+            </Left>
+            <Right>
+              <HalfPage />
+            </Right>
+          </TwoColumns>
+          <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
           <BorderDivider />
           <TwoColumns>
             <Left>
@@ -129,81 +110,16 @@ frontPage.query = gql`
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      databaseId
       ...FeaturedImageFragment
-      homepageSlider {
-        postSlide1 {
-          ... on Post {
-            id
-            title
-            excerpt
-            date
-            uri
-            author {
-              node {
-                name
-              }
-            }
-            ...FeaturedImageFragment
-          }
-        }
-        postSlide2 {
-          ... on Post {
-            id
-            title
-            excerpt
-            date
-            uri
-            author {
-              node {
-                name
-              }
-            }
-            ...FeaturedImageFragment
-          }
-        }
-        postSlide3 {
-          ... on Post {
-            id
-            title
-            excerpt
-            date
-            uri
-            author {
-              node {
-                name
-              }
-            }
-            ...FeaturedImageFragment
-          }
-        }
-        postSlide4 {
-          ... on Post {
-            id
-            title
-            excerpt
-            date
-            uri
-            author {
-              node {
-                name
-              }
-            }
-            ...FeaturedImageFragment
-          }
-        }
-        postSlide5 {
-          ... on Post {
-            id
-            title
-            excerpt
-            date
-            uri
-            author {
-              node {
-                name
-              }
-            }
-            ...FeaturedImageFragment
+      homepageComponent {
+        damanTvLogo {
+          id
+          sourceUrl
+          altText
+          mediaDetails {
+            width
+            height
           }
         }
       }

@@ -5,10 +5,9 @@
   background-color: var(--wpe--header--background--color);
   position: relative;
   width: 100vw;
-  padding: 0.5rem 1rem;
+  padding: 0.516rem 1rem;
   border-bottom: 0.05rem solid var(--wpe--color--grey);
   z-index: 1000;
-  margin-bottom: 1rem;
 
   &.sticky {
     position: fixed;
@@ -20,15 +19,14 @@
   }
 
   @media (min-width: $breakpoint-extra-small) {
-    padding: 2rem 1rem;
-    margin-bottom: 0;
+    padding: 1.141rem 1rem;
   }
 }
 
 .wrapper {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   margin: 0 auto;
   justify-content: space-between;
   gap: 1rem;
@@ -65,12 +63,12 @@
 }
 
 .brand {
-  width: 8.5rem;
-  height: 3.5rem;
+  width: 7.5rem;
+  height: 2rem;
   position: relative;
 
   @media (min-width: $breakpoint-extra-small) {
-    width: 17rem;
+    width: 14rem;
   }
 
   img {
@@ -98,7 +96,7 @@
   align-items: center;
 
   button svg {
-    height: 2.5rem;
+    height: 2rem;
 
     &:hover path {
       stroke-width: 3px;
@@ -184,7 +182,7 @@
   letter-spacing: 0.04rem;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 0.25rem 0;
 
   @media (min-width: $breakpoint-extra-small) {
     max-width: var(--wpe--container--max--width);
