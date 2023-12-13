@@ -66,8 +66,6 @@ export default function Header({
   // Check if there's a match
   const extractedContent = match ? match[1] : null;
 
-  console.log(extractedContent);
-
   // Add sticky header on scroll
   useEffect(() => {
     function handleScroll() {
@@ -82,11 +80,9 @@ export default function Header({
     };
   }, []);
 
-  console.log(extractedContent)
-
   return (
     <>
-      <Masthead topMobile={extractedContent}/>
+      <Masthead />
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

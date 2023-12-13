@@ -12,15 +12,7 @@
   width: 300px;
   height: 600px;
 
-  position: relative;
-
   .banner {
-    width: 300px;
-    height: 600px;
-    
     display: block;
-    object-fit: contain;
-    object-position: left;
-    background-color: black;
   }
 }

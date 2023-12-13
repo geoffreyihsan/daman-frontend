@@ -1,1 +1,1 @@
-export { default as HalfPage } from './HalfPage';
+export { default as Halfpage } from './Halfpage';

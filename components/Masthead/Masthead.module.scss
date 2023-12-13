@@ -1,12 +1,27 @@
 @import "styles/breakpoints";
 
-.component {
+.mobile-component,
+.desktop-component {
   width: 100vw;
   background-color: var(--wpe--color--offwhite);
-  display: flex;
   justify-content: center;
   padding: 1rem;
-  // border-bottom: 0.3rem solid var(--wpe--color--black);
+}
+
+.mobile-component {
+  display: flex;
+
+  @media (min-width: $breakpoint-medium) {
+    display: none;
+  }
+}
+
+.desktop-component {
+  display: none;
+
+  @media (min-width: $breakpoint-medium) {
+    display: flex;
+  }
 }
 
 .masthead-wrapper {
@@ -20,14 +35,18 @@
     width: 970px;
   }
 
-  .desktop-banner {
-    // display: none;
+  .mobile-banner {
     display: block;
-    object-fit: contain;
-    object-position: left;
-    background-color: black;
 
-    @media (min-width: $breakpoint-extra-small) {
+    @media (min-width: $breakpoint-medium) {
+      display: none;
+    }
+  }
+
+  .desktop-banner {
+    display: none;
+
+    @media (min-width: $breakpoint-medium) {
       display: block;
     }
   }
