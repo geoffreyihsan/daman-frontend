@@ -16,7 +16,6 @@ import {
   Masthead,
   Features,
   BorderDivider,
-  Halfpage,
   Left,
   Right,
   DamanTv,
@@ -79,7 +78,6 @@ export default function frontPage(props) {
               <Updates />
             </Left>
             <Right>
-              <Halfpage />
             </Right>
           </TwoColumns>
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
@@ -89,7 +87,6 @@ export default function frontPage(props) {
               <Features />
             </Left>
             <Right>
-              <Halfpage />
             </Right>
           </TwoColumns>
         </>

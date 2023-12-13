@@ -5,7 +5,6 @@ export { FeaturedImage } from "./FeaturedImage";
 export { Footer } from "./Footer";
 export { FormatDate } from "./FormatDate";
 export { FullMenu } from "./FullMenu";
-export { Halfpage } from "./Halfpage";
 export { Header } from "./Header";
 export { Heading } from "./Heading";
 export { Hero } from "./Hero";
