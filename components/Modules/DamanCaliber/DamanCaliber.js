@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classNames from "classnames/bind";
-import styles from "./Features.module.scss";
-import { GetFeatures } from "../../../queries/GetFeatures";
+import styles from "./DamanCaliber.module.scss";
+import { GetDamanCaliber } from "../../../queries/GetDamanCaliber";
 import { useQuery } from "@apollo/client";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,21 +9,21 @@ let cx = classNames.bind(styles);
 
 import Image from "next/image";
 
-export default function Features({}) {
+export default function DamanCaliber({}) {
   const postsPerPage = 3;
 
-  // Get Feature Posts
-  const { data } = useQuery(GetFeatures, {
+  // Get DAMAN Caliber Posts
+  const { data } = useQuery(GetDamanCaliber, {
     variables: {
-      // Feature category id
-      id: 4,
+      // DAMAN Caliber category id
+      id: 9821,
       first: postsPerPage,
     },
     fetchPolicy: "network-only",
     nextFetchPolicy: "cache-and-network",
   });
 
-  const featurePosts = data?.category?.contentNodes?.edges ?? [];
+  const damanCaliberPosts = data?.category?.contentNodes?.edges ?? [];
 
   const calculateTrimmedExcerpt = (excerpt) => {
     const MAX_EXCERPT_LENGTH = 150; // You can adjust this value according to your needs
@@ -55,7 +55,7 @@ export default function Features({}) {
             spaceBetween={16}
             className="carousel-swiper"
           >
-            {featurePosts.map((post, index) => (
+            {damanCaliberPosts.map((post, index) => (
               <SwiperSlide key={index}>
                 <div className={cx("slide-wrapper")}>
                   {post?.node?.featuredImage && (
@@ -96,7 +96,7 @@ export default function Features({}) {
         </div>
         {/* Desktop Version */}
         <div className={cx("desktop-wrapper")}>
-          {featurePosts.map((post) => (
+          {damanCaliberPosts.map((post) => (
             <div className={cx("post-wrapper")}>
               {post?.node?.featuredImage && (
                 <div className={cx("post-image-wrapper")}>

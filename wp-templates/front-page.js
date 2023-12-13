@@ -19,6 +19,8 @@ import {
   Left,
   Right,
   DamanTv,
+  DamanStyle,
+  DamanCaliber,
 } from "../components";
 
 export default function frontPage(props) {
@@ -77,8 +79,7 @@ export default function frontPage(props) {
             <Left>
               <Updates />
             </Left>
-            <Right>
-            </Right>
+            <Right></Right>
           </TwoColumns>
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
           <BorderDivider />
@@ -86,16 +87,29 @@ export default function frontPage(props) {
             <Left>
               <Features />
             </Left>
-            <Right>
-            </Right>
+            <Right></Right>
+          </TwoColumns>
+          <BorderDivider />
+          <TwoColumns>
+            <Left>
+              <DamanStyle />
+            </Left>
+            <Right></Right>
+          </TwoColumns>
+          <BorderDivider />
+          <TwoColumns>
+            <Left>
+              <DamanCaliber />
+            </Left>
+            <Right></Right>
           </TwoColumns>
         </>
       </Main>
-      {/* <Footer
+      <Footer
         title={siteTitle}
         menuItems={footerMenu}
         menusLoading={menusLoading}
-      /> */}
+      />
     </>
   );
 }

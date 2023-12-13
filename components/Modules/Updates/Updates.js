@@ -25,6 +25,19 @@ export default function Updates({}) {
   const firstUpdatePosts = data?.contentNodes?.edges[0];
   const otherUpdatePosts = (data?.contentNodes?.edges ?? []).slice(1);
 
+  const calculateTrimmedExcerpt = (excerpt) => {
+    const MAX_EXCERPT_LENGTH = 150; // You can adjust this value according to your needs
+
+    let trimmedExcerpt = excerpt?.substring(0, MAX_EXCERPT_LENGTH);
+    const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
+
+    if (lastSpaceIndex !== -1) {
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+    }
+
+    return `${trimmedExcerpt}`;
+  };
+
   return (
     <>
       <div className={cx("component")}>
@@ -112,6 +125,17 @@ export default function Updates({}) {
               <div className={cx("post-title-wrapper")}>
                 <Link href={firstUpdatePosts?.node?.uri}>
                   <h2>{firstUpdatePosts?.node?.title}</h2>
+                </Link>
+              </div>
+            )}
+            {firstUpdatePosts?.node?.excerpt && (
+              <div className={cx("post-excerpt-wrapper")}>
+                <Link href={firstUpdatePosts?.node?.uri}>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: calculateTrimmedExcerpt(firstUpdatePosts?.node?.excerpt),
+                    }}
+                  />
                 </Link>
               </div>
             )}

@@ -10,6 +10,8 @@ export { Heading } from "./Heading";
 export { Hero } from "./Hero";
 export { HeroSlider } from "./HeroSlider";
 export { BorderDivider } from "./Modules/BorderDivider";
+export { DamanCaliber } from "./Modules/DamanCaliber";
+export { DamanStyle } from "./Modules/DamanStyle";
 export { DamanTv } from "./Modules/DamanTv";
 export { Features } from "./Modules/Features";
 export { TwoColumns } from "./Modules/Layout/TwoColumns";
