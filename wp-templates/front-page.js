@@ -21,7 +21,6 @@ import {
   Right,
   DamanTv,
 } from "../components";
-import { GetMasthead } from "../queries/GetMasthead";
 
 export default function frontPage(props) {
   // Loading state for previews
@@ -61,41 +60,6 @@ export default function frontPage(props) {
   const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
-  const halfPage1 = "half-page-1";
-  const halfPage2 = "half-page-2";
-
-  // Advertorial Var
-  let queryVariables = {
-    slug: halfPage1,
-  };
-
-  // if (mastheadTopMobile) {
-  //   // Modify the variables based on the condition
-  //   queryVariables = {
-  //     slug: topMobile, // Change this to the desired value
-  //   };
-  // }
-
-  // if (mastheadTopDesktop) {
-  //   // Modify the variables based on the condition
-  //   queryVariables = {
-  //     slug: topDesktop, // Change this to the desired value
-  //   };
-  // }
-
-  // Get Masthead Banner
-  const { data } = useQuery(GetMasthead, {
-    variables: queryVariables,
-    fetchPolicy: "network-only",
-    nextFetchPolicy: "cache-and-network",
-  });
-
-  // Use a regular expression to extract content between <!-- and <!--
-  const match = data?.bannerAdBy?.content.match(/(<!--.*?)<!--/s);
-
-  // Check if there's a match
-  const extractedContent = match ? match[1] : null;
-
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
@@ -125,7 +89,7 @@ export default function frontPage(props) {
               <Features />
             </Left>
             <Right>
-              <Halfpage halfPage1={extractedContent}/>
+              <Halfpage />
             </Right>
           </TwoColumns>
         </>
