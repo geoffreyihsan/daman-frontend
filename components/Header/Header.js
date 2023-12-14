@@ -19,6 +19,7 @@ export default function Header({
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolledNav, setIsScrolledNav] = useState(false);
 
   // // Stop scrolling pages when isNavShown
   // useEffect(() => {
@@ -29,42 +30,42 @@ export default function Header({
   //   }
   // }, [isNavShown]);
 
-  const topMobile = "masthead-top-mobile";
-  const topDesktop = "masthead-top";
-  const bottomMobile = "masthead-bottom-mobile";
-  const bottomDesktop = "masthead-bottom";
+  // const topMobile = "masthead-top-mobile";
+  // const topDesktop = "masthead-top";
+  // const bottomMobile = "masthead-bottom-mobile";
+  // const bottomDesktop = "masthead-bottom";
 
-  // Advertorial Var
-  let queryVariables = {
-    slug: topMobile,
-  };
+  // Masthead Var
+  // let queryVariables = {
+  //   slug: topMobile,
+  // };
 
-  // if (mastheadTopMobile) {
-  //   // Modify the variables based on the condition
-  //   queryVariables = {
-  //     slug: topMobile, // Change this to the desired value
-  //   };
-  // }
+  // // if (mastheadTopMobile) {
+  // //   // Modify the variables based on the condition
+  // //   queryVariables = {
+  // //     slug: topMobile, // Change this to the desired value
+  // //   };
+  // // }
 
-  // if (mastheadTopDesktop) {
-  //   // Modify the variables based on the condition
-  //   queryVariables = {
-  //     slug: topDesktop, // Change this to the desired value
-  //   };
-  // }
+  // // if (mastheadTopDesktop) {
+  // //   // Modify the variables based on the condition
+  // //   queryVariables = {
+  // //     slug: topDesktop, // Change this to the desired value
+  // //   };
+  // // }
 
-  // Get Masthead Banner
-  const { data } = useQuery(GetMasthead, {
-    variables: queryVariables,
-    fetchPolicy: "network-only",
-    nextFetchPolicy: "cache-and-network",
-  });
+  // // Get Masthead Banner
+  // const { data } = useQuery(GetMasthead, {
+  //   variables: queryVariables,
+  //   fetchPolicy: "network-only",
+  //   nextFetchPolicy: "cache-and-network",
+  // });
 
-  // Use a regular expression to extract content between <!-- and <!--
-  const match = data?.bannerAdBy?.content.match(/(<!--.*?)<!--/s);
+  // // Use a regular expression to extract content between <!-- and <!--
+  // const match = data?.bannerAdBy?.content.match(/(<!--.*?)<!--/s);
 
-  // Check if there's a match
-  const extractedContent = match ? match[1] : null;
+  // // Check if there's a match
+  // const extractedContent = match ? match[1] : null;
 
   // const scrollValue = window.scrollY;
 
@@ -75,6 +76,20 @@ export default function Header({
     function handleScroll() {
       // setIsScrolled after Masthead height
       setIsScrolled(window.scrollY > 282);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Add sticky nav on scroll
+  useEffect(() => {
+    function handleScroll() {
+      // setIsScrolled after Masthead height
+      setIsScrolledNav(window.scrollY > 240);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -219,7 +234,7 @@ export default function Header({
       </header>
       {/* Full menu */}
       <div
-        className={cx(["full-menu-wrapper", isNavShown ? "show" : undefined])}
+        className={cx(["full-menu-wrapper", isNavShown ? "show" : undefined, isScrolledNav ? "sticky" : undefined])}
       >
         <FullMenu
           primaryMenuItems={primaryMenuItems}

@@ -151,6 +151,11 @@
   background-color: var(--wpe--main--background--color);
   color: var(--wpe--color--black);
   margin: 0 auto;
+  height: calc(-3.563rem + 100vh);
+
+  @media (min-width: $breakpoint-extra-small) {
+    height: calc(-4.813rem + 100vh);
+  }
 
   &.show {
     display: block;
@@ -161,6 +166,17 @@
 
     @media (min-width: $breakpoint-extra-small) {
       top: 7.55rem;
+    }
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 3.563rem;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    @media (min-width: $breakpoint-extra-small) {
+      top: 4.813rem;
     }
   }
 }
