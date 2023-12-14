@@ -76,11 +76,11 @@
 
 		@media (min-width: $breakpoint-extra-small) {
 			position: absolute;
-			left: -10px;
+			left: -2rem;
 			top: 100%;
 			text-align: left;
 			box-shadow: var(--wpe--shadow--large);
-			padding: 1rem;
+			padding: 0.75rem;
 			transition: all 0.2s ease-out;
 			width: inherit;
 			border: var(--wpe--border--extra--light);

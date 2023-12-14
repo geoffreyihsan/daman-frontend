@@ -3,7 +3,7 @@ import className from "classnames/bind";
 import styles from "./HeroSlider.module.scss";
 import { useQuery } from "@apollo/client";
 import { GetHeroSlider } from "../../queries/GetHeroSlider";
-import { FormatDate } from "..";
+import { FormatDate } from "../../components";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";

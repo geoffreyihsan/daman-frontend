@@ -2,6 +2,7 @@ import Link from "next/link";
 import classNames from "classnames/bind";
 import styles from "./Updates.module.scss";
 import { GetUpdates } from "../../../queries/GetUpdates";
+import { GetCategory } from "../../../queries/GetCategory";
 import { useQuery } from "@apollo/client";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -16,6 +17,16 @@ export default function Updates({}) {
   const { data } = useQuery(GetUpdates, {
     variables: {
       first: postsPerPage,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  // Get Update Posts
+  const { data: dataCategory } = useQuery(GetCategory, {
+    variables: {
+      // Updates Category id
+      id: 12921,
     },
     fetchPolicy: "network-only",
     nextFetchPolicy: "cache-and-network",
@@ -41,9 +52,11 @@ export default function Updates({}) {
   return (
     <>
       <div className={cx("component")}>
-        <div className={cx("title-wrapper")}>
-          <div className={cx("title")}>{"Updates"}</div>
-        </div>
+        {dataCategory?.category?.name && (
+          <div className={cx("title-wrapper")}>
+            <div className={cx("title")}>{dataCategory?.category?.name}</div>
+          </div>
+        )}
         {/* Mobile Version */}
         <div className={cx("mobile-wrapper")}>
           <Swiper
@@ -133,7 +146,9 @@ export default function Updates({}) {
                 <Link href={firstUpdatePosts?.node?.uri}>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: calculateTrimmedExcerpt(firstUpdatePosts?.node?.excerpt),
+                      __html: calculateTrimmedExcerpt(
+                        firstUpdatePosts?.node?.excerpt
+                      ),
                     }}
                   />
                 </Link>

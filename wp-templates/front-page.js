@@ -15,7 +15,6 @@ import {
   TwoColumns,
   Masthead,
   Features,
-  BorderDivider,
   Left,
   Right,
   DamanTv,
@@ -74,7 +73,7 @@ export default function frontPage(props) {
       <Main>
         <>
           <HeroSlider databaseId={databaseId} />
-          <BorderDivider />
+
           <TwoColumns>
             <Left>
               <Updates />
@@ -82,21 +81,18 @@ export default function frontPage(props) {
             <Right></Right>
           </TwoColumns>
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
-          <BorderDivider />
           <TwoColumns>
             <Left>
               <Features />
             </Left>
             <Right></Right>
           </TwoColumns>
-          <BorderDivider />
           <TwoColumns>
             <Left>
               <DamanStyle />
             </Left>
             <Right></Right>
           </TwoColumns>
-          <BorderDivider />
           <TwoColumns>
             <Left>
               <DamanCaliber />

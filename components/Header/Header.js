@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import { GetMasthead } from "../../queries/GetMasthead";
 import DaManLogo from "../../assets/logo/daman-logo.png";
-import { FullMenu, Masthead, NavigationMenu } from "..";
+import { FullMenu, Masthead, NavigationMenu } from "../../components";
 
 let cx = classNames.bind(styles);
 
@@ -65,6 +65,10 @@ export default function Header({
 
   // Check if there's a match
   const extractedContent = match ? match[1] : null;
+
+  // const scrollValue = window.scrollY;
+
+  // console.log(scrollValue);
 
   // Add sticky header on scroll
   useEffect(() => {
