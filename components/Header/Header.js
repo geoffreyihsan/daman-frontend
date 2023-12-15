@@ -7,6 +7,8 @@ import { useQuery } from "@apollo/client";
 import { GetMasthead } from "../../queries/GetMasthead";
 import DaManLogo from "../../assets/logo/daman-logo.png";
 import { FullMenu, Masthead, NavigationMenu } from "../../components";
+import * as MENUS from "../../constants/menus";
+import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
 
 let cx = classNames.bind(styles);
 
@@ -19,7 +21,20 @@ export default function Header({
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrolledNav, setIsScrolledNav] = useState(false);
+
+  // Get menus
+  const { data: menusData } = useQuery(GetHeaderComponent, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  // Get Header Component
+  const headerComponent = menusData?.menus?.nodes[0]?.headerComponent ?? [];
+  // Subscribe link
+  const subsLink = "/subscribe-daman";
 
   // // Stop scrolling pages when isNavShown
   // useEffect(() => {
@@ -85,20 +100,6 @@ export default function Header({
     };
   }, []);
 
-  // Add sticky nav on scroll
-  useEffect(() => {
-    function handleScroll() {
-      // setIsScrolled after Masthead height
-      setIsScrolledNav(window.scrollY > 240);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <Masthead />
@@ -108,9 +109,13 @@ export default function Header({
           {!isNavShown ? (
             <>
               <div className={cx("button-header")}>
-                <Link href={"/subscribe-daman"}>{"Subscribe"}</Link>
+                {headerComponent?.buttonHeader?.title &&
+                  headerComponent?.buttonHeader?.uri && (
+                    <Link href={headerComponent?.buttonHeader?.uri}>
+                      {headerComponent?.buttonHeader?.title}
+                    </Link>
+                  )}
               </div>
-
               <div className={cx("navbar")}>
                 <div className={cx("brand")}>
                   <Link href="/" className={cx("logo")}>
@@ -234,17 +239,25 @@ export default function Header({
       </header>
       {/* Full menu */}
       <div
-        className={cx(["full-menu-wrapper", isNavShown ? "show" : undefined, isScrolledNav ? "sticky" : undefined])}
+        className={cx([
+          "full-menu-wrapper",
+          isNavShown ? "show" : undefined,
+          isScrolled ? "sticky" : undefined,
+        ])}
       >
         <FullMenu
           primaryMenuItems={primaryMenuItems}
           secondaryMenuItems={secondaryMenuItems}
           thirdMenuItems={thirdMenuItems}
           menusLoading={menusLoading}
+          newCover={headerComponent?.newCoverIssue?.sourceUrl}
+          subsLink={subsLink}
         />
       </div>
       {/* Navigation menu */}
-      <div className={cx("navigation-wrapper")}>
+      <div
+        className={cx("navigation-wrapper", isNavShown ? "hide" : undefined)}
+      >
         <NavigationMenu
           className={cx("navigation-menu")}
           menuItems={navigationMenuItems}

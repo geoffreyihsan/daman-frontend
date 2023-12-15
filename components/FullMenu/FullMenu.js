@@ -4,7 +4,13 @@ import styles from "./FullMenu.module.scss";
 import { useState } from "react";
 // import { GetSearchResults } from "../../queries/GetSearchResults";
 import Image from "next/image";
-import { NavigationMenu, SearchInput, SearchResults, Button } from "..";
+import Link from "next/link";
+import {
+  NavigationMenu,
+  SearchInput,
+  SearchResults,
+  Button,
+} from "../../components";
 
 let cx = classNames.bind(styles);
 
@@ -13,6 +19,8 @@ export default function FullMenu({
   secondaryMenuItems,
   thirdMenuItems,
   menusLoading,
+  newCover,
+  subsLink,
 }) {
   // Loading Menu
   if (menusLoading) {
@@ -189,7 +197,15 @@ l961 -963 -961 -963 c-912 -913 -962 -965 -989 -1027 -40 -91 -46 -200 -15
         </div> */}
 
         <div className={cx("menu-wrapper")}>
-          <div className={cx("first-wrapper")}></div>
+          <div className={cx("first-wrapper")}>
+            <div className={cx("image-wrapper")}>
+              {subsLink && newCover && (
+                <Link href={subsLink}>
+                  <Image src={newCover} alt={"New Issue"} fill sizes="100%" />
+                </Link>
+              )}
+            </div>
+          </div>
           <div className={cx("second-wrapper")}>
             {/* Primary Menu {Destination Guides Menu} */}
             <NavigationMenu

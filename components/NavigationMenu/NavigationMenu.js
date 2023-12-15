@@ -62,24 +62,6 @@ NavigationMenu.fragments = {
       menu {
         node {
           name
-          headerComponent {
-            logoHeader {
-              id
-              sourceUrl
-              altText
-              mediaDetails {
-                width
-                height
-              }
-            }
-            buttonHeader {
-              ... on Page {
-                id
-                title
-                uri
-              }
-            }
-          }
         }
       }
     }

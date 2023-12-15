@@ -133,22 +133,25 @@
   }
 
   .first-wrapper {
-    display: block;
+    display: flex;
     width: 50%;
-    height: 15.625rem;
-    border: 0.5rem solid var(--wpe--main--background--color);
-    background-color: var(--wpe--color--light--grey);
+    justify-content: flex-start;
+    // border: 0.5rem solid var(--wpe--main--background--color);
+    // background-color: var(--wpe--color--light--grey);
+
+    .image-wrapper {
+      position: relative;
+      width: 8rem;
+      height: 10rem;
+
+      @media (min-width: $breakpoint-extra-small) {
+        width: 11rem;
+        height: 14rem;
+      }
+    }
 
     @media (min-width: $breakpoint-extra-small) {
       width: 11.5rem;
-    }
-
-    .secondary-navigation {
-      ul {
-        position: static;
-        display: grid;
-        grid-template-columns: 100%;
-      }
     }
   }
 
