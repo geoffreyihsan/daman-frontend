@@ -6,36 +6,35 @@ import {
   Header,
   Footer,
   Main,
-  Container,
-  EntryHeader,
   Post,
   FeaturedImage,
   SEO,
+  EntryHeaderCategory,
 } from "../components";
 
 export default function Category(props) {
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const { name, posts } = props?.data?.category;
+  const { name, posts, databaseId } = props?.data?.category;
 
-    // Get menus
-    const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
-      variables: {
-        primaryLocation: MENUS.PRIMARY_LOCATION,
-        secondaryLocation: MENUS.SECONDARY_LOCATION,
-        thirdLocation: MENUS.THIRD_LOCATION,
-        navigationLocation: MENUS.NAVIGATION_LOCATION,
-        footerLocation: MENUS.FOOTER_LOCATION,
-      },
-      fetchPolicy: "network-only",
-      nextFetchPolicy: "cache-and-network",
-    });
-  
-    const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
-    const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
-    const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
-    const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
-    const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
+  // Get menus
+  const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+      secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
+      navigationLocation: MENUS.NAVIGATION_LOCATION,
+      footerLocation: MENUS.FOOTER_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
+  const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
+  const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
+  const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
     <>
@@ -49,7 +48,7 @@ export default function Category(props) {
       />
       <Main>
         <>
-          <EntryHeader title={`Category: ${name}`} />
+          <EntryHeaderCategory databaseId={databaseId} />
           <>
             {posts.edges.map((post) => (
               <Post
@@ -64,10 +63,7 @@ export default function Category(props) {
           </>
         </>
       </Main>
-      <Footer
-        title={siteTitle}
-        menuItems={footerMenu}
-      />
+      <Footer title={siteTitle} menuItems={footerMenu} />
     </>
   );
 }
@@ -78,6 +74,7 @@ Category.query = gql`
   query GetCategoryPage($databaseId: ID!) {
     category(id: $databaseId, idType: DATABASE_ID) {
       name
+      databaseId
       posts {
         edges {
           node {
