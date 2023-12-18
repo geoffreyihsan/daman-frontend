@@ -34,7 +34,7 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
         </div>
       )}
       {category && (
-        <div className={cx("post-category-wrapper")}>
+        <div className={cx("category-wrapper")}>
           <Link href={category?.node?.uri}>
             <h2>
               {category?.node?.parent?.node?.name}

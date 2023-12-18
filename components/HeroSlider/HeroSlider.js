@@ -36,7 +36,7 @@ export default function HeroSlider({ databaseId }) {
   if (loading) {
     return (
       <>
-        <div className="mx-auto my-0 flex max-w-[100vw] justify-center md:max-w-[700px]	">
+        <div className="mx-auto my-0 flex max-w-[100vw] justify-center lg:max-w-[1024px]	">
           <div role="status">
             <svg
               aria-hidden="true"
