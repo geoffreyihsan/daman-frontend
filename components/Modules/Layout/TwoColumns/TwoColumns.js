@@ -4,10 +4,10 @@ import className from "classnames/bind";
 
 let cx = className.bind(styles);
 
-export default function TwoColumns({ children, className }) {
+export default function TwoColumns({ children, className, border }) {
   return (
     <>
-      <BorderDivider />
+      {border && <BorderDivider />}
       <div className={cx(["component", className])}>{children}</div>
     </>
   );

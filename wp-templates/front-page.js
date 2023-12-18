@@ -74,26 +74,26 @@ export default function frontPage(props) {
         <>
           <HeroSlider databaseId={databaseId} />
 
-          <TwoColumns>
+          <TwoColumns border={true}>
             <Left>
               <Updates />
             </Left>
             <Right></Right>
           </TwoColumns>
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
-          <TwoColumns>
+          <TwoColumns border={true}>
             <Left>
               <Features />
             </Left>
             <Right></Right>
           </TwoColumns>
-          <TwoColumns>
+          <TwoColumns border={true}>
             <Left>
               <DamanStyle />
             </Left>
             <Right></Right>
           </TwoColumns>
-          <TwoColumns>
+          <TwoColumns border={true}>
             <Left>
               <DamanCaliber />
             </Left>

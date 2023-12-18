@@ -6,16 +6,18 @@ import {
   Header,
   Footer,
   Main,
-  Post,
-  FeaturedImage,
   SEO,
   EntryHeaderCategory,
+  PostCategory,
+  TwoColumns,
+  Left,
+  Right,
 } from "../components";
 
 export default function Category(props) {
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const { name, posts, databaseId } = props?.data?.category;
+  const { databaseId } = props?.data?.category;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -49,18 +51,12 @@ export default function Category(props) {
       <Main>
         <>
           <EntryHeaderCategory databaseId={databaseId} />
-          <>
-            {posts.edges.map((post) => (
-              <Post
-                title={post?.node?.title}
-                // content={post?.node?.content}
-                // date={post?.node?.date}
-                // author={post?.node?.author?.node?.name}
-                uri={post?.node?.uri}
-                featuredImage={post?.node?.featuredImage?.node}
-              />
-            ))}
-          </>
+          <TwoColumns border={false}>
+            <Left>
+              <PostCategory databaseId={databaseId} />
+            </Left>
+            <Right></Right>
+          </TwoColumns>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
@@ -70,28 +66,10 @@ export default function Category(props) {
 
 Category.query = gql`
   ${BlogInfoFragment}
-  ${FeaturedImage.fragments.entry}
   query GetCategoryPage($databaseId: ID!) {
     category(id: $databaseId, idType: DATABASE_ID) {
       name
       databaseId
-      posts {
-        edges {
-          node {
-            id
-            title
-            content
-            date
-            uri
-            ...FeaturedImageFragment
-            author {
-              node {
-                name
-              }
-            }
-          }
-        }
-      }
     }
     generalSettings {
       ...BlogInfoFragment

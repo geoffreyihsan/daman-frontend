@@ -10,9 +10,6 @@ let cx = classNames.bind(styles);
 
 export default function EntryHeaderCategory({ databaseId }) {
   const [currentUrl, setCurrentUrl] = useState("");
-  const [categoryUrl, setCategoryUrl] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [prevScrollY, setPrevScrollY] = useState(0);
 
   const catPerPage = 100;
 
@@ -35,24 +32,6 @@ export default function EntryHeaderCategory({ databaseId }) {
   function isActive(uri) {
     return currentUrl + "/" === uri;
   }
-
-  // Show sticky header when scroll down, Hide it when scroll up
-  useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(
-        currentScrollY > 0
-        // && currentScrollY < prevScrollY
-      );
-      setPrevScrollY(currentScrollY);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollY]);
 
   // Loading Menu
   if (loading) {
@@ -84,7 +63,6 @@ export default function EntryHeaderCategory({ databaseId }) {
 
   return (
     <nav className={cx("component")}>
-      {console.log(data?.category)}
       <BorderDivider />
       <div className={cx("container-wrapper")}>
         <div className={cx("navbar")}>

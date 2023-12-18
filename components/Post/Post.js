@@ -1,35 +1,67 @@
 import Link from "next/link";
-import { FeaturedImage } from "../FeaturedImage";
-import { PostInfo } from "../PostInfo";
+import classNames from "classnames/bind";
 import styles from "./Post.module.scss";
+import Image from "next/image";
 
-export default function Post({
-  title,
-  content,
-  date,
-  author,
-  uri,
-  featuredImage,
-}) {
+let cx = classNames.bind(styles);
+
+export default function Post({ title, uri, featuredImage, excerpt, category }) {
+  const calculateTrimmedExcerpt = (excerpt) => {
+    const MAX_EXCERPT_LENGTH = 150; // You can adjust this value according to your needs
+
+    let trimmedExcerpt = excerpt?.substring(0, MAX_EXCERPT_LENGTH);
+    const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
+
+    if (lastSpaceIndex !== -1) {
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+    }
+
+    return `${trimmedExcerpt}`;
+  };
+
   return (
-    <article className={styles.component}>
-      {featuredImage && (
-        <Link href={uri}>
-          <FeaturedImage
-            image={featuredImage}
-            className={styles.featuredImage}
-          />
-        </Link>
+    <article className={cx("component")}>
+      {featuredImage && uri && (
+        <div className={cx("image-wrapper")}>
+          <Link href={uri}>
+            <Image
+              src={featuredImage?.sourceUrl}
+              alt={featuredImage?.alt ?? "Post Featured Image"}
+              fill
+              sizes="100%"
+            />
+          </Link>
+        </div>
       )}
-
-      <Link href={uri}>
-        <h2>{title}</h2>
-      </Link>
-      <PostInfo date={date} author={author} className={styles.postInfo} />
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      {category && (
+        <div className={cx("post-category-wrapper")}>
+          <Link href={category?.node?.uri}>
+            <h2>
+              {category?.node?.parent?.node?.name}
+              {" | "}
+              {category?.node?.name}
+            </h2>
+          </Link>
+        </div>
+      )}
+      {title && uri && (
+        <div className={cx("title-wrapper")}>
+          <Link href={uri}>
+            <h2>{title}</h2>
+          </Link>
+        </div>
+      )}
+      {excerpt && uri && (
+        <div className={cx("excerpt-wrapper")}>
+          <Link href={uri}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: calculateTrimmedExcerpt(excerpt),
+              }}
+            />
+          </Link>
+        </div>
+      )}
     </article>
   );
 }

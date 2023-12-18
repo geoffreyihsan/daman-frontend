@@ -1,3 +1,4 @@
+export { Button } from "./Button";
 export { Container } from "./Container";
 export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";
@@ -23,6 +24,7 @@ export { Main } from "./Main";
 export { Masthead } from "./Masthead";
 export { NavigationMenu } from "./NavigationMenu";
 export { Post } from "./Post";
+export { PostCategory } from "./PostCategory";
 export { PostInfo } from "./PostInfo";
 export { SEO } from "./SEO";
 export { SkipNavigationLink } from "./SkipNavigationLink";
