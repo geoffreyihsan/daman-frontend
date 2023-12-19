@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5rem;
   row-gap: 1rem;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   margin-right: auto;
   margin-left: auto;
 
@@ -15,5 +15,6 @@
 
   @media (min-width: $breakpoint-medium) {
     max-width: var(--wpe--container--max--width);
+    padding: 2rem 0;
   }
 }

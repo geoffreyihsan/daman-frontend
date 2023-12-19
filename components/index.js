@@ -4,6 +4,7 @@ export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";
 export { EntryHeaderCategory } from "./EntryHeaderCategory";
 export { FeaturedImage } from "./FeaturedImage";
+export { FeaturedImageSingle } from "./FeaturedImageSingle";
 export { Footer } from "./Footer";
 export { FormatDate } from "./FormatDate";
 export { FullMenu } from "./FullMenu";

@@ -1,0 +1,21 @@
+@import "styles/breakpoints";
+
+.component {
+  padding: 0 0 1rem;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: $breakpoint-medium) {
+    max-width: var(--wpe--container--max--width);
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  aspect-ratio: 9 / 6;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+  }
+}

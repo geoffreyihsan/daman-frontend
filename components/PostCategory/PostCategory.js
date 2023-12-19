@@ -79,34 +79,32 @@ export default function PostCategory(databaseId) {
   if (loading) {
     return (
       <>
-        <div className="my-0 pb-4 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px] lg:px-0">
+        <div className="my-0 pb-4 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px] lg:px-0 ">
           <Button className="gap-x-4	">{"Loading..."}</Button>
         </div>
       </>
     );
   }
 
-  const allPosts = [];
-
-  // loop through all the latest categories posts
-  data?.category?.contentNodes?.edges?.forEach((post) => {
-    allPosts.push(post.node);
-  });
+  // Declare all posts
+  const allPosts = data?.category?.contentNodes?.edges.map((post) => post.node);
 
   return (
     <div className={cx("component")}>
       {allPosts.length !== 0 &&
         allPosts.map((post, index) => (
-          <Post
-            title={post?.title}
-            uri={post?.uri}
-            featuredImage={post?.featuredImage?.node}
-            excerpt={post?.excerpt}
-            category={post?.categories?.edges[0]}
-          />
+          <React.Fragment key={post?.id}>
+            <Post
+              title={post?.title}
+              uri={post?.uri}
+              featuredImage={post?.featuredImage?.node}
+              excerpt={post?.excerpt}
+              category={post?.categories?.edges[0]}
+            />
+          </React.Fragment>
         ))}
       {allPosts.length && (
-        <div className="my-0 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px]	lg:px-0">
+        <div className="my-0 flex max-w-[100vw] justify-start lg:max-w-[1024px] ">
           {data?.category?.contentNodes?.pageInfo?.hasNextPage &&
             data?.category?.contentNodes?.pageInfo?.endCursor && (
               <Button

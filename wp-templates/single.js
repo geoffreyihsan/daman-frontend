@@ -11,6 +11,10 @@ import {
   ContentWrapper,
   FeaturedImage,
   SEO,
+  FeaturedImageSingle,
+  TwoColumns,
+  Left,
+  Right,
 } from "../components";
 
 export default function Single(props) {
@@ -58,15 +62,18 @@ export default function Single(props) {
       />
       <Main>
         <>
-          <EntryHeader
-            title={title}
-            image={featuredImage?.node}
-            date={date}
-            author={author?.node?.name}
-          />
-          <>
-            <ContentWrapper content={content} />
-          </>
+          <FeaturedImageSingle image={featuredImage?.node} />
+          <TwoColumns>
+            <Left>
+              <EntryHeader
+                title={title}
+                date={date}
+                author={author?.node?.name}
+              />
+              <ContentWrapper content={content} />
+            </Left>
+            <Right></Right>
+          </TwoColumns>
         </>
       </Main>
       <Footer

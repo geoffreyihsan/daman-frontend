@@ -73,7 +73,6 @@ export default function frontPage(props) {
       <Main>
         <>
           <HeroSlider databaseId={databaseId} />
-
           <TwoColumns border={true}>
             <Left>
               <Updates />

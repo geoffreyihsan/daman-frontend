@@ -9,6 +9,7 @@ export const GetPostCategory = gql`
   ) {
     category(id: $id, idType: DATABASE_ID) {
       name
+      uri
       parent {
         node {
           name

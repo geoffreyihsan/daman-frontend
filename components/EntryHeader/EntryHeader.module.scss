@@ -1,66 +1,11 @@
-@import 'styles/breakpoints';
+@import "styles/breakpoints";
 
 .component {
-	color: var(--wpe--color--white);
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
 
-	@media (min-width: $breakpoint-extra-small) {
-		margin-bottom: 5rem;
-	}
-}
-
-.has-image {
-	--wpe--color--title: var(--wpe--color--white);
-}
-
-.text,
-.image {
-	margin: auto;
-	text-align: center;
-}
-
-.text {
-	width: 100%;
-	max-width: var(--wpe--container--max--width);
-	margin: 0 auto;
-	padding: 8.25rem 0;
-	position: relative;
-	z-index: 1; // Pull text to the foreground to sit above <FeaturedImage />.
-}
-
-.title {
-	line-height: 1.25;
-	font-size: 5rem;
-	color: var(--wpe--color--title);
-
-	@media (max-width: $breakpoint-extra-small) {
-		font-size: 3rem;
-	}
-}
-
-.byline {
-	font-weight: var(--wpe--font-weight--medium);
-	font-size: 1.2rem;
-}
-
-.image {
-	margin: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 0;
-
-	&::after {
-		content: '';
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		background-color: rgba(0, 0, 0, 0.6);
-		position: absolute;
-	}
+  @media (min-width: $breakpoint-medium) {
+    padding: 0 0 2rem;
+  }
 }
