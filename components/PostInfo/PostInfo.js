@@ -7,6 +7,7 @@ export default function PostInfo({ date, author, className }) {
 
   return (
     <div className={className}>
+      {"Posted on "}
       {date && (
         <time dateTime={date}>
           <FormatDate date={date} />

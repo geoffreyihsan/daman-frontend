@@ -6,11 +6,18 @@ export default function FormatDate({ date }) {
   }
 
   const timeformat = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour12: false
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
   };
 
-  return <>{formattedDate.toLocaleDateString('en-US', timeformat)}</>;
+  const weekday = formattedDate.toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+  const day = formattedDate.toLocaleDateString("en-US", { day: "numeric" });
+  const month = formattedDate.toLocaleDateString("en-US", { month: "long" });
+  const year = formattedDate.toLocaleDateString("en-US", { year: "numeric" });
+  const time = formattedDate.toLocaleTimeString("en-US", timeformat);
+
+  return <>{`${weekday} ${time} ${day} ${month} ${year} |`}</>;
 }
