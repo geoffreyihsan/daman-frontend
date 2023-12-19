@@ -79,7 +79,7 @@ export default function PostCategory(databaseId) {
   if (loading) {
     return (
       <>
-        <div className="my-0 pb-4 flex max-w-[100vw] justify-start lg:max-w-[1024px]">
+        <div className="my-0 pb-4 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px] lg:px-0">
           <Button className="gap-x-4	">{"Loading..."}</Button>
         </div>
       </>
@@ -106,7 +106,7 @@ export default function PostCategory(databaseId) {
           />
         ))}
       {allPosts.length && (
-        <div className="my-0 flex max-w-[100vw] justify-start lg:max-w-[1024px]	">
+        <div className="my-0 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px]	lg:px-0">
           {data?.category?.contentNodes?.pageInfo?.hasNextPage &&
             data?.category?.contentNodes?.pageInfo?.endCursor && (
               <Button
