@@ -90,6 +90,8 @@ export default function SEO({ title, description, imageUrl, url }) {
               var address = window.location.pathname;
               googletag.pubads().setTargeting("URL_Exact", address);
             }
+            googletag.defineSlot('/6808792/DAMAN_leaderboard', [728, 90], 'div-gpt-ad-1460363567691-1').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_mobile_leaderboard', [320, 50], 'div-gpt-ad-1460363567691-2').addService(googletag.pubads());
             googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
             googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
             googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
