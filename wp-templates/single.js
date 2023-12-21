@@ -15,6 +15,8 @@ import {
   TwoColumns,
   Left,
   Right,
+  OurRecommendations,
+  BorderDivider,
 } from "../components";
 
 export default function Single(props) {
@@ -25,8 +27,15 @@ export default function Single(props) {
 
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
-  const { title, content, featuredImage, date, author, categories } =
-    props?.data?.post;
+  const {
+    title,
+    content,
+    featuredImage,
+    date,
+    author,
+    categories,
+    databaseId,
+  } = props?.data?.post;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -64,6 +73,7 @@ export default function Single(props) {
       <Main>
         <>
           {/* <FeaturedImageSingle image={featuredImage?.node} /> */}
+          <BorderDivider />
           <TwoColumns>
             <Left>
               <EntryHeader
@@ -76,6 +86,7 @@ export default function Single(props) {
             </Left>
             <Right></Right>
           </TwoColumns>
+          <OurRecommendations databaseId={databaseId} />
         </>
       </Main>
       <Footer
@@ -93,10 +104,11 @@ Single.query = gql`
   query GetPost(
     $databaseId: ID!
     $asPreview: Boolean = false
-    $exclude: [ID] = [4, 12921, 9821, 9803]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744]
   ) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
+      databaseId
       content
       date
       author {

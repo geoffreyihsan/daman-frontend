@@ -10,31 +10,23 @@ let cx = classNames.bind(styles);
 
 import Image from "next/image";
 
-export default function Updates({}) {
+export default function Updates() {
   const postsPerPage = 5;
 
   // Get Update Posts
   const { data } = useQuery(GetUpdates, {
     variables: {
+      // Feature category id
+      id: 12921,
       first: postsPerPage,
     },
     fetchPolicy: "network-only",
     nextFetchPolicy: "cache-and-network",
   });
 
-  // Get Update Posts
-  const { data: dataCategory } = useQuery(GetCategory, {
-    variables: {
-      // Updates Category id
-      id: 12921,
-    },
-    fetchPolicy: "network-only",
-    nextFetchPolicy: "cache-and-network",
-  });
-
-  const updatePosts = data?.contentNodes?.edges ?? [];
-  const firstUpdatePosts = data?.contentNodes?.edges[0];
-  const otherUpdatePosts = (data?.contentNodes?.edges ?? []).slice(1);
+  const updatePosts = data?.category?.contentNodes?.edges ?? [];
+  const firstUpdatePosts = data?.category?.contentNodes?.edges[0];
+  const otherUpdatePosts = (data?.category?.contentNodes?.edges ?? []).slice(1);
 
   const calculateTrimmedExcerpt = (excerpt) => {
     const MAX_EXCERPT_LENGTH = 150; // You can adjust this value according to your needs
@@ -52,9 +44,9 @@ export default function Updates({}) {
   return (
     <>
       <div className={cx("component")}>
-        {dataCategory?.category?.name && (
+        {data?.category?.name && (
           <div className={cx("title-wrapper")}>
-            <div className={cx("title")}>{dataCategory?.category?.name}</div>
+            <div className={cx("title")}>{data?.category?.name}</div>
           </div>
         )}
         {/* Mobile Version */}
@@ -82,11 +74,9 @@ export default function Updates({}) {
                   {post?.node?.categories?.edges[0] && (
                     <div className={cx("slide-category-wrapper")}>
                       <Link href={post?.node?.categories?.edges[0]?.node?.uri}>
-                        {
+                        {post?.node?.categories?.edges[0]?.node?.parent &&
                           post?.node?.categories?.edges[0]?.node?.parent?.node
-                            ?.name
-                        }
-                        {" | "}
+                            ?.name + " | "}
                         {post?.node?.categories?.edges[0]?.node?.name}
                       </Link>
                     </div>

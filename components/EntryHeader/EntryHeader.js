@@ -17,8 +17,8 @@ export default function EntryHeader({
       {categories && (
         <div className={cx("category-wrapper")}>
           <Link href={categories.node?.uri}>
-            {categories.node?.parent?.node?.name}
-            {" | "}
+            {categories.node?.parent &&
+              categories.node?.parent?.node?.name + " | "}
             {categories.node?.name}
           </Link>
         </div>

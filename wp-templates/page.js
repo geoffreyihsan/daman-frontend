@@ -6,11 +6,14 @@ import {
   Header,
   Footer,
   Main,
-  Container,
-  ContentWrapper,
   EntryHeader,
   FeaturedImage,
   SEO,
+  BorderDivider,
+  TwoColumns,
+  Left,
+  Right,
+  ContentWrapperPage,
 } from "../components";
 
 export default function Page(props) {
@@ -23,24 +26,24 @@ export default function Page(props) {
     props?.data?.generalSettings;
   const { title, content, featuredImage } = props?.data?.page ?? { title: "" };
 
-    // Get menus
-    const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
-      variables: {
-        primaryLocation: MENUS.PRIMARY_LOCATION,
-        secondaryLocation: MENUS.SECONDARY_LOCATION,
-        thirdLocation: MENUS.THIRD_LOCATION,
-        navigationLocation: MENUS.NAVIGATION_LOCATION,
-        footerLocation: MENUS.FOOTER_LOCATION,
-      },
-      fetchPolicy: "network-only",
-      nextFetchPolicy: "cache-and-network",
-    });
-  
-    const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
-    const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
-    const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
-    const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
-    const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
+  // Get menus
+  const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
+    variables: {
+      primaryLocation: MENUS.PRIMARY_LOCATION,
+      secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
+      navigationLocation: MENUS.NAVIGATION_LOCATION,
+      footerLocation: MENUS.FOOTER_LOCATION,
+    },
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
+  const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
+  const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
+  const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
     <>
@@ -58,10 +61,14 @@ export default function Page(props) {
       />
       <Main>
         <>
-          <EntryHeader title={title} image={featuredImage?.node} />
-          <>
-            <ContentWrapper content={content} menusLoading={menusLoading} />
-          </>
+          <BorderDivider />
+          <TwoColumns>
+            <Left>
+              <EntryHeader title={title} />
+              <ContentWrapperPage content={content} />
+            </Left>
+            <Right></Right>
+          </TwoColumns>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />

@@ -1,46 +1,20 @@
 import { gql } from "@apollo/client";
 
-export const GetEntryHeaderCategory = gql`
-  query GetEntryHeaderCategory(
+export const GetOtherRecommendations = gql`
+  query GetOtherRecommendations(
     $id: ID!
+    $notIn: [ID!]
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744]
   ) {
-    category(id: $id, idType: DATABASE_ID) {
-      name
-      uri
-      parent {
-        node {
-          name
-          uri
-          children(where: { childless: true }) {
-            edges {
-              node {
-                name
-                uri
-              }
-            }
-          }
-          parent {
-            node {
-              name
-            }
-          }
-        }
-      }
-      children {
+    post(id: $id, idType: DATABASE_ID) {
+      categories(first: 1, where: { childless: true }) {
         edges {
           node {
-            name
-            uri
-            posts {
+            posts(first: 50, where: { notIn: $notIn }) {
               edges {
                 node {
-                  id
                   title
-                  content
-                  date
                   uri
-                  excerpt
                   featuredImage {
                     node {
                       id

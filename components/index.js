@@ -1,6 +1,7 @@
 export { Button } from "./Button";
 export { Container } from "./Container";
 export { ContentWrapper } from "./ContentWrapper";
+export { ContentWrapperPage } from "./ContentWrapperPage";
 export { EntryHeader } from "./EntryHeader";
 export { EntryHeaderCategory } from "./EntryHeaderCategory";
 export { FeaturedImage } from "./FeaturedImage";
@@ -24,6 +25,7 @@ export { Updates } from "./Modules/Updates";
 export { Main } from "./Main";
 export { Masthead } from "./Masthead";
 export { NavigationMenu } from "./NavigationMenu";
+export { OurRecommendations } from "./OurRecommendations";
 export { Post } from "./Post";
 export { PostCategory } from "./PostCategory";
 export { PostInfo } from "./PostInfo";

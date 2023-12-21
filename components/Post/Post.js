@@ -37,9 +37,9 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
         <div className={cx("category-wrapper")}>
           <Link href={category?.node?.uri}>
             <h2>
-              {category?.node?.parent?.node?.name}
-              {" | "}
-              {category?.node?.name}
+              {category.node?.parent &&
+                category.node?.parent?.node?.name + " | "}
+              {category.node?.name}
             </h2>
           </Link>
         </div>

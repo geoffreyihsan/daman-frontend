@@ -6,7 +6,7 @@ export const GetDamanCaliber = gql`
   query GetDamanCaliber(
     $id: ID!
     $first: Int
-    $exclude: [ID] = [4, 12921, 9821, 9803]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744]
   ) {
     category(id: $id, idType: DATABASE_ID) {
       name

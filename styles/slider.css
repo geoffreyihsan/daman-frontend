@@ -79,7 +79,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 0.5rem;
+  column-gap: 0;
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
@@ -158,6 +158,12 @@
 
 .daman-tv-swiper .swiper-slide img {
   object-position: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .carousel-swiper {
+    padding: 0;
+  }
 }
 
 @media only screen and (min-width: 768px) {

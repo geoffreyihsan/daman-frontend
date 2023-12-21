@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 import Image from "next/image";
 
 export default function Features({}) {
-  const postsPerPage = 3;
+  const postsPerPage = 5;
 
   // Get Feature Posts
   const { data } = useQuery(GetFeatures, {
@@ -114,11 +114,9 @@ export default function Features({}) {
                 <div className={cx("post-category-wrapper")}>
                   <Link href={post?.node?.categories?.edges[0]?.node?.uri}>
                     <h2>
-                      {
+                      {post?.node?.categories?.edges[0]?.node?.parent &&
                         post?.node?.categories?.edges[0]?.node?.parent?.node
-                          ?.name
-                      }
-                      {" | "}
+                          ?.name + " | "}
                       {post?.node?.categories?.edges[0]?.node?.name}
                     </h2>
                   </Link>
