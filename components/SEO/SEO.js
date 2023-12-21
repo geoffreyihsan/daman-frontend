@@ -67,7 +67,41 @@ export default function SEO({ title, description, imageUrl, url }) {
         />
 
         {/* Google Ad Manager */}
-        <AdScripts />
+        <script type="text/javascript">
+        {`
+          var googletag = googletag || {};
+          googletag.cmd = googletag.cmd || [];
+          (function() {
+              var gads = document.createElement("script");
+              gads.async = true;
+              gads.type = "text/javascript";
+              var useSSL = "https:" == document.location.protocol;
+              gads.src = (useSSL ? "https:" : "http:") + "//securepubads.g.doubleclick.net/tag/js/gpt.js";
+              var node = document.getElementsByTagName("script")[0];
+              node.parentNode.insertBefore(gads, node);
+          })();
+        `}
+        </script>
+        <script type="text/javascript">
+        {`
+          googletag.cmd.push(function() {
+            // Targeting based on your PHP logic
+            if (typeof window !== 'undefined') {
+              var address = window.location.pathname;
+              googletag.pubads().setTargeting("URL_Exact", address);
+            }
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+        `}
+        </script>
       </Head>
     </>
   );

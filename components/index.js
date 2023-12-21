@@ -13,7 +13,6 @@ export { Header } from "./Header";
 export { Heading } from "./Heading";
 export { Hero } from "./Hero";
 export { HeroSlider } from "./HeroSlider";
-export { AdScripts } from "./Modules/AdScripts";
 export { BorderDivider } from "./Modules/BorderDivider";
 export { DamanCaliber } from "./Modules/DamanCaliber";
 export { DamanStyle } from "./Modules/DamanStyle";
