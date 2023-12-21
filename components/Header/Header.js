@@ -36,56 +36,6 @@ export default function Header({
   // Subscribe link
   const subsLink = "/subscribe-daman";
 
-  // // Stop scrolling pages when isNavShown
-  // useEffect(() => {
-  //   if (isNavShown) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "visible";
-  //   }
-  // }, [isNavShown]);
-
-  // const topMobile = "masthead-top-mobile";
-  // const topDesktop = "masthead-top";
-  // const bottomMobile = "masthead-bottom-mobile";
-  // const bottomDesktop = "masthead-bottom";
-
-  // Masthead Var
-  // let queryVariables = {
-  //   slug: topMobile,
-  // };
-
-  // // if (mastheadTopMobile) {
-  // //   // Modify the variables based on the condition
-  // //   queryVariables = {
-  // //     slug: topMobile, // Change this to the desired value
-  // //   };
-  // // }
-
-  // // if (mastheadTopDesktop) {
-  // //   // Modify the variables based on the condition
-  // //   queryVariables = {
-  // //     slug: topDesktop, // Change this to the desired value
-  // //   };
-  // // }
-
-  // // Get Masthead Banner
-  // const { data } = useQuery(GetMasthead, {
-  //   variables: queryVariables,
-  //   fetchPolicy: "network-only",
-  //   nextFetchPolicy: "cache-and-network",
-  // });
-
-  // // Use a regular expression to extract content between <!-- and <!--
-  // const match = data?.bannerAdBy?.content.match(/(<!--.*?)<!--/s);
-
-  // // Check if there's a match
-  // const extractedContent = match ? match[1] : null;
-
-  // const scrollValue = window.scrollY;
-
-  // console.log(scrollValue);
-
   // Add sticky header on scroll
   useEffect(() => {
     function handleScroll() {
@@ -102,7 +52,37 @@ export default function Header({
 
   return (
     <>
-      <Masthead />
+      <div className={cx("mobile-banner")}>
+        {/* Masthead Top Mobile */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+            <!-- /6808792/DAMAN_MASTHEAD_TOP_MOBILE -->
+            <div id='div-gpt-ad-1701941240723-0' style='min-width: 300px; min-height: 250px;'>
+              <script>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1701941240723-0'); });
+              </script>
+            </div>
+          `,
+          }}
+        />
+      </div>
+      <div className={cx("desktop-banner")}>
+        {/* Masthead Top Desktop */}
+        <div id="div-gpt-ad-1701941037105-0" />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+            <!-- /6808792/DAMAN_MASTHEAD_TOP -->
+            <div id='div-gpt-ad-1701941037105-0' style='min-width: 970px; min-height: 250px;'>
+              <script>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1701941037105-0'); });
+              </script>
+            </div>
+          `,
+          }}
+        />
+      </div>
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

@@ -1,5 +1,21 @@
 @import "styles/breakpoints";
 
+.mobile-banner {
+  display: block;
+
+  @media (min-width: $breakpoint-medium) {
+    display: none;
+  }
+}
+
+.desktop-banner {
+  display: none;
+
+  @media (min-width: $breakpoint-medium) {
+    display: block;
+  }
+}
+
 .component {
   color: var(--wpe--header--color);
   background-color: var(--wpe--header--background--color);

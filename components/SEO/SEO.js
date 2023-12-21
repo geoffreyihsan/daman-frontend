@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { AdScripts } from "../../components";
 
 /**
  * Provide SEO related meta tags to a page.
@@ -66,10 +67,7 @@ export default function SEO({ title, description, imageUrl, url }) {
         />
 
         {/* Google Ad Manager */}
-        <script
-          async
-          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-        ></script>
+        <AdScripts />
       </Head>
     </>
   );
