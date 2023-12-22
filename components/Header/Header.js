@@ -4,7 +4,6 @@ import styles from "./Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useQuery } from "@apollo/client";
-import { GetMasthead } from "../../queries/GetMasthead";
 import DaManLogo from "../../assets/logo/daman-logo.png";
 import { FullMenu, Masthead, NavigationMenu } from "../../components";
 import * as MENUS from "../../constants/menus";
@@ -52,26 +51,7 @@ export default function Header({
 
   return (
     <>
-      
-      <div className={cx("desktop-banner")}>
-        {`<!-- Leaderboard -->
-            <div class="desktop-leaderboard">
-            <div id='div-gpt-ad-1460363567691-1' style='height:90px; width:728px;'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-1'); });
-            </script>
-          </div>`}
-      </div>
-      <div className={cx("mobile-banner")}>
-        {`<!-- Mobile Leaderboard -->
-            <div class="mobile-leaderboard">
-            <div id='div-gpt-ad-1460363567691-2' style='height:50px; width:320px;'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-2'); });
-            </script>
-            </div>
-          </div>`}
-      </div>
+      <Masthead />
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

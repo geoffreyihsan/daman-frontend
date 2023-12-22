@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { AdScripts } from "../../components";
 
 /**
  * Provide SEO related meta tags to a page.
