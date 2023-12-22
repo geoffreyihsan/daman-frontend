@@ -144,7 +144,6 @@ export default function Header({
           ) : (
             <>
               <div className={cx("button-header")}></div>
-
               <div className={cx("navbar")}>
                 <div className={cx("brand")}>
                   <Link href="/" className={cx("logo")}>

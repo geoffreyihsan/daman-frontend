@@ -26,11 +26,21 @@ export default function Masthead() {
         <div
           dangerouslySetInnerHTML={{
             __html: `
-            <!-- /6808792/DAMAN_MASTHEAD_TOP -->
-            <div id='div-gpt-ad-1701941037105-0' style='min-width: 970px; min-height: 250px;'>
-              <script>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1701941037105-0'); });
-              </script>
+            <!-- Leaderboard -->
+            <div class="desktop-leaderboard">
+            <div id='div-gpt-ad-1460363567691-1' style='height:90px; width:728px;'>
+            <script type='text/javascript'>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-1'); });
+            </script>
+            </div>
+            </div>
+            <!-- Mobile Leaderboard -->
+            <div class="mobile-leaderboard">
+            <div id='div-gpt-ad-1460363567691-2' style='height:50px; width:320px;'>
+            <script type='text/javascript'>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-2'); });
+            </script>
+            </div>
             </div>
           `,
           }}

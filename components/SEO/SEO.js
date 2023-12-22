@@ -98,7 +98,7 @@ export default function SEO({ title, description, imageUrl, url }) {
             googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
             googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
             googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
-            googletag.setCollapseEmptyDiv(true)
+            googletag.setCollapseEmptyDiv(true);
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
           });
