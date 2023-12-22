@@ -1,4 +1,22 @@
+@import "styles/breakpoints";
+
 .component {
-	color: var(--wpe--main--color);
-	background-color: var(--wpe--main--background--color);
+  color: var(--wpe--main--color);
+  background-color: var(--wpe--main--background--color);
+}
+
+.mobile-banner {
+  display: block;
+
+  @media (min-width: $breakpoint-medium) {
+    display: none;
+  }
+}
+
+.desktop-banner {
+  display: none;
+
+  @media (min-width: $breakpoint-medium) {
+    display: block;
+  }
 }

@@ -52,29 +52,28 @@ export default function Header({
 
   return (
     <>
-      <div className={cx("mobile-banner")}>
-        {/* Masthead Top Mobile */}
-        {/* /6808792/DAMAN_MASTHEAD_TOP_MOBILE */}
-        <div id="div-gpt-ad-1701941240723-0">
-          <script type="text/javascript">
-            {`googletag.cmd.push(function() { googletag.display('div-gpt-ad-1701941240723-0');});`}
-          </script>
+      
+      <div className={cx("desktop-banner")}>
+        {/* <!-- Leaderboard --> */}
+        <div id="div-gpt-ad-1460363567691-1">
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-1'); });`,
+            }}
+          />
         </div>
       </div>
-      <div className={cx("desktop-banner")}>
-        {/* Masthead Top Desktop */}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `
-            <!-- /6808792/DAMAN_MASTHEAD_TOP -->
-            <div id='div-gpt-ad-1701941037105-0' style='min-width: 970px; min-height: 250px;'>
-              <script>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1701941037105-0'); });
-              </script>
-            </div>
-          `,
-          }}
-        />
+      <div className={cx("mobile-banner")}>
+        {/* <!-- Mobile Leaderboard --> */}
+        <div id="div-gpt-ad-1460363567691-2">
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460363567691-2'); });`,
+            }}
+          />
+        </div>
       </div>
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
