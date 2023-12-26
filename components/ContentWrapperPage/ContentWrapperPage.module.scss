@@ -63,7 +63,7 @@
     }
 
     h5 {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
 
     p {
@@ -75,24 +75,21 @@
     }
 
     a {
-      color: var(--wpe--link--color);
       text-decoration: underline;
 
       &:hover,
       &:focus {
         color: var(--wpe--link--color);
-        text-decoration: none;
+        text-decoration: underline;
       }
-    }
-
-    li {
-      font-size: 1.6rem;
     }
 
     img {
       display: block;
       height: auto;
       max-width: 100%;
+      margin-bottom: 2rem;
+      min-width: 10rem;
     }
 
     .alignleft {
@@ -170,10 +167,22 @@
 
     tr {
       border-bottom: 1px solid var(--wpe--color--border);
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+
+      @media (min-width: $breakpoint-medium) {
+        flex-direction: row;
+        column-gap: 1rem;
+      }
     }
 
     td {
-      padding: 0.4em;
+      padding: 0.5rem 0;
+    }
+
+    ol {
+      margin-bottom: 1rem;
     }
 
     // subscribe page
@@ -192,6 +201,7 @@
         align-items: center;
 
         img {
+          width: 10rem;
           height: 6rem;
           max-width: 100%;
           object-fit: contain;
@@ -201,11 +211,11 @@
 
     .border-wrapper {
       width: 100%;
-      padding: 1rem;
+      padding: 1rem 1rem 2rem;
       margin: 0 auto;
 
       @media (min-width: $breakpoint-medium) {
-        padding: 1rem 0 1rem;
+        padding: 1rem 0 2rem;
         max-width: var(--wpe--container--max--width);
       }
     }
@@ -268,7 +278,7 @@
     }
 
     .wpforms-field-medium {
-      border: 1px solid var(--wpe--color--black);
+      border: 1px solid var(--wpe--color--grey);
       flex: 2;
       width: 100%;
       box-sizing: border-box;

@@ -22,7 +22,11 @@
     figure {
       margin-left: 0;
       margin-right: 0;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
     }
+
+    // img need to have margin too
 
     figcaption {
       padding: 0.5rem 0 0.25rem;
@@ -75,18 +79,13 @@
     }
 
     a {
-      color: var(--wpe--link--color);
       text-decoration: underline;
 
       &:hover,
       &:focus {
         color: var(--wpe--link--color);
-        text-decoration: none;
+        text-decoration: underline;
       }
-    }
-
-    li {
-      font-size: 1.6rem;
     }
 
     img {
@@ -133,7 +132,6 @@
     blockquote {
       border-top: 1px solid var(--color-black);
       border-bottom: 1px solid var(--color-black);
-      font-style: italic;
       margin-top: 0;
       margin-left: 0;
       margin-right: 0;
@@ -141,15 +139,21 @@
       text-align: center;
 
       &::before {
-        content: "”";
+        content: "“";
         display: block;
         font-size: 6rem;
         line-height: 0;
-        margin: 3rem 0;
+        margin: 0;
       }
 
       > *:last-child {
         margin-bottom: 0;
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: normal;
       }
     }
 

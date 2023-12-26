@@ -77,11 +77,12 @@
   z-index: 10;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   column-gap: 0;
   padding-top: 1rem;
   padding-bottom: 2rem;
+  padding-left: 3rem;
 }
 
 .swiper-pagination-fraction,
@@ -89,7 +90,7 @@
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   width: 100%;
-  bottom: var(--swiper-pagination-bottom, -20px);
+  bottom: var(--swiper-pagination-bottom, 0);
 }
 
 .swiper-custom-pagination > .swiper-pagination-bullet {
@@ -172,7 +173,7 @@
   .swiper-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-bullets.swiper-pagination-horizontal {
     width: 40%;
-    bottom: var(--swiper-pagination-bottom, -25px);
+    bottom: var(--swiper-pagination-bottom, 0px);
   }
 
   .swiper-custom-button-prev,
@@ -184,6 +185,7 @@
 @media only screen and (min-width: 640px) {
   .swiper-custom-pagination {
     padding-bottom: 2.5rem;
+    padding-left: 6rem;
   }
 
   .swiper-slide .slide-caption {
