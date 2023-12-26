@@ -134,16 +134,13 @@ export default function Updates() {
             {firstUpdatePosts?.node?.excerpt && (
               <div className={cx("post-excerpt-wrapper")}>
                 <Link href={firstUpdatePosts?.node?.uri}>
-                  {/* <div
+                  <div
                     dangerouslySetInnerHTML={{
                       __html: calculateTrimmedExcerpt(
                         firstUpdatePosts?.node?.excerpt
                       ),
                     }}
-                  /> */}
-                  {
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac iaculis orci, at auctor sem. Etiam dapibus metus in lectus mattis, dictum bibendum diam dignissim. Donec eget imperdiet eros."
-                  }
+                  />
                 </Link>
               </div>
             )}
