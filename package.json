@@ -19,6 +19,7 @@
     "graphql": "^16.6.0",
     "next": "^14.0.3",
     "react": "^18.2.0",
+    "react-ad-manager": "^1.1.9",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
     "react-youtube": "^10.1.0",

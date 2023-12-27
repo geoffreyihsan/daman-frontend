@@ -6,20 +6,19 @@ import {
   Header,
   Footer,
   Main,
-  Container,
   FeaturedImage,
   SEO,
-  NavigationMenu,
   HeroSlider,
   Updates,
   TwoColumns,
-  Masthead,
   Features,
   Left,
   Right,
   DamanTv,
   DamanStyle,
   DamanCaliber,
+  HalfPage1,
+  HalfPage2,
 } from "../components";
 
 export default function frontPage(props) {
@@ -77,14 +76,18 @@ export default function frontPage(props) {
             <Left>
               <Updates />
             </Left>
-            <Right></Right>
+            <Right>
+              <HalfPage1 />
+            </Right>
           </TwoColumns>
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
           <TwoColumns border={true}>
             <Left>
               <Features />
             </Left>
-            <Right></Right>
+            <Right>
+              <HalfPage2 />
+            </Right>
           </TwoColumns>
           <TwoColumns border={true}>
             <Left>

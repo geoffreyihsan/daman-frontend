@@ -17,6 +17,8 @@ import {
   Right,
   OurRecommendations,
   BorderDivider,
+  HalfPage1,
+  HalfPage2,
 } from "../components";
 
 export default function Single(props) {
@@ -84,7 +86,10 @@ export default function Single(props) {
               />
               <ContentWrapper content={content} />
             </Left>
-            <Right></Right>
+            <Right>
+              <HalfPage1 />
+              <HalfPage2 />
+            </Right>
           </TwoColumns>
           <OurRecommendations databaseId={databaseId} />
         </>

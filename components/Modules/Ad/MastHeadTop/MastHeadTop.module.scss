@@ -1,14 +1,10 @@
 @import "styles/breakpoints";
 
-.component {
-  color: var(--wpe--main--color);
-  background-color: var(--wpe--main--background--color);
-}
-
 .mobile-banner {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--wpe--color--offwhite);
 
   @media (min-width: $breakpoint-medium) {
     display: none;
@@ -17,10 +13,15 @@
 
 .desktop-banner {
   display: none;
+  background-color: var(--wpe--color--offwhite);
 
   @media (min-width: $breakpoint-medium) {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+}
+
+.masthead-banner {
+  display: contents;
 }

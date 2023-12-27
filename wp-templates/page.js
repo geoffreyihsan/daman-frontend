@@ -14,6 +14,8 @@ import {
   Left,
   Right,
   ContentWrapperPage,
+  HalfPage1,
+  HalfPage2,
 } from "../components";
 
 export default function Page(props) {
@@ -67,7 +69,10 @@ export default function Page(props) {
               <EntryHeader title={title} />
               <ContentWrapperPage content={content} />
             </Left>
-            <Right></Right>
+            <Right>
+              <HalfPage1 />
+              <HalfPage2 />
+            </Right>
           </TwoColumns>
         </>
       </Main>

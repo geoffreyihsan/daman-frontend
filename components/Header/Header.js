@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import DaManLogo from "../../assets/logo/daman-logo.png";
-import { FullMenu, Masthead, NavigationMenu } from "../../components";
+import { FullMenu, MastHeadTop, NavigationMenu } from "../../components";
 import * as MENUS from "../../constants/menus";
 import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
 
@@ -51,7 +51,7 @@ export default function Header({
 
   return (
     <>
-      <Masthead />
+      <MastHeadTop />
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

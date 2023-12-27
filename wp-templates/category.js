@@ -12,6 +12,8 @@ import {
   TwoColumns,
   Left,
   Right,
+  HalfPage1,
+  HalfPage2,
 } from "../components";
 
 export default function Category(props) {
@@ -55,7 +57,10 @@ export default function Category(props) {
             <Left>
               <PostCategory databaseId={databaseId} />
             </Left>
-            <Right></Right>
+            <Right>
+              <HalfPage1 />
+              <HalfPage2 />
+            </Right>
           </TwoColumns>
         </>
       </Main>

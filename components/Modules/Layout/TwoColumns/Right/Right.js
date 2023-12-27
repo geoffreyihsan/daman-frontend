@@ -6,7 +6,7 @@ let cx = className.bind(styles);
 export default function Right({ children, className }) {
   return (
     <div className={cx(["component", className])}>
-      {children}
+      <aside className="h-auto sticky top-14 sm:top-20">{children}</aside>
     </div>
   );
 }

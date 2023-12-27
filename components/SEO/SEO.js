@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { AdScript, AdConfig } from "react-ad-manager";
 
 /**
  * Provide SEO related meta tags to a page.
@@ -66,6 +67,18 @@ export default function SEO({ title, description, imageUrl, url }) {
         />
 
         {/* Google Ad Manager */}
+        <AdScript />
+        <AdConfig
+          networkCode={6808792}
+          target={[["global", "true"]]}
+          collapseEmptyDivs={true}
+          // eventImpressionViewable={(e) => console.log(e.slot)}
+          // eventSlotOnload={(e) => console.log(e.slot)}
+          // eventSlotRenderEnded={(e) => console.log(e.slot)}
+          // eventSlotRequested={(e) => console.log(e.slot)}
+          // eventSlotResponseReceived={(e) => console.log(e.slot)}
+          // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
+        />
         {/* <script type="text/javascript">
           {`
           var googletag = googletag || {};
@@ -81,11 +94,7 @@ export default function SEO({ title, description, imageUrl, url }) {
           })();
         `}
         </script> */}
-        <script
-          async
-          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-        ></script>
-        <script>
+        {/* <script>
           {`
           googletag.cmd.push(function() {
             // Targeting based on your PHP logic
@@ -93,13 +102,18 @@ export default function SEO({ title, description, imageUrl, url }) {
               var address = window.location.pathname;
               googletag.pubads().setTargeting("URL_Exact", address);
             }
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').setCollapseEmptyDiv(true).addService(googletag.pubads());
-            
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
           });
         `}
-        </script>
+        </script> */}
       </Head>
     </>
   );
