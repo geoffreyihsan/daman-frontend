@@ -66,7 +66,7 @@ export default function SEO({ title, description, imageUrl, url }) {
         />
 
         {/* Google Ad Manager */}
-        <script type="text/javascript">
+        {/* <script type="text/javascript">
           {`
           var googletag = googletag || {};
           googletag.cmd = googletag.cmd || [];
@@ -80,8 +80,12 @@ export default function SEO({ title, description, imageUrl, url }) {
               node.parentNode.insertBefore(gads, node);
           })();
         `}
-        </script>
-        <script type="text/javascript">
+        </script> */}
+        <script
+          async
+          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+        ></script>
+        <script>
           {`
           googletag.cmd.push(function() {
             // Targeting based on your PHP logic
@@ -89,16 +93,8 @@ export default function SEO({ title, description, imageUrl, url }) {
               var address = window.location.pathname;
               googletag.pubads().setTargeting("URL_Exact", address);
             }
-            googletag.defineSlot('/6808792/DAMAN_leaderboard', [728, 90], 'div-gpt-ad-1460363567691-1').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_mobile_leaderboard', [320, 50], 'div-gpt-ad-1460363567691-2').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
-            googletag.setCollapseEmptyDiv(true);
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').setCollapseEmptyDiv(true).addService(googletag.pubads());
+            
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
           });
