@@ -6,6 +6,8 @@
   align-items: center;
   background-color: var(--wpe--color--offwhite);
   padding: 1rem 0;
+  position: relative;
+  z-index: 1;
 
   @media (min-width: $breakpoint-medium) {
     display: none;

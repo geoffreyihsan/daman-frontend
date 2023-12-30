@@ -5,11 +5,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   height: 50rem; // change this to make slider responsive
+  position: relative;
+  z-index: 1;
+  background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-extra-small) {
-    margin-bottom: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 

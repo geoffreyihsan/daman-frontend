@@ -19,6 +19,7 @@ import {
   BorderDivider,
   HalfPage1,
   HalfPage2,
+  Outnow,
 } from "../components";
 
 export default function Single(props) {
@@ -88,6 +89,7 @@ export default function Single(props) {
             </Left>
             <Right>
               <HalfPage1 />
+              <Outnow />
               <HalfPage2 />
             </Right>
           </TwoColumns>

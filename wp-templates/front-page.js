@@ -19,6 +19,8 @@ import {
   DamanCaliber,
   HalfPage1,
   HalfPage2,
+  Outnow,
+  Interscroller,
 } from "../components";
 
 export default function frontPage(props) {
@@ -78,8 +80,10 @@ export default function frontPage(props) {
             </Left>
             <Right>
               <HalfPage1 />
+              <Outnow />
             </Right>
           </TwoColumns>
+          <Interscroller />
           <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
           <TwoColumns border={true}>
             <Left>

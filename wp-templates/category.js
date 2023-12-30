@@ -14,6 +14,7 @@ import {
   Right,
   HalfPage1,
   HalfPage2,
+  Outnow,
 } from "../components";
 
 export default function Category(props) {
@@ -59,6 +60,7 @@ export default function Category(props) {
             </Left>
             <Right>
               <HalfPage1 />
+              <Outnow />
               <HalfPage2 />
             </Right>
           </TwoColumns>

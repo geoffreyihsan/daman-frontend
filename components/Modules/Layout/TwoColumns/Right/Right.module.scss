@@ -8,6 +8,9 @@
   justify-content: flex-start;
   align-content: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-small) {
     width: 50%;

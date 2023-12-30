@@ -4,6 +4,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  z-index: 1;
+  // background-color: var(--wpe--color--white);
+  @apply overscroll-none;
 }
 
 body {

@@ -6,6 +6,8 @@
   background: var(--wpe--footer--background--color);
   padding-top: var(--wpe--section--padding--y);
   padding-bottom: var(--wpe--section--padding--y);
+  position: relative;
+  z-index: 1;
 }
 
 .footer-wrapper {
@@ -114,7 +116,7 @@
   }
 
   ul li:last-child a {
-	border: none;
+    border: none;
   }
 
   ul li a {
