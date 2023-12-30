@@ -1,13 +1,17 @@
-import className from 'classnames/bind';
-import styles from './ContentWrapper.module.scss';
+import className from "classnames/bind";
+import styles from "./ContentWrapper.module.scss";
+import { Interscroller } from "../../components";
 
 let cx = className.bind(styles);
 
 export default function ContentWrapper({ content, children, className }) {
   return (
-    <article className={cx(['component', className])}>
-      <div dangerouslySetInnerHTML={{ __html: content ?? '' }} />
-      {children}
-    </article>
+    <>
+      <article className={cx(["component", className])}>
+        <div dangerouslySetInnerHTML={{ __html: content ?? "" }} />
+        {children}
+      </article>
+      <Interscroller />
+    </>
   );
 }

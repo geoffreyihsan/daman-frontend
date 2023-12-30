@@ -8,6 +8,9 @@
   height: auto;
   line-height: normal;
   width: 100%;
+  position: relative;
+  z-index: 2;
+  background-color: var(--wpe--color--white);
 }
 
 .title-wrapper {

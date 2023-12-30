@@ -5,9 +5,18 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem 3rem;
+  position: relative;
+  z-index: 1;
+  background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-medium) {
     padding: 0 0 4rem;
+  }
+
+  div {
+    position: relative;
+    z-index: 1;
+    background-color: var(--wpe--color--white);
   }
 
   :global {

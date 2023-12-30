@@ -7,6 +7,9 @@
   padding: 1rem;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
+  background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-medium) {
     padding: 2rem 0 2rem;
