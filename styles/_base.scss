@@ -4,9 +4,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  z-index: 1;
-  // background-color: var(--wpe--color--white);
-  @apply overscroll-none;
 }
 
 body {
@@ -14,6 +11,9 @@ body {
   font-family: "Inter", sans-serif;
   font-weight: var(--wpe--font-weight--medium);
   font-size: 1rem;
+  background-color: var(--wpe--color--white);
+  position: relative;
+  z-index: 1;
 }
 
 code {

@@ -36,7 +36,7 @@ export default function HeroSlider({ databaseId }) {
   if (loading) {
     return (
       <>
-        <div className="mx-auto my-0 flex max-w-[100vw] justify-center lg:max-w-[1024px]	">
+        <div className={cx("loading-wrapper")}>
           <div role="status">
             <svg
               aria-hidden="true"

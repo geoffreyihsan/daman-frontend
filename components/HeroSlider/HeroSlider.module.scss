@@ -1,5 +1,12 @@
 @import "styles/breakpoints";
 
+.loading-wrapper {
+  @apply mx-auto my-0 flex max-w-[100vw] justify-center lg:max-w-[1024px];
+  position: relative;
+  z-index: 1;
+  background-color: var(--wpe--color--white);
+}
+
 .component {
   width: 100vw;
   display: flex;

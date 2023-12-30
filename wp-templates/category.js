@@ -15,6 +15,7 @@ import {
   HalfPage1,
   HalfPage2,
   Outnow,
+  Interscroller,
 } from "../components";
 
 export default function Category(props) {
@@ -64,6 +65,7 @@ export default function Category(props) {
               <HalfPage2 />
             </Right>
           </TwoColumns>
+          <Interscroller />
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
