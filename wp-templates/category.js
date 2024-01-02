@@ -19,9 +19,7 @@ import {
 } from "../components";
 
 export default function Category(props) {
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const { databaseId } = props?.data?.category;
+  const { databaseId, seo, uri } = props?.data?.category;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -44,7 +42,12 @@ export default function Category(props) {
 
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
+      <SEO
+        title={seo?.title}
+        description={seo?.metaDesc}
+        url={uri}
+        focuskw={seo?.focuskw}
+      />
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -68,7 +71,7 @@ export default function Category(props) {
           <Interscroller />
         </>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -79,6 +82,12 @@ Category.query = gql`
     category(id: $databaseId, idType: DATABASE_ID) {
       name
       databaseId
+      uri
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
     }
     generalSettings {
       ...BlogInfoFragment

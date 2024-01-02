@@ -19,9 +19,8 @@ export default function SingleBackIssue(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const { title, content, featuredImage, date } = props?.data?.backIssue;
+  const { title, content, featuredImage, date, uri, seo } =
+    props?.data?.backIssue;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -45,9 +44,11 @@ export default function SingleBackIssue(props) {
   return (
     <>
       <SEO
-        title={siteTitle}
-        description={siteDescription}
+        title={seo?.title}
+        description={seo?.metaDesc}
         imageUrl={featuredImage?.node?.sourceUrl}
+        url={uri}
+        focuskw={seo?.focuskw}
       />
       <Header
         primaryMenuItems={primaryMenu}
@@ -64,11 +65,7 @@ export default function SingleBackIssue(props) {
           </>
         </>
       </Main>
-      <Footer
-        title={siteTitle}
-        menuItems={footerMenu}
-        menusLoading={menusLoading}
-      />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -82,6 +79,12 @@ SingleBackIssue.query = gql`
       content
       date
       ...FeaturedImageFragment
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
+      uri
     }
     generalSettings {
       ...BlogInfoFragment

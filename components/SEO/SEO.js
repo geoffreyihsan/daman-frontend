@@ -1,5 +1,8 @@
 import Head from "next/head";
 import { AdScript, AdConfig } from "react-ad-manager";
+import { GetFavicon } from "../../queries/GetFavicon";
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 /**
  * Provide SEO related meta tags to a page.
@@ -12,16 +15,35 @@ import { AdScript, AdConfig } from "react-ad-manager";
  *
  * @returns {React.ReactElement} The SEO component
  */
-export default function SEO({ title, description, imageUrl, url }) {
-  if (!title && !description && !imageUrl && !url) {
+export default function SEO({ title, description, imageUrl, url, focuskw }) {
+  if (!title && !description && !imageUrl && !url && !focuskw) {
     return null;
   }
+
+  const [locationPathname, setLocationPathname] = useState("");
+
+  useEffect(() => {
+    // Check if the window object is defined (for SSR compatibility)
+    if (typeof window !== "undefined") {
+      const currentPathname = window.location.pathname;
+      setLocationPathname(currentPathname);
+      console.log("Current Pathname:", currentPathname);
+    }
+  }, []); // Run this effect only once on component mount
+
+  const { data } = useQuery(GetFavicon, {
+    fetchPolicy: "network-only",
+    nextFetchPolicy: "cache-and-network",
+  });
+
+  const favicon = data?.favicon?.mediaDetails?.sizes;
 
   return (
     <>
       <Head>
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
 
         {title && (
           <>
@@ -49,10 +71,45 @@ export default function SEO({ title, description, imageUrl, url }) {
 
         {url && (
           <>
-            <meta property="og:url" content={url} />
-            <meta property="twitter:url" content={url} />
+            <meta property="og:url" content={"https://destinasian.com" + url} />
+            <meta
+              property="twitter:url"
+              content={"https://destinasian.com" + url}
+            />
           </>
         )}
+
+        {focuskw && <meta name="keywords" content={focuskw} />}
+
+        {/* Favicon */}
+        {favicon?.length > 0 &&
+          favicon.map(({ width, sourceUrl }) => {
+            if (width === "180") {
+              return (
+                <link
+                  key={`fav-${width}x${width}`}
+                  rel="apple-touch-icon"
+                  href={sourceUrl}
+                  sizes={`${width}x${width}`}
+                />
+              );
+            }
+            return (
+              <link
+                key={`fav-${width}x${width}`}
+                rel="icon"
+                type="image/png"
+                sizes={`${width}x${width}`}
+                href={sourceUrl}
+              />
+            );
+          })}
+
+        {/* SEM Keywords */}
+        {/* <meta
+          name="keywords"
+          content="travel magazine, luxury magazine, luxury travel magazine, travel news, travel reviews, luxury travel, hotel and airline booking, hotel reviews, airline news, travel video guides, travel deals, travel contest, travel website, online travel magazine, asia travel, philippines travel, hotel news, best hotels manila, hong kong restaurants, beach holidays, thailand travel, singapore restaurants, luxury train trips, luxury resorts, best hotels beijing, best hotels singapore, luxury holidays asia, japan travel, indonesia travel, southeast asia travel, cultural travel, asia travel magazine, india travel, island getaways, asia cruise, phuket resorts, bali resorts, bangkok restaurants, airline news, adventure travel asia, airline routes, best hotels hong kong, best hotels jakarta, luxe list, luxury travel asia, hong kong travel, bali travel, sri lanka travel, cambodia travel, luxury hotels, best hotels shanghai, vietnam travel, tokyo restaurants, singapore travel, china travel, maldives resorts, luxury cruise, best hotels southeast asia, best hotels tokyo"
+        /> */}
 
         {/* Inter Font Family */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,7 +127,7 @@ export default function SEO({ title, description, imageUrl, url }) {
         <AdScript />
         <AdConfig
           networkCode={6808792}
-          target={[["global", "true"]]}
+          target={[["URL_Exact", locationPathname]]}
           collapseEmptyDivs={true}
           // eventImpressionViewable={(e) => console.log(e.slot)}
           // eventSlotOnload={(e) => console.log(e.slot)}

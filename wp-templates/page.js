@@ -25,9 +25,9 @@ export default function Page(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const { title, content, featuredImage } = props?.data?.page ?? { title: "" };
+  const { title, content, featuredImage, uri, seo } = props?.data?.page ?? {
+    title: "",
+  };
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -51,9 +51,11 @@ export default function Page(props) {
   return (
     <>
       <SEO
-        title={siteTitle}
-        description={siteDescription}
+        title={seo?.title}
+        description={seo?.metaDesc}
         imageUrl={featuredImage?.node?.sourceUrl}
+        url={uri}
+        focuskw={seo?.focuskw}
       />
       <Header
         primaryMenuItems={primaryMenu}
@@ -78,7 +80,7 @@ export default function Page(props) {
           </TwoColumns>
         </>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -98,6 +100,12 @@ Page.query = gql`
       title
       content
       ...FeaturedImageFragment
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
+      uri
     }
     generalSettings {
       ...BlogInfoFragment

@@ -29,9 +29,8 @@ export default function frontPage(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const { databaseId, homepageComponent } = props?.data?.page ?? [];
+  const { databaseId, homepageComponent, uri, seo, featuredImage } =
+    props?.data?.page ?? [];
 
   // useEffect(() => {
   //   const filteredHomepageSlide = HomepageSlider.filter((item) => item.type !== null)
@@ -63,7 +62,13 @@ export default function frontPage(props) {
 
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
+      <SEO
+        title={seo?.title}
+        description={seo?.metaDesc}
+        imageUrl={featuredImage?.node?.sourceUrl}
+        url={uri}
+        focuskw={seo?.focuskw}
+      />
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -107,11 +112,7 @@ export default function frontPage(props) {
           </TwoColumns>
         </>
       </Main>
-      <Footer
-        title={siteTitle}
-        menuItems={footerMenu}
-        menusLoading={menusLoading}
-      />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -125,6 +126,11 @@ frontPage.query = gql`
       content
       databaseId
       ...FeaturedImageFragment
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
       homepageComponent {
         damanTvLogo {
           id

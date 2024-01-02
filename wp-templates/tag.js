@@ -13,9 +13,7 @@ import {
 } from "../components";
 
 export default function Tag(props) {
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const { name, posts } = props?.data?.tag;
+  const { name, posts, uri, seo } = props?.data?.tag;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -38,7 +36,12 @@ export default function Tag(props) {
 
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
+      <SEO
+        title={seo?.title}
+        description={seo?.metaDesc}
+        url={uri}
+        focuskw={seo?.focuskw}
+      />
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -63,11 +66,7 @@ export default function Tag(props) {
           </>
         </>
       </Main>
-      <Footer
-        title={siteTitle}
-        menuItems={footerMenu}
-        menusLoading={menusLoading}
-      />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -95,6 +94,12 @@ Tag.query = gql`
           }
         }
       }
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
+      uri
     }
     generalSettings {
       ...BlogInfoFragment

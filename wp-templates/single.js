@@ -28,8 +28,6 @@ export default function Single(props) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
   const {
     title,
     content,
@@ -38,6 +36,8 @@ export default function Single(props) {
     author,
     categories,
     databaseId,
+    seo,
+    uri,
   } = props?.data?.post;
 
   // Get menus
@@ -62,9 +62,11 @@ export default function Single(props) {
   return (
     <>
       <SEO
-        title={siteTitle}
-        description={siteDescription}
+        title={seo?.title}
+        description={seo?.metaDesc}
         imageUrl={featuredImage?.node?.sourceUrl}
+        url={uri}
+        focuskw={seo?.focuskw}
       />
       <Header
         primaryMenuItems={primaryMenu}
@@ -96,11 +98,7 @@ export default function Single(props) {
           <OurRecommendations databaseId={databaseId} />
         </>
       </Main>
-      <Footer
-        title={siteTitle}
-        menuItems={footerMenu}
-        menusLoading={menusLoading}
-      />
+      <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
@@ -111,13 +109,14 @@ Single.query = gql`
   query GetPost(
     $databaseId: ID!
     $asPreview: Boolean = false
-    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
   ) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       databaseId
       content
       date
+      uri
       author {
         node {
           name
@@ -137,6 +136,11 @@ Single.query = gql`
         }
       }
       ...FeaturedImageFragment
+      seo {
+        title
+        metaDesc
+        focuskw
+      }
     }
     generalSettings {
       ...BlogInfoFragment

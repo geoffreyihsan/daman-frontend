@@ -12,8 +12,8 @@ export default function MastHeadBottom() {
         <div className={cx("masthead-banner")}>
           <Ad
             adUnit="/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE"
-            name="div-gpt-ad-1701941651336-0"
-            size={[300, 250]}
+            name="div-gpt-ad-1704170813691-0"
+            size={[[320, 330], [300, 250]]}
           />
         </div>
       </div>
