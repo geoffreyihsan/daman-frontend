@@ -5,6 +5,7 @@ import { FaustProvider } from "@faustwp/core";
 import "@faustwp/core/dist/css/toolbar.css";
 import "../styles/global.scss";
 import "../styles/slider.css";
+import '../styles/mailchimp.css'
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();

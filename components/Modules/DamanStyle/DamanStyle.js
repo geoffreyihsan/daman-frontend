@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 import Image from "next/image";
 
 export default function DamanStyle({}) {
-  const postsPerPage = 5;
+  const postsPerPage = 6;
 
   // Get DAMAN Style Posts
   const { data } = useQuery(GetDamanStyle, {

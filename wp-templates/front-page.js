@@ -21,6 +21,7 @@ import {
   HalfPage2,
   Outnow,
   Interscroller,
+  SubscribeBox,
 } from "../components";
 
 export default function frontPage(props) {
@@ -95,20 +96,15 @@ export default function frontPage(props) {
               <Features />
             </Left>
             <Right>
+              <SubscribeBox />
               <HalfPage2 />
             </Right>
           </TwoColumns>
           <TwoColumns border={true}>
-            <Left>
-              <DamanStyle />
-            </Left>
-            <Right></Right>
+            <DamanStyle />
           </TwoColumns>
           <TwoColumns border={true}>
-            <Left>
-              <DamanCaliber />
-            </Left>
-            <Right></Right>
+            <DamanCaliber />
           </TwoColumns>
         </>
       </Main>

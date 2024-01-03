@@ -20,6 +20,13 @@ export default function Header({
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchShown, setIsSearchShown] = useState(false);
+
+  // Clear search input
+  const clearSearch = () => {
+    setSearchQuery(""); // Reset the search query
+  };
 
   // Get menus
   const { data: menusData } = useQuery(GetHeaderComponent, {
@@ -86,7 +93,7 @@ export default function Header({
                     className={cx("menu-icon")}
                     onClick={() => {
                       setIsNavShown(!isNavShown);
-                      // setSearchQuery('')
+                      setSearchQuery("");
                     }}
                     aria-label="Toggle navigation"
                     aria-controls={cx("full-menu-wrapper")}
@@ -113,7 +120,7 @@ export default function Header({
                     className={cx("close-icon")}
                     onClick={() => {
                       setIsNavShown(!isNavShown);
-                      // setSearchQuery("");
+                      setSearchQuery("");
                     }}
                     aria-label="Toggle navigation"
                     aria-controls={cx("full-menu-wrapper")}
@@ -163,7 +170,8 @@ export default function Header({
                   className={cx("close-icon")}
                   onClick={() => {
                     setIsNavShown(!isNavShown);
-                    // setSearchQuery("");
+                    setSearchQuery("");
+                    setIsSearchShown(!isSearchShown);
                   }}
                   aria-label="Toggle navigation"
                   aria-controls={cx("full-menu-wrapper")}
@@ -200,6 +208,11 @@ export default function Header({
           menusLoading={menusLoading}
           newCover={headerComponent?.newCoverIssue?.sourceUrl}
           subsLink={subsLink}
+          clearSearch={clearSearch}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchShown={isSearchShown}
+          setSearchShown={setIsSearchShown}
         />
       </div>
       {/* Navigation menu */}
