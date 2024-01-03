@@ -9,6 +9,9 @@
   margin-right: auto;
   margin-left: auto;
   width: 100vw;
+  position: relative;
+  z-index: 3;
+  background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-small) {
     flex-direction: row;
