@@ -58,7 +58,7 @@ export default function FullMenu({
   // Search function content
   // const [isSearchShown, setIsSearchShown] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const postsPerPage = 5;
+  const postsPerPage = 10;
 
   // Add search query function
   const {
@@ -157,7 +157,7 @@ export default function FullMenu({
                     className={cx("search-button")}
                     onClick={() => {
                       setSearchShown(!searchShown);
-                      // setSearchQuery('')
+                      setSearchQuery("");
                     }}
                     aria-label="Toggle navigation"
                     aria-controls={cx("search-bar-wrapper")}
@@ -225,7 +225,8 @@ export default function FullMenu({
           <SearchInput
             value={searchQuery}
             onChange={(newValue) => setSearchQuery(newValue)}
-            clearSearch={clearSearch}
+            setSearchShown={setSearchShown}
+            searchShown={searchShown}
           />
         </div>
         <div className={cx("search-result-wrapper")}>

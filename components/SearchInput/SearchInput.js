@@ -14,7 +14,8 @@ import styles from "./SearchInput.module.scss";
 export default function SearchInput({
   value,
   onChange,
-  clearSearch,
+  searchShown,
+  setSearchShown,
   ...props
 }) {
   const input = useRef();
@@ -22,12 +23,16 @@ export default function SearchInput({
   // Clear and focus the input on initial render
   useEffect(() => {
     input.current.value = "";
-    // input.current.focus();
   }, []);
 
   return (
     <>
-      <button onClick={clearSearch} className={styles.closeIcon}>
+      <button
+        onClick={() => {
+          setSearchShown(!searchShown);
+        }}
+        className={styles.closeIcon}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="46"
@@ -60,11 +65,11 @@ export default function SearchInput({
           placeholder="TYPE HERE"
           {...props}
         />
-        <div className={styles.icon}>
+        <div className={styles.searchIcon}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="55"
-            height="57"
+            height="1em"
             viewBox="0 0 55 57"
             fill="none"
           >

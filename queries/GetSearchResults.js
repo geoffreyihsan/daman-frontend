@@ -7,11 +7,7 @@ export const GetSearchResults = gql`
     $search: String
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
   ) {
-    tags(
-      first: $first
-      after: $after
-      where: { search: $search, hideEmpty: true }
-    ) {
+    tags(first: $first, after: $after, where: { search: $search }) {
       pageInfo {
         hasNextPage
         endCursor
@@ -35,6 +31,7 @@ export const GetSearchResults = gql`
               node {
                 ... on Post {
                   id
+                  databaseId
                   title
                   date
                   uri

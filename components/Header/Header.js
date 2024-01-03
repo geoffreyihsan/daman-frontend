@@ -85,36 +85,51 @@ export default function Header({
                 </div>
               </div>
               {/* Menu Button */}
-              {isNavShown == false ? (
-                <div className={cx("menu-button")}>
-                  {/* menu button */}
-                  <button
-                    type="button"
-                    className={cx("menu-icon")}
-                    onClick={() => {
-                      setIsNavShown(!isNavShown);
-                      setSearchQuery("");
-                    }}
-                    aria-label="Toggle navigation"
-                    aria-controls={cx("full-menu-wrapper")}
-                    aria-expanded={!isNavShown}
+              <div className={cx("menu-button")}>
+                {/* menu button */}
+                <button
+                  type="button"
+                  className={cx("menu-icon")}
+                  onClick={() => {
+                    setIsNavShown(!isNavShown);
+                    setSearchQuery("");
+                  }}
+                  aria-label="Toggle navigation"
+                  aria-controls={cx("full-menu-wrapper")}
+                  aria-expanded={!isNavShown}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="21"
+                    viewBox="0 0 30 21"
+                    fill="none"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="21"
-                      viewBox="0 0 30 21"
-                      fill="none"
-                    >
-                      <path d="M0 1.51891H30" stroke="black" strokeWidth="2" />
-                      <path d="M0 10.5189H30" stroke="black" strokeWidth="2" />
-                      <path d="M0 19.5189H30" stroke="black" strokeWidth="2" />
-                    </svg>
-                  </button>
+                    <path d="M0 1.51891H30" stroke="black" strokeWidth="2" />
+                    <path d="M0 10.5189H30" stroke="black" strokeWidth="2" />
+                    <path d="M0 19.5189H30" stroke="black" strokeWidth="2" />
+                  </svg>
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={cx("button-header")}></div>
+              <div className={cx("navbar")}>
+                <div className={cx("brand")}>
+                  <Link href="/" className={cx("logo")}>
+                    <Image
+                      src={DaManLogo}
+                      alt={"DaMan Logo"}
+                      fill
+                      sizes="100%"
+                    />
+                  </Link>
                 </div>
-              ) : (
-                <div className={cx("menu-button")}>
-                  {/* close button */}
+              </div>
+              <div className={cx("close-button")}>
+                {/* close button */}
+                {!isSearchShown ? (
                   <button
                     type="button"
                     className={cx("close-icon")}
@@ -145,49 +160,39 @@ export default function Header({
                       />
                     </svg>
                   </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className={cx("button-header")}></div>
-              <div className={cx("navbar")}>
-                <div className={cx("brand")}>
-                  <Link href="/" className={cx("logo")}>
-                    <Image
-                      src={DaManLogo}
-                      alt={"DaMan Logo"}
-                      fill
-                      sizes="100%"
-                    />
-                  </Link>
-                </div>
-              </div>
-              <div className={cx("close-button")}>
-                {/* close button */}
-                <button
-                  type="button"
-                  className={cx("close-icon")}
-                  onClick={() => {
-                    setIsNavShown(!isNavShown);
-                    setSearchQuery("");
-                    setIsSearchShown(!isSearchShown);
-                  }}
-                  aria-label="Toggle navigation"
-                  aria-controls={cx("full-menu-wrapper")}
-                  aria-expanded={!isNavShown}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="46"
-                    height="46"
-                    viewBox="0 0 46 46"
-                    fill="none"
+                ) : (
+                  <button
+                    type="button"
+                    className={cx("close-icon")}
+                    onClick={() => {
+                      setIsNavShown(!isNavShown);
+                      setSearchQuery("");
+                      setIsSearchShown(!isSearchShown);
+                    }}
+                    aria-label="Toggle navigation"
+                    aria-controls={cx("full-menu-wrapper")}
+                    aria-expanded={!isNavShown}
                   >
-                    <path d="M2 2L44.5 44.5" stroke="#9D9D9C" strokeWidth="3" />
-                    <path d="M44.5 2L2 44.5" stroke="#9D9D9C" strokeWidth="3" />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="46"
+                      height="46"
+                      viewBox="0 0 46 46"
+                      fill="none"
+                    >
+                      <path
+                        d="M2 2L44.5 44.5"
+                        stroke="#9D9D9C"
+                        strokeWidth="3"
+                      />
+                      <path
+                        d="M44.5 2L2 44.5"
+                        stroke="#9D9D9C"
+                        strokeWidth="3"
+                      />
+                    </svg>
+                  </button>
+                )}
               </div>
             </>
           )}

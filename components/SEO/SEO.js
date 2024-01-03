@@ -27,7 +27,6 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
     if (typeof window !== "undefined") {
       const currentPathname = window.location.pathname;
       setLocationPathname(currentPathname);
-      console.log("Current Pathname:", currentPathname);
     }
   }, []); // Run this effect only once on component mount
 
@@ -36,7 +35,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
     nextFetchPolicy: "cache-and-network",
   });
 
-  const favicon = data?.favicon?.mediaDetails?.sizes;
+  const favicon = data?.favicon;
 
   return (
     <>
@@ -44,6 +43,17 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+        {/* Favicon */}
+        {favicon && (
+          <link
+            key={`fav-${favicon?.mediaDetails?.width}x${favicon?.mediaDetails?.height}`}
+            rel="icon"
+            type="image/png"
+            sizes={`${favicon?.mediaDetails?.width}x${favicon?.mediaDetails?.height}`}
+            href={favicon?.sourceUrl}
+          />
+        )}
 
         {title && (
           <>
@@ -80,30 +90,6 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         )}
 
         {focuskw && <meta name="keywords" content={focuskw} />}
-
-        {/* Favicon */}
-        {favicon?.length > 0 &&
-          favicon.map(({ width, sourceUrl }) => {
-            if (width === "180") {
-              return (
-                <link
-                  key={`fav-${width}x${width}`}
-                  rel="apple-touch-icon"
-                  href={sourceUrl}
-                  sizes={`${width}x${width}`}
-                />
-              );
-            }
-            return (
-              <link
-                key={`fav-${width}x${width}`}
-                rel="icon"
-                type="image/png"
-                sizes={`${width}x${width}`}
-                href={sourceUrl}
-              />
-            );
-          })}
 
         {/* SEM Keywords */}
         {/* <meta

@@ -297,10 +297,6 @@
   color: var(--wpe--color--black);
   margin: 0 auto;
 
-  @media (min-width: $breakpoint-medium) {
-    max-width: var(--wpe--container--max--width);
-  }
-
   &.show {
     display: flex;
     padding: 1rem;
@@ -331,21 +327,26 @@
   .search-input-wrapper {
     position: relative;
     width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-medium) {
+      max-width: var(--wpe--container--max--width);
+    }
   }
 
   .search-result-wrapper {
     position: absolute;
     display: grid;
     background-color: var(--wpe--main--background--color);
-    top: 4.5rem;
-    left: 0;
-    width: 100%;
+    top: 4rem;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    width: 100vw;
     text-align: left;
     padding: 0;
     justify-content: center;
 
-    @media (min-width: $breakpoint-extra-small) {
-      top: 6.5rem;
+    @media (min-width: $breakpoint-medium) {
       padding: 0 1rem;
     }
 
