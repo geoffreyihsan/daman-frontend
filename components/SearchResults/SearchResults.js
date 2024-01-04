@@ -1,7 +1,5 @@
 import {
-  CategoryIcon,
   FeaturedImage,
-  LocationIcon,
   PostInfo,
 } from '../../components'
 import { FaSearch } from 'react-icons/fa'
@@ -97,70 +95,6 @@ export default function SearchResults({ searchResults, isLoading }) {
 
             <div className={cx('right-wrapper')}>
               <div key={node?.databaseId} className={cx('result')}>
-                <div className={cx('category-wrapper')}>
-                  {/* Destinations */}
-                  {node?.contentType?.node?.graphqlPluralName ==
-                    'Editorials' && (
-                    <Link href={node?.categories?.edges[0]?.node?.uri}>
-                      <h2 className={cx('meta')}>
-                        {node?.categories?.edges[0]?.node?.name}
-                      </h2>
-                    </Link>
-                  )}
-
-                  {/* Destination Guides */}
-                  {node?.contentType?.node?.graphqlPluralName == 'posts' && (
-                    <Link href={node?.categories?.edges[0]?.node?.uri}>
-                      <h2 className={cx('meta')}>
-                        {node?.categories?.edges[0]?.node?.parent?.node?.name}{' '}
-                        {node?.categories?.edges[0]?.node?.name}
-                      </h2>
-                    </Link>
-                  )}
-
-                  {/* Update */}
-                  {node?.contentType?.node?.graphqlPluralName == 'Updates' && (
-                    <Link href={node?.categories?.edges[0]?.node?.uri}>
-                      <h2 className={cx('meta')}>
-                        {node?.categories?.edges[0]?.node?.parent?.node?.name}{' '}
-                        {node?.categories?.edges[0]?.node?.name}
-                      </h2>
-                    </Link>
-                  )}
-
-                  {/* HonorsCircle */}
-                  {node?.contentType?.node?.graphqlPluralName ==
-                    'HonorsCircles' && (
-                    <Link href={'/honors-circle'}>
-                      <h2 className={cx('meta')}>{'Honors Circle'}</h2>
-                    </Link>
-                  )}
-
-                  {/* Advertorials */}
-                  {node?.contentType?.node?.graphqlPluralName ==
-                    'Advertorials' && (
-                    <Link href={node?.uri}>
-                      <h2 className={cx('meta')}>
-                        {node?.contentType?.node?.label}
-                      </h2>
-                    </Link>
-                  )}
-
-                  {/* LuxeList */}
-                  {node?.contentType?.node?.graphqlPluralName ==
-                    'LuxeLists' && (
-                    <Link href={'/luxe-list/2023-lineup'}>
-                      <h2 className={cx('meta')}>{'Luxe List'}</h2>
-                    </Link>
-                  )}
-
-                  {/* Contest */}
-                  {node?.contentType?.node?.graphqlPluralName == 'Contests' && (
-                    <Link href={'/contests'}>
-                      <h2 className={cx('meta')}>{'Contest'}</h2>
-                    </Link>
-                  )}
-                </div>
 
                 <Link href={node?.uri}>
                   <h2 className={cx('title')}>{node?.title}</h2>
@@ -170,26 +104,6 @@ export default function SearchResults({ searchResults, isLoading }) {
                   <div className={cx('date-wrapper')}>
                     <PostInfo date={node?.date} className={cx('meta')} />
                   </div>
-                  {node?.acfCategoryIcon && node?.acfLocationIcon && (
-                    <div className={cx('icon-wrapper')}>
-                      <CategoryIcon
-                        chooseYourCategory={
-                          node?.acfCategoryIcon?.chooseYourCategory
-                        }
-                        chooseIcon={
-                          node?.acfCategoryIcon?.chooseIcon?.mediaItemUrl
-                        }
-                        categoryLabel={node?.acfCategoryIcon?.categoryLabel}
-                      />
-                      <LocationIcon
-                        locationValidation={
-                          node?.acfLocationIcon?.fieldGroupName
-                        }
-                        locationLabel={node?.acfLocationIcon?.locationLabel}
-                        locationUrl={node?.acfLocationIcon?.locationUrl}
-                      />
-                    </div>
-                  )}
                 </div>
 
                 {node?.excerpt && (
