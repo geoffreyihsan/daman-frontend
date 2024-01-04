@@ -22,6 +22,7 @@ import {
   Outnow,
   Interscroller,
   SubscribeBox,
+  InHouseAds,
 } from "../components";
 
 export default function frontPage(props) {
@@ -98,6 +99,7 @@ export default function frontPage(props) {
             <Right>
               <SubscribeBox />
               <HalfPage2 />
+              <InHouseAds />
             </Right>
           </TwoColumns>
           <TwoColumns border={true}>

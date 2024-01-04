@@ -22,7 +22,7 @@ import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
 let cx = className.bind(styles);
 
 export default function HeroSlider({ databaseId }) {
-  // Get DAMAN TV Videos
+  // Get DAMAN Homepage Slider
   const { data, loading } = useQuery(GetHeroSlider, {
     variables: {
       // Homepage id
@@ -101,6 +101,30 @@ export default function HeroSlider({ databaseId }) {
       date: data?.page?.homepageSlider?.postSlide5?.date,
       author: data?.page?.homepageSlider?.postSlide5?.author?.node?.name,
     },
+    {
+      featuredImage: data?.page?.homepageSlider?.imageSlide6,
+      uri: data?.page?.homepageSlider?.postSlide6?.uri,
+      title: data?.page?.homepageSlider?.postSlide6?.title,
+      excerpt: data?.page?.homepageSlider?.postSlide6?.excerpt,
+      date: data?.page?.homepageSlider?.postSlide6?.date,
+      author: data?.page?.homepageSlider?.postSlide6?.author?.node?.name,
+    },
+    {
+      featuredImage: data?.page?.homepageSlider?.imageSlide7,
+      uri: data?.page?.homepageSlider?.postSlide7?.uri,
+      title: data?.page?.homepageSlider?.postSlide7?.title,
+      excerpt: data?.page?.homepageSlider?.postSlide7?.excerpt,
+      date: data?.page?.homepageSlider?.postSlide7?.date,
+      author: data?.page?.homepageSlider?.postSlide7?.author?.node?.name,
+    },
+    {
+      featuredImage: data?.page?.homepageSlider?.imageSlide8,
+      uri: data?.page?.homepageSlider?.postSlide8?.uri,
+      title: data?.page?.homepageSlider?.postSlide8?.title,
+      excerpt: data?.page?.homepageSlider?.postSlide8?.excerpt,
+      date: data?.page?.homepageSlider?.postSlide8?.date,
+      author: data?.page?.homepageSlider?.postSlide8?.author?.node?.name,
+    },
   ];
 
   const calculateTrimmedExcerpt = (excerpt) => {
@@ -121,10 +145,10 @@ export default function HeroSlider({ databaseId }) {
       <div className={cx("swiper-wrapper")}>
         <Swiper
           effect={"fade"}
-          // autoplay={{
-          //   delay: 15000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: true,
+          }}
           loop={true}
           pagination={{
             el: ".swiper-custom-pagination",
@@ -179,12 +203,6 @@ export default function HeroSlider({ databaseId }) {
                       <time dateTime={homepageSlide?.date}>
                         <FormatDate date={homepageSlide?.date} />
                       </time>
-                    )}{" "}
-                    {homepageSlide?.author && (
-                      <>
-                        {"By "}
-                        {homepageSlide?.author}
-                      </>
                     )}
                   </div>
                   <div className={cx("view-more-wrapper")}>

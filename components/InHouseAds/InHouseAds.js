@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import classNames from "classnames/bind";
-import styles from "./Outnow.module.scss";
+import styles from "./InHouseAds.module.scss";
 import { GetSidebarComponent } from "../../queries/GetSidebarComponent";
 import { useQuery } from "@apollo/client";
 
 let cx = classNames.bind(styles);
 
-export default function Outnow() {
+export default function InHouseAds() {
   // Get Sidebar Component
   const { data, loading } = useQuery(GetSidebarComponent, {
     variables: {
@@ -25,22 +25,20 @@ export default function Outnow() {
 
   // Get Header Component
   const sidebarComponent = data?.page?.sidebarComponent ?? [];
-  // Get Outnow
-  const outnow = sidebarComponent?.outnow ?? [];
+  // Get inHouseAds
+  const inHouseAds = sidebarComponent?.inHouseAds ?? [];
   // Subscribe link
   const subsLink = "/subscribe-daman";
-
-  console.log(data)
 
   return (
     <>
       <div className={cx("component")}>
-        {outnow && (
+        {inHouseAds && (
           <div className={cx("image-wrapper")}>
             <Link href={subsLink}>
               <Image
-                src={outnow?.sourceUrl}
-                altText={outnow?.altText}
+                src={inHouseAds?.sourceUrl}
+                altText={inHouseAds?.altText}
                 fill
                 sizes="100%"
               />

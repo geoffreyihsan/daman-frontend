@@ -13,6 +13,7 @@ export { Header } from "./Header";
 export { Heading } from "./Heading";
 export { Hero } from "./Hero";
 export { HeroSlider } from "./HeroSlider";
+export { InHouseAds } from "./InHouseAds";
 export { HalfPage1 } from "./Modules/Ad/HalfPage1";
 export { HalfPage2 } from "./Modules/Ad/HalfPage2";
 export { Interscroller } from "./Modules/Ad/Interscroller";

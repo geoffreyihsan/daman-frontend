@@ -6,118 +6,99 @@ export const GetHeroSlider = gql`
       homepageSlider {
         postSlide1 {
           ... on Post {
-            id
             title
             excerpt
             date
             uri
-            author {
-              node {
-                name
-              }
-            }
           }
         }
         postSlide2 {
           ... on Post {
-            id
             title
             excerpt
             date
             uri
-            author {
-              node {
-                name
-              }
-            }
           }
         }
         postSlide3 {
           ... on Post {
-            id
             title
             excerpt
             date
             uri
-            author {
-              node {
-                name
-              }
-            }
           }
         }
         postSlide4 {
           ... on Post {
-            id
             title
             excerpt
             date
             uri
-            author {
-              node {
-                name
-              }
-            }
           }
         }
         postSlide5 {
           ... on Post {
-            id
             title
             excerpt
             date
             uri
-            author {
-              node {
-                name
-              }
-            }
+          }
+        }
+        postSlide6 {
+          ... on Post {
+            title
+            excerpt
+            date
+            uri
+          }
+        }
+        postSlide7 {
+          ... on Post {
+            title
+            excerpt
+            date
+            uri
+          }
+        }
+        postSlide8 {
+          ... on Post {
+            title
+            excerpt
+            date
+            uri
           }
         }
         imageSlide1 {
-          id
           sourceUrl
           altText
-          mediaDetails {
-            width
-            height
-          }
         }
         imageSlide2 {
-          id
           sourceUrl
           altText
-          mediaDetails {
-            width
-            height
-          }
         }
         imageSlide3 {
-          id
           sourceUrl
           altText
-          mediaDetails {
-            width
-            height
-          }
         }
         imageSlide4 {
-          id
           sourceUrl
           altText
-          mediaDetails {
-            width
-            height
-          }
         }
         imageSlide5 {
-          id
           sourceUrl
           altText
-          mediaDetails {
-            width
-            height
-          }
+        }
+        imageSlide6 {
+          sourceUrl
+          altText
+        }
+        imageSlide7 {
+          sourceUrl
+          altText
+        }
+        imageSlide8 {
+          sourceUrl
+          altText
         }
       }
     }
