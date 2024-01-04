@@ -7,7 +7,7 @@
   background-color: var(--wpe--color--offwhite);
   padding: 1rem 0;
   position: relative;
-  z-index: 2;
+  z-index: 5;
 
   @media (min-width: $breakpoint-medium) {
     display: none;

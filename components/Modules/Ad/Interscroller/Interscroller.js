@@ -24,8 +24,6 @@ export default function Interscroller() {
   // Get Header Component
   const interscroller = data?.bannerAd?.interscroller ?? [];
 
-  console.log(interscroller?.visibility == null);
-
   return (
     <div
       className={cx(
