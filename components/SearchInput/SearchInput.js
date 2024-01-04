@@ -27,23 +27,6 @@ export default function SearchInput({
 
   return (
     <>
-      <button
-        onClick={() => {
-          setSearchShown(!searchShown);
-        }}
-        className={styles.closeIcon}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="46"
-          height="46"
-          viewBox="0 0 46 46"
-          fill="none"
-        >
-          <path d="M2 2L44.5 44.5" stroke="#9D9D9C" stroke-width="3" />
-          <path d="M44.5 2L2 44.5" stroke="#9D9D9C" stroke-width="3" />
-        </svg>
-      </button>
       <div className={styles.wrapper}>
         <label className="sr-only" htmlFor="search">
           Search
@@ -86,6 +69,23 @@ export default function SearchInput({
             />
           </svg>
         </div>
+        <button
+          onClick={() => {
+            setSearchShown(!searchShown);
+          }}
+          className={styles.closeIcon}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="46"
+            viewBox="0 0 46 46"
+            fill="none"
+          >
+            <path d="M2 2L44.5 44.5" stroke="#9D9D9C" stroke-width="3" />
+            <path d="M44.5 2L2 44.5" stroke="#9D9D9C" stroke-width="3" />
+          </svg>
+        </button>
       </div>
     </>
   );
