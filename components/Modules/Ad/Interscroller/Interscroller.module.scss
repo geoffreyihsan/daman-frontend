@@ -2,6 +2,10 @@
 
 .component {
   background-color: var(--wpe--color--white);
+
+  &.hide {
+    display: none;
+  }
 }
 
 .interscroller-wrapper {

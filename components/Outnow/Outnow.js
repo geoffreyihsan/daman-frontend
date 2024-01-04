@@ -30,8 +30,6 @@ export default function Outnow() {
   // Subscribe link
   const subsLink = "/subscribe-daman";
 
-  console.log(data)
-
   return (
     <>
       <div className={cx("component")}>
