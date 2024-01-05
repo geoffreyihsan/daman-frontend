@@ -19,5 +19,5 @@ export default function FormatDate({ date }) {
   const year = formattedDate.toLocaleDateString("en-US", { year: "numeric" });
   const time = formattedDate.toLocaleTimeString("en-US", timeformat);
 
-  return <>{`${weekday} ${time} ${day} ${month} ${year} |`}</>;
+  return <>{`${weekday} ${time} ${day} ${month} ${year}`}</>;
 }

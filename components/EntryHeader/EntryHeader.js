@@ -28,9 +28,9 @@ export default function EntryHeader({
           <Heading className={cx("title")}>{title}</Heading>
         </div>
       )}
-      {date && author && (
+      {date && (
         <div className={cx("meta-wrapper")}>
-          <PostInfo className={cx("meta")} author={author} date={date} />
+          <PostInfo className={cx("meta")} date={date} />
         </div>
       )}
     </div>
