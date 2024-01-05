@@ -79,15 +79,13 @@ export default function EntryHeaderCategory({ databaseId }) {
                 <div className={cx("navigation-wrapper")}>
                   {data?.category?.children?.edges?.map((post) => (
                     <li key={post?.node?.uri} className={cx("nav-link")}>
-                      <Link href={post?.node?.uri}>
-                        <h2
-                          className={cx(
-                            "nav-name",
-                            isActive(post?.node?.uri) ? "active" : ""
-                          )}
-                        >
-                          {post?.node?.name}
-                        </h2>
+                      <Link
+                        href={post?.node?.uri}
+                        className={cx(
+                          isActive(post?.node?.uri) ? "active" : ""
+                        )}
+                      >
+                        <h2 className={cx("nav-name")}>{post?.node?.name}</h2>
                       </Link>
                     </li>
                   ))}
@@ -111,15 +109,13 @@ export default function EntryHeaderCategory({ databaseId }) {
                   {data?.category?.parent?.node?.children?.edges?.map(
                     (post) => (
                       <li key={post?.node?.uri} className={cx("nav-link")}>
-                        <Link href={post?.node?.uri}>
-                          <h2
-                            className={cx(
-                              "nav-name",
-                              isActive(post?.node?.uri) ? "active" : ""
-                            )}
-                          >
-                            {post?.node?.name}
-                          </h2>
+                        <Link
+                          href={post?.node?.uri}
+                          className={cx(
+                            isActive(post?.node?.uri) ? "active" : ""
+                          )}
+                        >
+                          <h2 className={cx("nav-name")}>{post?.node?.name}</h2>
                         </Link>
                       </li>
                     )
