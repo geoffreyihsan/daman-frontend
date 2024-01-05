@@ -27,7 +27,7 @@ export default function EntryHeaderCategory({ databaseId }) {
 
   // Add currentUrl function
   useEffect(() => {
-    setCurrentUrl(window.location.pathname);
+    setCurrentUrl(window.location);
   }, []);
   function isActive(uri) {
     return currentUrl + "/" === uri;
