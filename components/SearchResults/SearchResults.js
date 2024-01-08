@@ -1,14 +1,12 @@
-import {
-  FeaturedImage,
-  PostInfo,
-} from '../../components'
-import { FaSearch } from 'react-icons/fa'
-import className from 'classnames/bind'
+import { PostInfo } from "../../components";
+import { FaSearch } from "react-icons/fa";
+import className from "classnames/bind";
 
-import styles from './SearchResults.module.scss'
-import Link from 'next/link'
+import styles from "./SearchResults.module.scss";
+import Link from "next/link";
+import Image from "next/image";
 
-let cx = className.bind(styles)
+let cx = className.bind(styles);
 
 /**
  * Renders the search results list.
@@ -21,17 +19,17 @@ let cx = className.bind(styles)
 export default function SearchResults({ searchResults, isLoading }) {
   // If there are no results, or are loading, return null.
   if (!isLoading && searchResults === undefined) {
-    return null
+    return null;
   }
 
   // If there are no results, return a message.
   if (!isLoading && !searchResults?.length) {
     return (
-      <div className={styles['no-results']}>
-        <FaSearch className={styles['no-results-icon']} />
-        <div className={styles['no-results-text']}>No results</div>
+      <div className={styles["no-results"]}>
+        <FaSearch className={styles["no-results-icon"]} />
+        <div className={styles["no-results-text"]}>No results</div>
       </div>
-    )
+    );
   }
 
   // If loading is running, return a Loading screen
@@ -59,50 +57,52 @@ export default function SearchResults({ searchResults, isLoading }) {
           </div>
         </div>
       </>
-    )
+    );
   }
 
   const calculateTrimmedExcerpt = (excerpt, uri, title) => {
-    const MAX_EXCERPT_LENGTH = 100 // You can adjust this value according to your needs
+    const MAX_EXCERPT_LENGTH = 100; // You can adjust this value according to your needs
 
-    let trimmedExcerpt = excerpt?.substring(0, MAX_EXCERPT_LENGTH)
-    const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(' ')
+    let trimmedExcerpt = excerpt?.substring(0, MAX_EXCERPT_LENGTH);
+    const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
 
     if (lastSpaceIndex !== -1) {
-      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + '...'
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
     }
 
-    return `${trimmedExcerpt} <a class="more-link" href="${uri}">Continue reading <span class="screen-reader-text">${title}</span></a>`
-  }
+    return `${trimmedExcerpt}`;
+  };
 
   return (
     <>
-      <div className={cx('component')}>
+      <div className={cx("component")}>
         {searchResults?.map((node) => (
-          <div className={cx('content-wrapper')}>
-            <div className={cx('left-wrapper')}>
+          <div className={cx("content-wrapper")}>
+            {console.log(node?.featuredImage)}
+            <div className={cx("left-wrapper")}>
               {node?.featuredImage?.node && (
-                <Link href={node?.uri}>
-                  <div className={cx('wrapper-image')}>
-                    <FeaturedImage
-                      image={node?.featuredImage?.node}
-                      className={cx('featured-image')}
+                <div className={cx("wrapper-image")}>
+                  <Link href={node?.uri}>
+                    <Image
+                      src={node?.featuredImage?.node?.sourceUrl}
+                      className={cx("featured-image")}
+                      fill
+                      sizes="100%"
                     />
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               )}
             </div>
 
-            <div className={cx('right-wrapper')}>
-              <div key={node?.databaseId} className={cx('result')}>
-
+            <div className={cx("right-wrapper")}>
+              <div key={node?.databaseId} className={cx("result")}>
                 <Link href={node?.uri}>
-                  <h2 className={cx('title')}>{node?.title}</h2>
+                  <h2 className={cx("title")}>{node?.title}</h2>
                 </Link>
 
-                <div className={cx('meta-wrapper')}>
-                  <div className={cx('date-wrapper')}>
-                    <PostInfo date={node?.date} className={cx('meta')} />
+                <div className={cx("meta-wrapper")}>
+                  <div className={cx("date-wrapper")}>
+                    <PostInfo date={node?.date} className={cx("meta")} />
                   </div>
                 </div>
 
@@ -113,7 +113,7 @@ export default function SearchResults({ searchResults, isLoading }) {
                         __html: calculateTrimmedExcerpt(
                           node?.excerpt,
                           node?.uri,
-                          node?.title,
+                          node?.title
                         ),
                       }}
                     />
@@ -125,5 +125,5 @@ export default function SearchResults({ searchResults, isLoading }) {
         ))}
       </div>
     </>
-  )
+  );
 }
