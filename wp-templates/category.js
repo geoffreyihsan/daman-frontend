@@ -80,7 +80,6 @@ Category.query = gql`
   ${BlogInfoFragment}
   query GetCategoryPage($databaseId: ID!) {
     category(id: $databaseId, idType: DATABASE_ID) {
-      name
       databaseId
       uri
       seo {

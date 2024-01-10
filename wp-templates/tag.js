@@ -1,19 +1,26 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
-  Container,
   EntryHeader,
-  FeaturedImage,
-  Post,
   SEO,
+  TwoColumns,
+  Left,
+  Right,
+  HalfPage1,
+  HalfPage2,
+  Outnow,
+  Interscroller,
+  PostTag,
+  EntryHeaderTag,
 } from "../components";
 
 export default function Tag(props) {
-  const { name, posts, uri, seo } = props?.data?.tag;
+  const { databaseId, seo, uri } = props?.data?.tag;
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -51,19 +58,18 @@ export default function Tag(props) {
       />
       <Main>
         <>
-          <EntryHeader title={`Tag: ${name}`} />
-          <>
-            {posts.edges.map((post) => (
-              <Post
-                title={post.node.title}
-                content={post.node.content}
-                date={post.node.date}
-                author={post.node.author?.node.name}
-                uri={post.node.uri}
-                featuredImage={post.node.featuredImage?.node}
-              />
-            ))}
-          </>
+          <EntryHeaderTag />
+          <TwoColumns border={false}>
+            <Left>
+              <PostTag databaseId={databaseId} />
+            </Left>
+            <Right>
+              <HalfPage1 />
+              <Outnow />
+              <HalfPage2 />
+            </Right>
+          </TwoColumns>
+          <Interscroller />
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
@@ -73,33 +79,15 @@ export default function Tag(props) {
 
 Tag.query = gql`
   ${BlogInfoFragment}
-  ${FeaturedImage.fragments.entry}
   query GetTagPage($databaseId: ID!) {
     tag(id: $databaseId, idType: DATABASE_ID) {
-      name
-      posts {
-        edges {
-          node {
-            id
-            title
-            content
-            date
-            uri
-            ...FeaturedImageFragment
-            author {
-              node {
-                name
-              }
-            }
-          }
-        }
-      }
+      databaseId
+      uri
       seo {
         title
         metaDesc
         focuskw
       }
-      uri
     }
     generalSettings {
       ...BlogInfoFragment
