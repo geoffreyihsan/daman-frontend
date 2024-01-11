@@ -8,25 +8,6 @@ export const GetEntryHeaderTag = gql`
     tag(id: $id, idType: DATABASE_ID) {
       name
       uri
-      parent {
-        node {
-          name
-          uri
-          children(where: { childless: true }) {
-            edges {
-              node {
-                name
-                uri
-              }
-            }
-          }
-          parent {
-            node {
-              name
-            }
-          }
-        }
-      }
     }
   }
 `;

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./EntryHeaderTag.module.scss";
-import { BorderDivider, Button } from "../../components";
+import { BorderDivider } from "../../components";
 import { useQuery } from "@apollo/client";
 import { GetEntryHeaderTag } from "../../queries/GetEntryHeaderTag";
 import Link from "next/link";
@@ -9,29 +8,16 @@ import Link from "next/link";
 let cx = classNames.bind(styles);
 
 export default function EntryHeaderTag({ databaseId }) {
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  const catPerPage = 100;
-
-  let catVariable = {
-    first: catPerPage,
+  let tagVariable = {
     id: databaseId,
   };
 
   // Get Category
   const { data, loading } = useQuery(GetEntryHeaderTag, {
-    variables: catVariable,
+    variables: tagVariable,
     fetchPolicy: "network-only",
     nextFetchPolicy: "cache-and-network",
   });
-
-  // Add currentUrl function
-  useEffect(() => {
-    setCurrentUrl(window.location);
-  }, []);
-  function isActive(uri) {
-    return currentUrl + "/" === uri;
-  }
 
   // Loading Menu
   if (loading) {
@@ -67,16 +53,15 @@ export default function EntryHeaderTag({ databaseId }) {
       <div className={cx("container-wrapper")}>
         <div className={cx("navbar")}>
           {/* Childless tag */}
-          {data?.tag?.children?.edges?.length == 0 &&
-            !data?.tag?.parent && (
-              <div className={cx("navbar-wrapper")}>
-                {/* {'childless'} */}
-                <div className={cx("parent-nav-wrapper")}>
-                  <Link href={data?.tag?.uri}>{data?.tag?.name}</Link>
-                </div>
-                <div className={cx("border-divider")}></div>
+          {data?.tag && (
+            <div className={cx("navbar-wrapper")}>
+              {/* {'childless'} */}
+              <div className={cx("parent-nav-wrapper")}>
+                <Link href={data?.tag?.uri}>{data?.tag?.name}</Link>
               </div>
-            )}
+              <div className={cx("border-divider")}></div>
+            </div>
+          )}
         </div>
       </div>
     </nav>

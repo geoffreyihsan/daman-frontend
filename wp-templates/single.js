@@ -6,12 +6,10 @@ import {
   Header,
   Footer,
   Main,
-  Container,
   EntryHeader,
   ContentWrapper,
   FeaturedImage,
   SEO,
-  FeaturedImageSingle,
   TwoColumns,
   Left,
   Right,
@@ -77,7 +75,6 @@ export default function Single(props) {
       />
       <Main>
         <>
-          {/* <FeaturedImageSingle image={featuredImage?.node} /> */}
           <BorderDivider />
           <TwoColumns>
             <Left>
@@ -87,7 +84,7 @@ export default function Single(props) {
                 author={author?.node?.name}
                 categories={categories?.edges[0]}
               />
-              <ContentWrapper content={content} />
+              <ContentWrapper content={content} databaseId={databaseId} />
             </Left>
             <Right>
               <HalfPage1 />

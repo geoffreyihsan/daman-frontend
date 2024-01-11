@@ -222,7 +222,7 @@ export default function HeroSlider({ databaseId }) {
               fill="none"
             >
               <rect width="65" height="65" fill="black" />
-              <path d="M45 12L21 31L45 49" stroke="white" stroke-width="3" />
+              <path d="M45 12L21 31L45 49" stroke="white" strokeWidth="3" />
             </svg>
           </div>
           <div className="swiper-custom-button-next">
@@ -241,7 +241,7 @@ export default function HeroSlider({ databaseId }) {
                 transform="rotate(-180 65 65)"
                 fill="black"
               />
-              <path d="M20 53L44 34L20 16" stroke="white" stroke-width="3" />
+              <path d="M20 53L44 34L20 16" stroke="white" strokeWidth="3" />
             </svg>
           </div>
         </Swiper>

@@ -61,7 +61,7 @@ export default function SearchInput({
               cy="24"
               r="22.5"
               stroke="#9D9D9C"
-              stroke-width="3"
+              strokeWidth="3"
             />
             <path
               d="M51.9393 56.0607C52.5251 56.6464 53.4749 56.6464 54.0607 56.0607C54.6464 55.4749 54.6464 54.5251 54.0607 53.9393L51.9393 56.0607ZM37.9393 42.0607L51.9393 56.0607L54.0607 53.9393L40.0607 39.9393L37.9393 42.0607Z"
@@ -82,8 +82,8 @@ export default function SearchInput({
             viewBox="0 0 46 46"
             fill="none"
           >
-            <path d="M2 2L44.5 44.5" stroke="#9D9D9C" stroke-width="3" />
-            <path d="M44.5 2L2 44.5" stroke="#9D9D9C" stroke-width="3" />
+            <path d="M2 2L44.5 44.5" stroke="#9D9D9C" strokeWidth="3" />
+            <path d="M44.5 2L2 44.5" stroke="#9D9D9C" strokeWidth="3" />
           </svg>
         </button>
       </div>

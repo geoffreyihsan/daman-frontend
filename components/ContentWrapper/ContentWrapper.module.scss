@@ -4,13 +4,13 @@
   line-height: normal;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem 3rem;
+  padding: 0 1rem 1rem;
   position: relative;
   z-index: 1;
   background-color: var(--wpe--color--white);
 
   @media (min-width: $breakpoint-medium) {
-    padding: 0 0 4rem;
+    padding: 0 0 1rem;
   }
 
   div {
@@ -189,4 +189,30 @@
       padding: 0.4em;
     }
   }
+}
+
+.tag-wrapper {
+  display: flex;
+  position: relative;
+  z-index: 3;
+  background: var(--wpe--color--white);
+  padding: 0 1rem 3rem;
+
+  @media (min-width: $breakpoint-medium) {
+    padding: 0 0 4rem;
+  }
+}
+
+.tag-title {
+  width: fit-content;
+  text-transform: uppercase;
+  min-width: 6.5rem;
+  padding-right: 0.5rem;
+}
+
+.tag-name-wrapper {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  color: var(--wpe--color--red);
 }

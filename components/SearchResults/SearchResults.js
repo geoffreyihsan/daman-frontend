@@ -78,7 +78,6 @@ export default function SearchResults({ searchResults, isLoading }) {
       <div className={cx("component")}>
         {searchResults?.map((node) => (
           <div className={cx("content-wrapper")}>
-            {console.log(node?.featuredImage)}
             <div className={cx("left-wrapper")}>
               {node?.featuredImage?.node && (
                 <div className={cx("wrapper-image")}>

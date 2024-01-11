@@ -6,7 +6,6 @@ import {
   Header,
   Footer,
   Main,
-  EntryHeader,
   SEO,
   TwoColumns,
   Left,
@@ -58,7 +57,7 @@ export default function Tag(props) {
       />
       <Main>
         <>
-          <EntryHeaderTag />
+          <EntryHeaderTag databaseId={databaseId}/>
           <TwoColumns border={false}>
             <Left>
               <PostTag databaseId={databaseId} />
