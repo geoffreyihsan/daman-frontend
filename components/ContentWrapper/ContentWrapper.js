@@ -13,6 +13,7 @@ export default function ContentWrapper({
   children,
   databaseId,
   className,
+  single,
 }) {
   // const [shouldShowInterscroller, setShouldShowInterscroller] = useState(false);
 
@@ -53,30 +54,33 @@ export default function ContentWrapper({
         <div dangerouslySetInnerHTML={{ __html: content ?? "" }} />
         {children}
       </article>
-      <div className={cx("tag-wrapper")}>
-        <div className={cx("tag-title")}>{"Tagged in: "}</div>
-        <div className={cx("tag-name-wrapper")}>
-          {singleTags.map((post, index) => (
-            <div className={cx("tag-name")} key={post?.node?.name}>
-              {/* Add a key for efficient rendering */}
-              {post?.node?.name && post?.node?.uri && (
-                <Link href={post?.node?.uri}>
-                  <h2>
-                    {index < singleTags.length - 1 ? (
-                      <>
-                        {post?.node?.name}
-                        {","}{" "}
-                      </>
-                    ) : (
-                      post?.node?.name
-                    )}
-                  </h2>
-                </Link>
-              )}
-            </div>
-          ))}
+      {/* Tag under post content */}
+      {single !== "backissue" && single !== "contest" && (
+        <div className={cx("tag-wrapper")}>
+          <div className={cx("tag-title")}>{"Tagged in: "}</div>
+          <div className={cx("tag-name-wrapper")}>
+            {singleTags.map((post, index) => (
+              <div className={cx("tag-name")} key={post?.node?.name}>
+                {/* Add a key for efficient rendering */}
+                {post?.node?.name && post?.node?.uri && (
+                  <Link href={post?.node?.uri}>
+                    <h2>
+                      {index < singleTags.length - 1 ? (
+                        <>
+                          {post?.node?.name}
+                          {","}{" "}
+                        </>
+                      ) : (
+                        post?.node?.name
+                      )}
+                    </h2>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <Interscroller />
     </>
   );

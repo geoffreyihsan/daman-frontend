@@ -6,11 +6,17 @@ import {
   Header,
   Footer,
   Main,
-  Container,
   EntryHeader,
   ContentWrapper,
   FeaturedImage,
   SEO,
+  BorderDivider,
+  TwoColumns,
+  Left,
+  Right,
+  HalfPage1,
+  Outnow,
+  HalfPage2,
 } from "../components";
 
 export default function SingleContest(props) {
@@ -19,7 +25,7 @@ export default function SingleContest(props) {
     return <>Loading...</>;
   }
 
-  const { title, content, featuredImage, date, uri, seo } =
+  const { title, content, featuredImage, date, databaseId, seo, uri } =
     props?.data?.contest;
 
   // Get menus
@@ -59,10 +65,22 @@ export default function SingleContest(props) {
       />
       <Main>
         <>
-          <EntryHeader title={title} image={featuredImage?.node} date={date} />
-          <>
-            <ContentWrapper content={content} />
-          </>
+          <BorderDivider />
+          <TwoColumns>
+            <Left>
+              <EntryHeader title={title} date={date} />
+              <ContentWrapper
+                content={content}
+                databaseId={databaseId}
+                single={"contest"}
+              />
+            </Left>
+            <Right>
+              <HalfPage1 />
+              <Outnow />
+              <HalfPage2 />
+            </Right>
+          </TwoColumns>
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
@@ -76,15 +94,16 @@ SingleContest.query = gql`
   query GetContest($databaseId: ID!, $asPreview: Boolean = false) {
     contest(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
+      databaseId
       content
       date
+      uri
       ...FeaturedImageFragment
       seo {
         title
         metaDesc
         focuskw
       }
-      uri
     }
     generalSettings {
       ...BlogInfoFragment

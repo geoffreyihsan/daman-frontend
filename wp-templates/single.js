@@ -31,7 +31,6 @@ export default function Single(props) {
     content,
     featuredImage,
     date,
-    author,
     categories,
     databaseId,
     seo,
@@ -81,7 +80,6 @@ export default function Single(props) {
               <EntryHeader
                 title={title}
                 date={date}
-                author={author?.node?.name}
                 categories={categories?.edges[0]}
               />
               <ContentWrapper content={content} databaseId={databaseId} />
@@ -114,11 +112,6 @@ Single.query = gql`
       content
       date
       uri
-      author {
-        node {
-          name
-        }
-      }
       categories(where: { childless: true, exclude: $exclude }) {
         edges {
           node {

@@ -8,7 +8,6 @@ let cx = className.bind(styles);
 export default function EntryHeader({
   title,
   date,
-  author,
   categories,
   className,
 }) {
