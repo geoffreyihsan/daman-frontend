@@ -42,12 +42,12 @@ export default function PostTag(databaseId) {
 
     return {
       ...prev,
-      category: {
-        ...prev.category,
+      tag: {
+        ...prev.tag,
         contentNodes: {
-          ...prev.category.contentNodes,
+          ...prev.tag.contentNodes,
           edges: [...prevEdges, ...newEdges],
-          pageInfo: fetchMoreResult.category.contentNodes.pageInfo,
+          pageInfo: fetchMoreResult.tag.contentNodes.pageInfo,
         },
       },
     };
@@ -55,10 +55,7 @@ export default function PostTag(databaseId) {
 
   // Function to fetch more posts
   const fetchMorePosts = () => {
-    if (
-      !isFetchingMore &&
-      data?.tag?.contentNodes?.pageInfo?.hasNextPage
-    ) {
+    if (!isFetchingMore && data?.tag?.contentNodes?.pageInfo?.hasNextPage) {
       setIsFetchingMore(true);
       fetchMore({
         variables: {
