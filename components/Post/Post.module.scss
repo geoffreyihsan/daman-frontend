@@ -12,6 +12,7 @@
   position: relative;
   width: 10rem;
   height: 10rem;
+  margin: 0 0 1rem;
 
   @media (min-width: $breakpoint-medium) {
     width: 19rem;
@@ -29,7 +30,7 @@
   font-weight: 300;
   letter-spacing: 0.03rem;
   text-transform: uppercase;
-  padding: 1rem 0 0;
+  padding: 0;
   text-align: left;
 
   @media (min-width: $breakpoint-medium) {
