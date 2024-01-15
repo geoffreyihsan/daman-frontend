@@ -73,11 +73,9 @@ export default function Features({}) {
                   {post?.node?.categories?.edges[0] && (
                     <div className={cx("slide-category-wrapper")}>
                       <Link href={post?.node?.categories?.edges[0]?.node?.uri}>
-                        {
+                        {post?.node?.categories?.edges[0]?.node?.parent &&
                           post?.node?.categories?.edges[0]?.node?.parent?.node
-                            ?.name
-                        }
-                        {" | "}
+                            ?.name + " | "}
                         {post?.node?.categories?.edges[0]?.node?.name}
                       </Link>
                     </div>

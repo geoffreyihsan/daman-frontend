@@ -114,11 +114,9 @@ export default function Updates() {
                   href={firstUpdatePosts?.node?.categories?.edges[0]?.node?.uri}
                 >
                   <h2>
-                    {
-                      firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent
-                        ?.node?.name
-                    }
-                    {" | "}
+                    {firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent &&
+                      firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent?.node
+                        ?.name + " | "}
                     {firstUpdatePosts?.node?.categories?.edges[0]?.node?.name}
                   </h2>
                 </Link>
@@ -164,11 +162,9 @@ export default function Updates() {
                   <div className={cx("other-post-category-wrapper")}>
                     <Link href={post?.node?.categories?.edges[0]?.node?.uri}>
                       <h2>
-                        {
+                        {post?.node?.categories?.edges[0]?.node?.parent &&
                           post?.node?.categories?.edges[0]?.node?.parent?.node
-                            ?.name
-                        }
-                        {" | "}
+                            ?.name + " | "}
                         {post?.node?.categories?.edges[0]?.node?.name}
                       </h2>
                     </Link>
