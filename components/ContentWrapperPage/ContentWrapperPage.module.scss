@@ -243,6 +243,10 @@
       justify-content: space-between;
       align-items: center;
 
+      @media (min-width: $breakpoint-medium) {
+        align-items: baseline;
+      }
+
       ul {
         flex: 2;
         width: 100%;
