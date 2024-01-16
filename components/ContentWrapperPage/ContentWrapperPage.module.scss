@@ -241,7 +241,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
 
       ul {
         flex: 2;
@@ -289,6 +289,11 @@
     .wpforms-field-label {
       flex: 1;
       min-width: 100px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 0.1rem;
     }
 
     .wpforms-field-medium {
@@ -297,6 +302,12 @@
       width: 100%;
       box-sizing: border-box;
       padding: 0.25rem;
+      border-radius: 0;
+      background-color: var(--wpe--color--white);
+    }
+
+    .wpforms-required-label {
+      color: var(--wpe--color--red);
     }
 
     textarea {
