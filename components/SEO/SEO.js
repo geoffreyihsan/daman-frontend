@@ -56,7 +56,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           <>
             <title>{title}</title>
             <meta name="title" content={title} />
-            <meta itemprop="name" content={title} />
+            <meta itemProp="name" content={title} />
             <meta property="og:title" content={title} />
             <meta property="twitter:title" content={title} />
           </>
@@ -65,7 +65,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         {description && (
           <>
             <meta name="description" content={description} />
-            <meta itemprop="description" content={description} />
+            <meta itemProp="description" content={description} />
             <meta property="og:description" content={description} />
             <meta property="twitter:description" content={description} />
           </>
@@ -73,7 +73,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
 
         {imageUrl && (
           <>
-            <meta itemprop="image" content={imageUrl} />
+            <meta itemProp="image" content={imageUrl} />
             <meta property="og:image" content={imageUrl} />
             <meta property="twitter:image" content={imageUrl} />
           </>
