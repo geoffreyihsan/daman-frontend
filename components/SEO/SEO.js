@@ -16,10 +16,6 @@ import { useEffect, useState } from "react";
  * @returns {React.ReactElement} The SEO component
  */
 export default function SEO({ title, description, imageUrl, url, focuskw }) {
-  if (!title && !description && !imageUrl && !url && !focuskw) {
-    return null;
-  }
-
   const [locationPathname, setLocationPathname] = useState("");
 
   useEffect(() => {
@@ -35,6 +31,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
     nextFetchPolicy: "cache-and-network",
   });
 
+  // Get Favicon
   const favicon = data?.favicon;
 
   return (
@@ -59,6 +56,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           <>
             <title>{title}</title>
             <meta name="title" content={title} />
+            <meta itemprop="name" content={title} />
             <meta property="og:title" content={title} />
             <meta property="twitter:title" content={title} />
           </>
@@ -67,6 +65,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         {description && (
           <>
             <meta name="description" content={description} />
+            <meta itemprop="description" content={description} />
             <meta property="og:description" content={description} />
             <meta property="twitter:description" content={description} />
           </>
@@ -74,6 +73,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
 
         {imageUrl && (
           <>
+            <meta itemprop="image" content={imageUrl} />
             <meta property="og:image" content={imageUrl} />
             <meta property="twitter:image" content={imageUrl} />
           </>
@@ -81,10 +81,10 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
 
         {url && (
           <>
-            <meta property="og:url" content={"https://destinasian.com" + url} />
+            <meta property="og:url" content={"https://daman.co.id" + url} />
             <meta
               property="twitter:url"
-              content={"https://destinasian.com" + url}
+              content={"https://daman.co.id" + url}
             />
           </>
         )}
