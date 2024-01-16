@@ -92,10 +92,10 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         {focuskw && <meta name="keywords" content={focuskw} />}
 
         {/* SEM Keywords */}
-        {/* <meta
+        <meta
           name="keywords"
-          content="travel magazine, luxury magazine, luxury travel magazine, travel news, travel reviews, luxury travel, hotel and airline booking, hotel reviews, airline news, travel video guides, travel deals, travel contest, travel website, online travel magazine, asia travel, philippines travel, hotel news, best hotels manila, hong kong restaurants, beach holidays, thailand travel, singapore restaurants, luxury train trips, luxury resorts, best hotels beijing, best hotels singapore, luxury holidays asia, japan travel, indonesia travel, southeast asia travel, cultural travel, asia travel magazine, india travel, island getaways, asia cruise, phuket resorts, bali resorts, bangkok restaurants, airline news, adventure travel asia, airline routes, best hotels hong kong, best hotels jakarta, luxe list, luxury travel asia, hong kong travel, bali travel, sri lanka travel, cambodia travel, luxury hotels, best hotels shanghai, vietnam travel, tokyo restaurants, singapore travel, china travel, maldives resorts, luxury cruise, best hotels southeast asia, best hotels tokyo"
-        /> */}
+          content="in style magazine, Porsche, mens styles, male models, man fashion, men's watch, Bvlgari, Tag Heuer, Breitling, mens fashion, male fashion, top male models, mens fashion magazine, men outfits, Afgan, latest fashion for men, nicholas saputra, luxury men's watch, men's fashion trends, men's fashion styles, male grooming, men's designer, men's lifestyle, Swiss International Airlines, men's style magazine, men's watch trends, model indonesia, mens dressing style, male lifestyle, model hot indo, male supermodel, model pria indonesia, men's spring summer fashion, Ronald Liem, indonesia actor, indonesian male celebrity, men's horology, top model indo, Resor Mewah"
+        />
 
         {/* Inter Font Family */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
