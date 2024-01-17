@@ -109,10 +109,10 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           rel="stylesheet"
         />
 
-        {/* <!-- Google tag (gtag.js) --> */}
+        {/* Google tag (gtag.js) */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-20171557-1"
+          src="https://www.googletagmanager.com/gtag/js?id=G-CYBBEL8JS1"
         ></script>
         <script
           dangerouslySetInnerHTML={{
@@ -121,7 +121,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-20171557-1');
+            gtag('config', 'G-CYBBEL8JS1');
           `,
           }}
         ></script>

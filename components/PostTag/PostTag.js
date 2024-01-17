@@ -3,17 +3,9 @@ import classNames from "classnames/bind";
 import styles from "./PostTag.module.scss";
 import { useQuery } from "@apollo/client";
 import { GetPostTag } from "../../queries/GetPostTag";
-import { Post, Button, TwoColumns } from "../../components";
+import { Post, Button } from "../../components";
 
 let cx = classNames.bind(styles);
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 export default function PostTag(databaseId) {
   // Fetching Posts
