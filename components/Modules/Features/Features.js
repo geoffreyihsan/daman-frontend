@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 import Image from "next/image";
 
 export default function Features({}) {
-  const postsPerPage = 5;
+  const postsPerPage = 6;
 
   // Get Feature Posts
   const { data } = useQuery(GetFeatures, {
