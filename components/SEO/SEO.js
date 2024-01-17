@@ -109,6 +109,23 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           rel="stylesheet"
         />
 
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-20171557-1"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-20171557-1');
+          `,
+          }}
+        ></script>
+
         {/* Google Ad Manager */}
         <AdScript />
         <AdConfig
