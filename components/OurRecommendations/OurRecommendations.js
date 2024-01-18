@@ -81,18 +81,12 @@ export default function OurRecommendations({ databaseId }) {
     }
   }, [otherRecommendations]); // Trigger shuffling when moreReviews changes
 
-  if (error) {
+  if (error || errorOther) {
     return <pre>{JSON.stringify(error)}</pre>;
   }
 
-  if (loading) {
-    return (
-      <>
-        <div className="mx-auto my-0 flex max-w-[100vw] justify-center	bg-white ">
-          <Button className="gap-x-4 ">{"Loading..."}</Button>
-        </div>
-      </>
-    );
+  if (loading || loadingOther) {
+    return null;
   }
 
   // Show only the first 10 items from shuffledOurRecommendations || shuffledOtherRecommendations

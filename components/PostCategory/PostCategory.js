@@ -68,7 +68,7 @@ export default function PostCategory(databaseId) {
   }
 
   // Loading Menu
-  if (loading && !isFetchingMore) {
+  if (loading) {
     return (
       <>
         <div className="my-0 pb-4 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px] lg:px-0 ">
