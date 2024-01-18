@@ -46,7 +46,11 @@ export default function DamanTv({ damanTvLogo }) {
                   >
                     <Image
                       src={damanTvLogo?.sourceUrl}
-                      altText={damanTvLogo?.altText}
+                      alt={
+                        damanTvLogo?.altText
+                          ? damanTvLogo?.altText
+                          : "DAMAN TV Logo"
+                      }
                       className={cx("daman-tv-logo")}
                       fill
                       sizes="100%"

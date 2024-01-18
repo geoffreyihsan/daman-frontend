@@ -13,7 +13,7 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
     const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
 
     if (lastSpaceIndex !== -1) {
-      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex);
     }
 
     return `${trimmedExcerpt}`;

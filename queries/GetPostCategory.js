@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GetPostCategory = gql`
   query GetPostCategory(
-    $first: Int
+    $first: Int!
     $after: String
     $id: ID!
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]

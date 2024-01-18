@@ -38,7 +38,11 @@ export default function InHouseAds() {
             <Link href={subsLink}>
               <Image
                 src={inHouseAds?.sourceUrl}
-                altText={inHouseAds?.altText}
+                alt={
+                  inHouseAds?.altText
+                    ? inHouseAds?.altText
+                    : "In House Ads"
+                }
                 fill
                 sizes="100%"
               />

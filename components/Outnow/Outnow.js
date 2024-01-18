@@ -38,7 +38,7 @@ export default function Outnow() {
             <Link href={subsLink}>
               <Image
                 src={outnow?.sourceUrl}
-                altText={outnow?.altText}
+                alt={outnow?.altText ? outnow?.altText : "Outnow Image"}
                 fill
                 sizes="100%"
               />

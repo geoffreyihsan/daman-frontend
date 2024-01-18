@@ -81,7 +81,7 @@ export default function PostTag(databaseId) {
   return (
     <div className={cx("component")}>
       {allPosts.length !== 0 &&
-        allPosts.map((post, index) => (
+        allPosts.map((post) => (
           <React.Fragment key={post?.id}>
             <Post
               title={post?.title}
@@ -96,18 +96,8 @@ export default function PostTag(databaseId) {
         <div className="my-0 flex max-w-[100vw] justify-start lg:max-w-[1024px] ">
           {data?.tag?.contentNodes?.pageInfo?.hasNextPage &&
             data?.tag?.contentNodes?.pageInfo?.endCursor && (
-              <Button
-                onClick={() => {
-                  if (
-                    !isFetchingMore &&
-                    data?.tag?.contentNodes?.pageInfo?.hasNextPage
-                  ) {
-                    fetchMorePosts();
-                  }
-                }}
-                className="gap-x-4	"
-              >
-                {isFetchingMore ? "Loading..." : <>Load More </>}
+              <Button onClick={fetchMorePosts} className="gap-x-4	">
+                {isFetchingMore ? "Loading..." : "Load More"}
               </Button>
             )}
         </div>

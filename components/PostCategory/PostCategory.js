@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./PostCategory.module.scss";
 import { useQuery } from "@apollo/client";
 import { GetPostCategory } from "../../queries/GetPostCategory";
-import { Post, Button, TwoColumns } from "../../components";
+import { Post, Button } from "../../components";
 
 let cx = classNames.bind(styles);
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 export default function PostCategory(databaseId) {
   // Fetching Posts
@@ -76,7 +68,7 @@ export default function PostCategory(databaseId) {
   }
 
   // Loading Menu
-  if (loading) {
+  if (loading && !isFetchingMore) {
     return (
       <>
         <div className="my-0 pb-4 px-4 flex max-w-[100vw] justify-start lg:max-w-[1024px] lg:px-0 ">
@@ -107,18 +99,8 @@ export default function PostCategory(databaseId) {
         <div className="my-0 flex max-w-[100vw] justify-start lg:max-w-[1024px] ">
           {data?.category?.contentNodes?.pageInfo?.hasNextPage &&
             data?.category?.contentNodes?.pageInfo?.endCursor && (
-              <Button
-                onClick={() => {
-                  if (
-                    !isFetchingMore &&
-                    data?.category?.contentNodes?.pageInfo?.hasNextPage
-                  ) {
-                    fetchMorePosts();
-                  }
-                }}
-                className="gap-x-4	"
-              >
-                {isFetchingMore ? "Loading..." : <>Load More </>}
+              <Button onClick={fetchMorePosts} className="gap-x-4	">
+                {isFetchingMore ? "Loading..." : "Load More"}
               </Button>
             )}
         </div>

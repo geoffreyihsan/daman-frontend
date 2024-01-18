@@ -134,7 +134,7 @@ export default function HeroSlider({ databaseId }) {
     const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
 
     if (lastSpaceIndex !== -1) {
-      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex);
     }
 
     return `${trimmedExcerpt}`;
@@ -169,7 +169,7 @@ export default function HeroSlider({ databaseId }) {
                   <Link href={homepageSlide?.uri}>
                     <Image
                       src={homepageSlide?.featuredImage?.sourceUrl}
-                      altText={
+                      alt={
                         homepageSlide?.featuredImage?.altText
                           ? homepageSlide?.featuredImage?.altText
                           : "slide " + index

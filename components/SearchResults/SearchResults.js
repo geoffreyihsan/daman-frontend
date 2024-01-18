@@ -67,7 +67,7 @@ export default function SearchResults({ searchResults, isLoading }) {
     const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
 
     if (lastSpaceIndex !== -1) {
-      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex);
     }
 
     return `${trimmedExcerpt}`;

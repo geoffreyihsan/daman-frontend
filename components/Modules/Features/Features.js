@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 import Image from "next/image";
 
 export default function Features({}) {
-  const postsPerPage = 6;
+  const postsPerPage = 8;
 
   // Get Feature Posts
   const { data } = useQuery(GetFeatures, {
@@ -32,7 +32,7 @@ export default function Features({}) {
     const lastSpaceIndex = trimmedExcerpt?.lastIndexOf(" ");
 
     if (lastSpaceIndex !== -1) {
-      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex) + "...";
+      trimmedExcerpt = trimmedExcerpt?.substring(0, lastSpaceIndex);
     }
 
     return `${trimmedExcerpt}`;

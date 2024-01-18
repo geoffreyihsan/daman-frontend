@@ -11,7 +11,7 @@ export default function FeaturedImageSingle({ image, className }) {
         <div className={cx("image-wrapper")}>
           <Image
             src={image?.sourceUrl}
-            altText={
+            alt={
               image?.altText ? image?.altText : "Single Post Featured Image"
             }
             className={cx("featured-image")}
