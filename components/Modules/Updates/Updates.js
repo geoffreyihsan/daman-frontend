@@ -107,8 +107,8 @@ export default function Updates() {
                   <Image
                     src={firstUpdatePosts?.node?.featuredImage?.node?.sourceUrl}
                     alt={
-                      post?.node?.featuredImage?.node?.altText
-                        ? post?.node?.featuredImage?.node?.altText
+                      firstUpdatePosts?.node?.featuredImage?.node?.altText
+                        ? firstUpdatePosts?.node?.featuredImage?.node?.altText
                         : "Updates Image"
                     }
                     className={cx("featured-image")}
