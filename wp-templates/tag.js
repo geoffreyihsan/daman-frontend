@@ -48,6 +48,16 @@ export default function Tag(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
+          height="0"
+          width="0"
+          className="invisible hidden"
+        ></iframe>
+      </noscript>
+      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
