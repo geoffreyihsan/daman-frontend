@@ -41,7 +41,7 @@ export default function InHouseAds() {
                 alt={
                   inHouseAds?.altText
                     ? inHouseAds?.altText
-                    : "In House Ads"
+                    : "In House Ads Image"
                 }
                 fill
                 sizes="100%"

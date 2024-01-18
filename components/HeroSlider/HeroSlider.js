@@ -172,7 +172,7 @@ export default function HeroSlider({ databaseId }) {
                       alt={
                         homepageSlide?.featuredImage?.altText
                           ? homepageSlide?.featuredImage?.altText
-                          : "slide " + index
+                          : "Slide " + index + " Image"
                       }
                       className={cx("featured-image")}
                       fill

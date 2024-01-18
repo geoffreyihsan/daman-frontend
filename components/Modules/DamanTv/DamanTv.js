@@ -105,7 +105,11 @@ export default function DamanTv({ damanTvLogo }) {
                       <div className={cx("other-image-wrapper")}>
                         <Image
                           src={post?.node?.featuredImage?.node?.sourceUrl}
-                          alt={post?.node?.featuredImage?.node?.altText}
+                          alt={
+                            post?.node?.featuredImage?.node?.altText
+                              ? post?.node?.featuredImage?.node?.altText
+                              : "DAMAN TV Image"
+                          }
                           fill
                           sizes="100%"
                         ></Image>

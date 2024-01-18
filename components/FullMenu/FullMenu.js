@@ -123,7 +123,7 @@ export default function FullMenu({
             <div className={cx("image-wrapper")}>
               {subsLink && newCover && (
                 <Link href={subsLink}>
-                  <Image src={newCover} alt={"New Issue"} fill sizes="100%" />
+                  <Image src={newCover} alt={"New Issue Image"} fill sizes="100%" />
                 </Link>
               )}
             </div>

@@ -131,6 +131,11 @@ export default function OurRecommendations({ databaseId }) {
                     <Link href={post?.node?.uri}>
                       <Image
                         src={post?.node?.featuredImage?.node?.sourceUrl}
+                        alt={
+                          post?.node?.featuredImage?.node?.altText
+                            ? post?.node?.featuredImage?.node?.altText
+                            : "Our Recommendations Image"
+                        }
                         className={cx("featured-image")}
                         fill
                         sizes="100%"

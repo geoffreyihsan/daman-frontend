@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client';
-import Image from "next/image"
+import { gql } from "@apollo/client";
+import Image from "next/image";
 export default function FeaturedImage({
   image,
   width,
@@ -10,7 +10,7 @@ export default function FeaturedImage({
   ...props
 }) {
   const src = image?.sourceUrl;
-  const { altText } = image || '';
+  const { altText } = image?.altText || "DAMAN Image";
 
   width = width ? width : image?.mediaDetails?.width;
   height = height ? height : image?.mediaDetails?.height;
@@ -25,7 +25,7 @@ export default function FeaturedImage({
         height={height}
         priority={priority}
         {...props}
-        />
+      />
     </figure>
   ) : null;
 }

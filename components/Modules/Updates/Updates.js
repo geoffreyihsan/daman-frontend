@@ -64,6 +64,11 @@ export default function Updates() {
                       <Link href={post?.node?.uri}>
                         <Image
                           src={post?.node?.featuredImage?.node?.sourceUrl}
+                          alt={
+                            post?.node?.featuredImage?.node?.altText
+                              ? post?.node?.featuredImage?.node?.altText
+                              : "Updates Image"
+                          }
                           className={cx("featured-image")}
                           fill
                           sizes="100%"
@@ -101,6 +106,11 @@ export default function Updates() {
                 <Link href={firstUpdatePosts?.node?.uri}>
                   <Image
                     src={firstUpdatePosts?.node?.featuredImage?.node?.sourceUrl}
+                    alt={
+                      post?.node?.featuredImage?.node?.altText
+                        ? post?.node?.featuredImage?.node?.altText
+                        : "Updates Image"
+                    }
                     className={cx("featured-image")}
                     fill
                     sizes="100%"
@@ -114,9 +124,10 @@ export default function Updates() {
                   href={firstUpdatePosts?.node?.categories?.edges[0]?.node?.uri}
                 >
                   <h2>
-                    {firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent &&
-                      firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent?.node
-                        ?.name + " | "}
+                    {firstUpdatePosts?.node?.categories?.edges[0]?.node
+                      ?.parent &&
+                      firstUpdatePosts?.node?.categories?.edges[0]?.node?.parent
+                        ?.node?.name + " | "}
                     {firstUpdatePosts?.node?.categories?.edges[0]?.node?.name}
                   </h2>
                 </Link>
@@ -151,6 +162,11 @@ export default function Updates() {
                     <Link href={post?.node?.uri}>
                       <Image
                         src={post?.node?.featuredImage?.node?.sourceUrl}
+                        alt={
+                          post?.node?.featuredImage?.node?.altText
+                            ? post?.node?.featuredImage?.node?.altText
+                            : "Updates Image"
+                        }
                         className={cx("featured-image")}
                         fill
                         sizes="100%"

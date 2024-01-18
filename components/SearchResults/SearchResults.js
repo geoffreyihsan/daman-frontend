@@ -84,6 +84,11 @@ export default function SearchResults({ searchResults, isLoading }) {
                   <Link href={node?.uri}>
                     <Image
                       src={node?.featuredImage?.node?.sourceUrl}
+                      alt={
+                        node?.featuredImage?.node?.altText
+                          ? node?.featuredImage?.node?.altText
+                          : "Search Results Image"
+                      }
                       className={cx("featured-image")}
                       fill
                       sizes="100%"

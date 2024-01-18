@@ -63,6 +63,11 @@ export default function DamanCaliber({}) {
                       <Link href={post?.node?.uri}>
                         <Image
                           src={post?.node?.featuredImage?.node?.sourceUrl}
+                          alt={
+                            post?.node?.featuredImage?.node?.altText
+                              ? post?.node?.featuredImage?.node?.altText
+                              : "DAMAN Caliber Image"
+                          }
                           className={cx("featured-image")}
                           fill
                           sizes="100%"
@@ -101,6 +106,11 @@ export default function DamanCaliber({}) {
                   <Link href={post?.node?.uri}>
                     <Image
                       src={post?.node?.featuredImage?.node?.sourceUrl}
+                      alt={
+                        post?.node?.featuredImage?.node?.altText
+                          ? post?.node?.featuredImage?.node?.altText
+                          : "DAMAN Caliber Image"
+                      }
                       className={cx("featured-image")}
                       fill
                       sizes="100%"
