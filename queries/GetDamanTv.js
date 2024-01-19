@@ -5,7 +5,7 @@ export const GetDamanTv = gql`
   ${FeaturedImage.fragments.entry}
   query GetDamanTv(
     $id: ID!
-    $first: Int
+    $first: Int!
   ) {
     category(id: $id, idType: DATABASE_ID) {
       name

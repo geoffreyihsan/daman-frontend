@@ -5,7 +5,7 @@ export const GetFeatures = gql`
   ${FeaturedImage.fragments.entry}
   query GetFeatures(
     $id: ID!
-    $first: Int
+    $first: Int!
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
   ) {
     category(id: $id, idType: DATABASE_ID) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./EntryHeaderCategory.module.scss";
-import { BorderDivider, Button } from "../../components";
+import { BorderDivider } from "../../components";
 import { useQuery } from "@apollo/client";
 import { GetEntryHeaderCategory } from "../../queries/GetEntryHeaderCategory";
 import Link from "next/link";
@@ -11,10 +11,7 @@ let cx = classNames.bind(styles);
 export default function EntryHeaderCategory({ databaseId }) {
   const [currentUrl, setCurrentUrl] = useState("");
 
-  const catPerPage = 100;
-
   let catVariable = {
-    first: catPerPage,
     id: databaseId,
   };
 
