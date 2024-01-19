@@ -92,6 +92,21 @@ export default function FullMenu({
     };
   };
 
+  // Function to fetch more posts
+  const fetchMorePosts = () => {
+    if (!isFetchingMore && searchResultsData?.tags?.pageInfo?.hasNextPage) {
+      setIsFetchingMore(true);
+      fetchMore({
+        variables: {
+          after: searchResultsData?.tags?.pageInfo?.endCursor,
+        },
+        updateQuery,
+      }).then(() => {
+        setIsFetchingMore(false); // Reset the flag after fetch is done
+      });
+    }
+  };
+
   // Check if the search query is empty and no search results are loading, then hide the SearchResults component
   const isSearchResultsVisible = !!searchQuery;
 
@@ -123,7 +138,12 @@ export default function FullMenu({
             <div className={cx("image-wrapper")}>
               {subsLink && newCover && (
                 <Link href={subsLink}>
-                  <Image src={newCover} alt={"New Issue Image"} fill sizes="100%" />
+                  <Image
+                    src={newCover}
+                    alt={"New Issue Image"}
+                    fill
+                    sizes="100%"
+                  />
                 </Link>
               )}
             </div>
@@ -333,56 +353,8 @@ m2911 -442 c114 -32 268 -112 343 -177 146 -129 227 -253 285 -441 l22 -70 3
           {searchResultsData?.tags?.pageInfo?.hasNextPage &&
             searchResultsData?.tags?.pageInfo?.endCursor && (
               <div className="mx-auto my-0 flex w-[100vw] justify-center	">
-                <Button
-                  onClick={() => {
-                    if (
-                      !isFetchingMore &&
-                      searchResultsData?.tags?.pageInfo?.hasNextPage
-                    ) {
-                      setIsFetchingMore(true); // Set flag to indicate fetch in progress
-                      fetchMore({
-                        variables: {
-                          first: postsPerPage,
-                          after: searchResultsData?.tags?.pageInfo?.endCursor,
-                        },
-                        updateQuery,
-                      }).then(() => {
-                        setIsFetchingMore(false); // Reset the flag after fetch is done
-                      });
-                    }
-                  }}
-                  className="gap-x-4	"
-                >
-                  {isFetchingMore ? (
-                    "Loading..." // Display loading text when fetching
-                  ) : (
-                    <>
-                      Load More{" "}
-                      <svg
-                        className="h-auto w-8 origin-center rotate-90"
-                        version="1.0"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="512.000000pt"
-                        height="512.000000pt"
-                        viewBox="0 0 512.000000 512.000000"
-                        preserveAspectRatio="xMidYMid meet"
-                      >
-                        <g
-                          transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                          fill="#000000"
-                          stroke="none"
-                        >
-                          <path
-                            d="M1387 5110 c-243 -62 -373 -329 -272 -560 27 -62 77 -114 989 -1027
-l961 -963 -961 -963 c-912 -913 -962 -965 -989 -1027 -40 -91 -46 -200 -15
--289 39 -117 106 -191 220 -245 59 -28 74 -31 160 -30 74 0 108 5 155 23 58
-22 106 70 1198 1160 1304 1302 1202 1185 1202 1371 0 186 102 69 -1202 1371
--1102 1101 -1140 1137 -1198 1159 -67 25 -189 34 -248 20z"
-                          />
-                        </g>
-                      </svg>
-                    </>
-                  )}
+                <Button onClick={fetchMorePosts} className="gap-x-4	">
+                  {isFetchingMore ? "Loading..." : "Load More"}
                 </Button>
               </div>
             )}

@@ -88,22 +88,26 @@
     display: flex;
     width: 50%;
     justify-content: flex-start;
-    // border: 0.5rem solid var(--wpe--main--background--color);
-    // background-color: var(--wpe--color--light--grey);
+    padding: 0.5rem 0.5rem 0.5rem 0;
+
+    @media (min-width: $breakpoint-extra-small) {
+      width: 11.5rem;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      padding: 0.5rem;
+    }
 
     .image-wrapper {
       position: relative;
-      width: 8rem;
-      height: 10rem;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 0.78;
 
       @media (min-width: $breakpoint-extra-small) {
         width: 11rem;
         height: 14rem;
       }
-    }
-
-    @media (min-width: $breakpoint-extra-small) {
-      width: 11.5rem;
     }
   }
 
@@ -139,7 +143,7 @@
     }
 
     @media (min-width: $breakpoint-medium) {
-      padding: 0.5rem ;
+      padding: 0.5rem;
     }
 
     .secondary-navigation {

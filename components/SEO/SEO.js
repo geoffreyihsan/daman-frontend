@@ -127,7 +127,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         ></script>
 
         {/* Google Tag Manager */}
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -137,7 +137,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
             })(window,document,'script','dataLayer','GTM-W2MZPZT');
           `,
           }}
-        ></script>
+        ></script> */}
         {/* End Google Tag Manager */}
 
         {/* Google Ad Manager */}

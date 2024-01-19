@@ -42,7 +42,7 @@ export default function SearchInput({
               onChange(e.target.value);
             }
           }}
-          // autoFocus
+          autoFocus
           // onFocus={(e) => e.target.select()}
           type="text"
           placeholder="TYPE HERE"
