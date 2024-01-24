@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export const GetSingleTags = gql`
   query GetSingleTags($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
-      tags(first: 50, where: { orderby: NAME, order: ASC }) {
+      tags(first: 10, where: { orderby: NAME, order: ASC }) {
         edges {
           node {
             name

@@ -12,7 +12,7 @@ export const GetOurRecommendations = gql`
           node {
             parent {
               node {
-                posts(first: 50, where: { notIn: $notIn }) {
+                posts(first: 20, where: { notIn: $notIn }) {
                   edges {
                     node {
                       title

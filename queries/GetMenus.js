@@ -12,7 +12,7 @@ export const GetMenus = gql`
   ) {
     primaryMenuItems: menuItems(
       where: { location: $primaryLocation }
-      first: 50
+      first: 10
     ) {
       nodes {
         ...NavigationMenuItemFragment
@@ -20,20 +20,20 @@ export const GetMenus = gql`
     }
     secondaryMenuItems: menuItems(
       where: { location: $secondaryLocation }
-      first: 50
+      first: 10
     ) {
       nodes {
         ...NavigationMenuItemFragment
       }
     }
-    thirdMenuItems: menuItems(where: { location: $thirdLocation }, first: 50) {
+    thirdMenuItems: menuItems(where: { location: $thirdLocation }, first: 10) {
       nodes {
         ...NavigationMenuItemFragment
       }
     }
     navigationMenuItems: menuItems(
       where: { location: $navigationLocation }
-      first: 50
+      first: 20
     ) {
       nodes {
         ...NavigationMenuItemFragment
@@ -41,7 +41,7 @@ export const GetMenus = gql`
     }
     footerMenuItems: menuItems(
       where: { location: $footerLocation }
-      first: 50
+      first: 10
     ) {
       nodes {
         ...NavigationMenuItemFragment

@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GetHeaderComponent = gql`
   query GetHeaderComponent($primaryLocation: MenuLocationEnum) {
-    menus(where: { location: $primaryLocation }, first: 50) {
+    menus(where: { location: $primaryLocation }, first: 10) {
       nodes {
         headerComponent {
           buttonHeader {
