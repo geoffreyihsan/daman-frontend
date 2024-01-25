@@ -34,8 +34,8 @@ export default function Outnow() {
     <>
       <div className={cx("component")}>
         {outnow && (
-          <div className={cx("image-wrapper")}>
-            <Link href={subsLink}>
+          <Link href={subsLink}>
+            <div className={cx("image-wrapper")}>
               <Image
                 src={outnow?.sourceUrl}
                 alt={outnow?.altText ? outnow?.altText : "Outnow Image"}
@@ -43,8 +43,8 @@ export default function Outnow() {
                 sizes="100%"
                 priority
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         )}
       </div>
     </>

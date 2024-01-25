@@ -165,8 +165,8 @@ export default function HeroSlider({ databaseId }) {
           {homepageSlides?.map((homepageSlide, index) => (
             <SwiperSlide key={index}>
               <div className={cx("slide-wrapper")}>
-                <div className={cx("image-wrapper")}>
-                  <Link href={homepageSlide?.uri}>
+                <Link href={homepageSlide?.uri}>
+                  <div className={cx("image-wrapper")}>
                     <Image
                       src={homepageSlide?.featuredImage?.sourceUrl}
                       alt={
@@ -179,8 +179,8 @@ export default function HeroSlider({ databaseId }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <div className={cx("text-wrapper")}>
                   <div className={cx("features-wrapper")}>{"Features"}</div>
                   <div className={cx("title-wrapper")}>

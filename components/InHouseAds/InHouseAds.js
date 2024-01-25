@@ -34,8 +34,8 @@ export default function InHouseAds() {
     <>
       <div className={cx("component")}>
         {inHouseAds && (
-          <div className={cx("image-wrapper")}>
-            <Link href={subsLink}>
+          <Link href={subsLink}>
+            <div className={cx("image-wrapper")}>
               <Image
                 src={inHouseAds?.sourceUrl}
                 alt={
@@ -47,8 +47,8 @@ export default function InHouseAds() {
                 sizes="100%"
                 priority
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         )}
       </div>
     </>

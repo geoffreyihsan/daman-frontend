@@ -29,8 +29,8 @@ export default function Footer({ menuItems }) {
           </div>
           <div className={cx("container-wrapper")}>
             <div className={cx("first-wrapper")}>
-              <div className={cx("damg-logo-wrapper")}>
-                <Link href={"https://destinasianmediagroup.com/home/"}>
+              <Link href={"https://destinasianmediagroup.com/home/"}>
+                <div className={cx("damg-logo-wrapper")}>
                   <Image
                     src={damgLogo.src}
                     alt="Destinasian Media Group Logo"
@@ -38,8 +38,8 @@ export default function Footer({ menuItems }) {
                     sizes="100%"
                     priority
                   />
-                </Link>
-              </div>
+                </div>
+              </Link>
               <div className={cx("description-wrapper")}>
                 {
                   "© 2023 DestinAsian Media Group All rights reserved. Use of this site constitutes acceptance of our User Agreement (effective 21/12/2015) and Privacy Policy (effective 21/12/2015). The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with prior written permission of DestinAsian Media Group."
@@ -52,8 +52,8 @@ export default function Footer({ menuItems }) {
                 menuItems={menuItems}
               />
               <div className={cx("footer-logo-wrapper")}>
-                <div className={cx("logo-wrapper")}>
-                  <Link href={"https://daman.co.id/"}>
+                <Link href={"https://daman.co.id/"}>
+                  <div className={cx("logo-wrapper")}>
                     <Image
                       src={damanLogo.src}
                       alt="DaMan Logo"
@@ -61,10 +61,10 @@ export default function Footer({ menuItems }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
-                <div className={cx("logo-wrapper")}>
-                  <Link href={"https://destinasian.com/"}>
+                  </div>
+                </Link>
+                <Link href={"https://destinasian.com/"}>
+                  <div className={cx("logo-wrapper")}>
                     <Image
                       src={daLogo.src}
                       alt="Destinasian Logo"
@@ -72,10 +72,10 @@ export default function Footer({ menuItems }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
-                <div className={cx("logo-wrapper")}>
-                  <Link href={"https://destinasian.co.id/"}>
+                  </div>
+                </Link>
+                <Link href={"https://destinasian.co.id/"}>
+                  <div className={cx("logo-wrapper")}>
                     <Image
                       src={daiLogo.src}
                       alt="Destinasian Indonesia Logo"
@@ -83,10 +83,10 @@ export default function Footer({ menuItems }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
-                <div className={cx("logo-wrapper")}>
-                  <Link href={"https://www.prestigeonline.com/id/"}>
+                  </div>
+                </Link>
+                <Link href={"https://www.prestigeonline.com/id/"}>
+                  <div className={cx("logo-wrapper")}>
                     <Image
                       src={prsLogo.src}
                       alt="Prestige Logo"
@@ -94,10 +94,10 @@ export default function Footer({ menuItems }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
-                <div className={cx("logo-wrapper")}>
-                  <Link href={"https://scop3group.com/"}>
+                  </div>
+                </Link>
+                <Link href={"https://scop3group.com/"}>
+                  <div className={cx("logo-wrapper")}>
                     <Image
                       src={scop3Logo.src}
                       alt="Scop3Group Logo"
@@ -105,8 +105,8 @@ export default function Footer({ menuItems }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
