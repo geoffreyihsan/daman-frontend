@@ -45,6 +45,7 @@ export default function InHouseAds() {
                 }
                 fill
                 sizes="100%"
+                priority
               />
             </Link>
           </div>

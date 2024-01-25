@@ -29,6 +29,7 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
               alt={featuredImage?.alt ?? "Post Featured Image"}
               fill
               sizes="100%"
+              priority
             />
           </Link>
         </div>

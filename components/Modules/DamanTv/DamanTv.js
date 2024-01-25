@@ -54,6 +54,7 @@ export default function DamanTv({ damanTvLogo }) {
                       className={cx("daman-tv-logo")}
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
@@ -112,6 +113,7 @@ export default function DamanTv({ damanTvLogo }) {
                           }
                           fill
                           sizes="100%"
+                          priority
                         ></Image>
                       </div>
                     </Link>

@@ -17,6 +17,7 @@ export default function FeaturedImageSingle({ image, className }) {
             className={cx("featured-image")}
             fill
             sizes="100%"
+            priority
           />
         </div>
       )}

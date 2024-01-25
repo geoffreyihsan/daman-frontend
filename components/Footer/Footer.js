@@ -36,6 +36,7 @@ export default function Footer({ menuItems }) {
                     alt="Destinasian Media Group Logo"
                     fill
                     sizes="100%"
+                    priority
                   />
                 </Link>
               </div>
@@ -58,6 +59,7 @@ export default function Footer({ menuItems }) {
                       alt="DaMan Logo"
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
@@ -68,6 +70,7 @@ export default function Footer({ menuItems }) {
                       alt="Destinasian Logo"
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
@@ -78,6 +81,7 @@ export default function Footer({ menuItems }) {
                       alt="Destinasian Indonesia Logo"
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
@@ -88,6 +92,7 @@ export default function Footer({ menuItems }) {
                       alt="Prestige Logo"
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
@@ -98,6 +103,7 @@ export default function Footer({ menuItems }) {
                       alt="Scop3Group Logo"
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>

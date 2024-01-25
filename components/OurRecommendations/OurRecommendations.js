@@ -133,6 +133,7 @@ export default function OurRecommendations({ databaseId }) {
                         className={cx("featured-image")}
                         fill
                         sizes="100%"
+                        priority
                       />
                     </Link>
                   </div>

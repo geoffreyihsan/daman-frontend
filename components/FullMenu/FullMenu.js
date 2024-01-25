@@ -152,6 +152,7 @@ export default function FullMenu({
                     alt={"New Issue Image"}
                     fill
                     sizes="100%"
+                    priority
                   />
                 </Link>
               )}

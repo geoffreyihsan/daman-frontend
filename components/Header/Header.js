@@ -73,16 +73,17 @@ export default function Header({
                   )}
               </div>
               <div className={cx("navbar")}>
-                <div className={cx("brand")}>
-                  <Link href="/" className={cx("logo")}>
+                <Link href="/" className={cx("logo")}>
+                  <div className={cx("brand")}>
                     <Image
                       src={DaManLogo}
                       alt={"DaMan Logo"}
                       fill
                       sizes="100%"
+                      priority
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
               {/* Menu Button */}
               <div className={cx("menu-button")}>
@@ -123,6 +124,7 @@ export default function Header({
                       alt={"DaMan Logo"}
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>

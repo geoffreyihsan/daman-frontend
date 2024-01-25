@@ -71,6 +71,7 @@ export default function Features({}) {
                           className={cx("featured-image")}
                           fill
                           sizes="100%"
+                          priority
                         />
                       </Link>
                     </div>
@@ -114,6 +115,7 @@ export default function Features({}) {
                       className={cx("featured-image")}
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>

@@ -72,6 +72,7 @@ export default function Updates() {
                           className={cx("featured-image")}
                           fill
                           sizes="100%"
+                          priority
                         />
                       </Link>
                     </div>
@@ -114,6 +115,7 @@ export default function Updates() {
                     className={cx("featured-image")}
                     fill
                     sizes="100%"
+                    priority
                   />
                 </Link>
               </div>
@@ -170,6 +172,7 @@ export default function Updates() {
                         className={cx("featured-image")}
                         fill
                         sizes="100%"
+                        priority
                       />
                     </Link>
                   </div>

@@ -41,6 +41,7 @@ export default function Outnow() {
                 alt={outnow?.altText ? outnow?.altText : "Outnow Image"}
                 fill
                 sizes="100%"
+                priority
               />
             </Link>
           </div>

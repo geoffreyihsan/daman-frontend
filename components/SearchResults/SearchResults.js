@@ -92,6 +92,7 @@ export default function SearchResults({ searchResults, isLoading }) {
                       className={cx("featured-image")}
                       fill
                       sizes="100%"
+                      priority
                     />
                   </Link>
                 </div>
