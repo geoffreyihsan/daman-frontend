@@ -209,6 +209,7 @@ export default function Header({
         <FullMenu
           primaryMenuItems={primaryMenuItems}
           secondaryMenuItems={secondaryMenuItems}
+          thirdMenuItems={thirdMenuItems}
           menusLoading={menusLoading}
           newCover={headerComponent?.newCoverIssue?.sourceUrl}
           subsLink={subsLink}

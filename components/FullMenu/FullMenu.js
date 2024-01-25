@@ -55,7 +55,7 @@ export default function FullMenu({
 
   // Search function content
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const postsPerPage = 10;
+  const postsPerPage = 5;
   // Input text
   const inputRef = useRef(null);
   // Function to focus on the input when a button is clicked

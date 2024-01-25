@@ -42,6 +42,7 @@ export default function Single(props) {
     variables: {
       primaryLocation: MENUS.PRIMARY_LOCATION,
       secondaryLocation: MENUS.SECONDARY_LOCATION,
+      thirdLocation: MENUS.THIRD_LOCATION,
       navigationLocation: MENUS.NAVIGATION_LOCATION,
       footerLocation: MENUS.FOOTER_LOCATION,
     },
@@ -51,6 +52,7 @@ export default function Single(props) {
 
   const primaryMenu = menusData?.primaryMenuItems?.nodes ?? [];
   const secondaryMenu = menusData?.secondaryMenuItems?.nodes ?? [];
+  const thirdMenu = menusData?.thirdMenuItems?.nodes ?? [];
   const navigationMenu = menusData?.navigationMenuItems?.nodes ?? [];
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
@@ -76,6 +78,7 @@ export default function Single(props) {
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
+        thirdMenuItems={thirdMenu}
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
