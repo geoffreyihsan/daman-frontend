@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react";
-import { FaSearch, FaWindowClose } from "react-icons/fa";
-
 import styles from "./SearchInput.module.scss";
 
 /**
@@ -16,14 +13,9 @@ export default function SearchInput({
   onChange,
   searchShown,
   setSearchShown,
+  inputRef,
   ...props
 }) {
-  const input = useRef();
-
-  // Clear and focus the input on initial render
-  useEffect(() => {
-    input.current.value = "";
-  }, []);
 
   return (
     <>
@@ -32,7 +24,7 @@ export default function SearchInput({
           Search
         </label>
         <input
-          ref={input}
+          ref={inputRef}
           id="search"
           name="search"
           className={styles.input}
@@ -43,7 +35,6 @@ export default function SearchInput({
             }
           }}
           autoFocus
-          // onFocus={(e) => e.target.select()}
           type="text"
           placeholder="TYPE HERE"
           {...props}

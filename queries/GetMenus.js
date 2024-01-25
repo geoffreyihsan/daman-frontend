@@ -26,11 +26,6 @@ export const GetMenus = gql`
         ...NavigationMenuItemFragment
       }
     }
-    thirdMenuItems: menuItems(where: { location: $thirdLocation }, first: 10) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
     navigationMenuItems: menuItems(
       where: { location: $navigationLocation }
       first: 20

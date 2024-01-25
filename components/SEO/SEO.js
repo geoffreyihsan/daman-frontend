@@ -189,7 +189,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         `}
         </script> */}
         {/* Frmwrk Tracking Code */}
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
             (function(c,l,a,r,i,t,y){
@@ -199,7 +199,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           })(window, document, "clarity", "script", "h4u234tj5r");
           `,
           }}
-        ></script>
+        ></script> */}
         {/* End Frmwrk Tracking Code */}
       </Head>
     </>

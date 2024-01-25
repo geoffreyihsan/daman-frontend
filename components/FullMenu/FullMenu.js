@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import classNames from "classnames/bind";
 import styles from "./FullMenu.module.scss";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GetSearchResults } from "../../queries/GetSearchResults";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,11 +17,9 @@ let cx = classNames.bind(styles);
 export default function FullMenu({
   primaryMenuItems,
   secondaryMenuItems,
-  thirdMenuItems,
   menusLoading,
   newCover,
   subsLink,
-  clearSearch,
   searchQuery,
   setSearchQuery,
   searchShown,
@@ -56,9 +54,14 @@ export default function FullMenu({
   }
 
   // Search function content
-  // const [isSearchShown, setIsSearchShown] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const postsPerPage = 10;
+  // Input text
+  const inputRef = useRef(null);
+  // Function to focus on the input when a button is clicked
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
 
   // Add search query function
   const {
@@ -107,6 +110,11 @@ export default function FullMenu({
     }
   };
 
+  // Clear and focus the input on initial render
+  useEffect(() => {
+    inputRef.current.value = "";
+  }, []);
+
   // Check if the search query is empty and no search results are loading, then hide the SearchResults component
   const isSearchResultsVisible = !!searchQuery;
 
@@ -134,6 +142,7 @@ export default function FullMenu({
       {/* Full menu */}
       <div className={cx("full-menu-content")}>
         <div className={cx("menu-wrapper")}>
+          {/* New Cover Image */}
           <div className={cx("first-wrapper")}>
             <div className={cx("image-wrapper")}>
               {subsLink && newCover && (
@@ -148,27 +157,22 @@ export default function FullMenu({
               )}
             </div>
           </div>
+          {/* Newsletter & Subscribe */}
           <div className={cx("second-wrapper")}>
-            {/* Primary Menu {Destination Guides Menu} */}
             <NavigationMenu
               className={cx("primary-navigation")}
               menuItems={primaryMenuItems}
             />
           </div>
+          {/* Category Menu */}
           <div className={cx("third-wrapper")}>
-            {/* Secondary Menu {Destinations Menu} */}
-            {/* Search Bar */}
             <NavigationMenu
               className={cx("secondary-navigation")}
               menuItems={secondaryMenuItems}
             />
           </div>
+          {/* Search & Socmed */}
           <div className={cx("fourth-wrapper")}>
-            {/* Third Menu {Destinations Menu} */}
-            {/* <NavigationMenu
-              className={cx("third-navigation")}
-              menuItems={thirdMenuItems}
-            /> */}
             <nav>
               <ul className={cx("menu")}>
                 <li>
@@ -178,6 +182,7 @@ export default function FullMenu({
                     onClick={() => {
                       setSearchShown(!searchShown);
                       setSearchQuery("");
+                      focusInput();
                     }}
                     aria-label="Toggle navigation"
                     aria-controls={cx("search-bar-wrapper")}
@@ -330,6 +335,7 @@ m2911 -442 c114 -32 268 -112 343 -177 146 -129 227 -253 285 -441 l22 -70 3
       >
         <div className={cx("search-input-wrapper")}>
           <SearchInput
+            inputRef={inputRef}
             value={searchQuery}
             onChange={(newValue) => setSearchQuery(newValue)}
             setSearchShown={setSearchShown}
