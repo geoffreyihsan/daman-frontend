@@ -99,6 +99,55 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           content="in style magazine, Porsche, mens styles, male models, man fashion, men's watch, Bvlgari, Tag Heuer, Breitling, mens fashion, male fashion, top male models, mens fashion magazine, men outfits, Afgan, latest fashion for men, nicholas saputra, luxury men's watch, men's fashion trends, men's fashion styles, male grooming, men's designer, men's lifestyle, Swiss International Airlines, men's style magazine, men's watch trends, model indonesia, mens dressing style, male lifestyle, model hot indo, male supermodel, model pria indonesia, men's spring summer fashion, Ronald Liem, indonesia actor, indonesian male celebrity, men's horology, top model indo, Resor Mewah"
         />
 
+        {/* Google Ad Manager */}
+        <AdScript />
+        <AdConfig
+          networkCode={6808792}
+          target={[["URL_Exact", locationPathname]]}
+          collapseEmptyDivs={true}
+          // eventImpressionViewable={(e) => console.log(e.slot)}
+          // eventSlotOnload={(e) => console.log(e.slot)}
+          // eventSlotRenderEnded={(e) => console.log(e.slot)}
+          // eventSlotRequested={(e) => console.log(e.slot)}
+          // eventSlotResponseReceived={(e) => console.log(e.slot)}
+          // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
+        />
+        {/* <script type="text/javascript">
+          {`
+          var googletag = googletag || {};
+          googletag.cmd = googletag.cmd || [];
+          (function() {
+              var gads = document.createElement("script");
+              gads.async = true;
+              gads.type = "text/javascript";
+              var useSSL = "https:" == document.location.protocol;
+              gads.src = (useSSL ? "https:" : "http:") + "//securepubads.g.doubleclick.net/tag/js/gpt.js";
+              var node = document.getElementsByTagName("script")[0];
+              node.parentNode.insertBefore(gads, node);
+          })();
+        `}
+        </script> */}
+        {/* <script>
+          {`
+          googletag.cmd.push(function() {
+            // Targeting based on your PHP logic
+            if (typeof window !== 'undefined') {
+              var address = window.location.pathname;
+              googletag.pubads().setTargeting("URL_Exact", address);
+            }
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
+            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+        `}
+        </script> */}
+
         {/* Inter Font Family */}
         {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -135,55 +184,6 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
       />
       {/* End Google Tag Manager */}
 
-      {/* Google Ad Manager */}
-      <AdScript />
-      <AdConfig
-        networkCode={6808792}
-        target={[["URL_Exact", locationPathname]]}
-        collapseEmptyDivs={true}
-        // eventImpressionViewable={(e) => console.log(e.slot)}
-        // eventSlotOnload={(e) => console.log(e.slot)}
-        // eventSlotRenderEnded={(e) => console.log(e.slot)}
-        // eventSlotRequested={(e) => console.log(e.slot)}
-        // eventSlotResponseReceived={(e) => console.log(e.slot)}
-        // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
-      />
-      {/* <script type="text/javascript">
-          {`
-          var googletag = googletag || {};
-          googletag.cmd = googletag.cmd || [];
-          (function() {
-              var gads = document.createElement("script");
-              gads.async = true;
-              gads.type = "text/javascript";
-              var useSSL = "https:" == document.location.protocol;
-              gads.src = (useSSL ? "https:" : "http:") + "//securepubads.g.doubleclick.net/tag/js/gpt.js";
-              var node = document.getElementsByTagName("script")[0];
-              node.parentNode.insertBefore(gads, node);
-          })();
-        `}
-        </script> */}
-      {/* <script>
-          {`
-          googletag.cmd.push(function() {
-            // Targeting based on your PHP logic
-            if (typeof window !== 'undefined') {
-              var address = window.location.pathname;
-              googletag.pubads().setTargeting("URL_Exact", address);
-            }
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-          });
-        `}
-        </script> */}
-
       {/* Frmwrk Tracking Code */}
       <Script
         beforeInteractive
@@ -193,7 +193,6 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         }}
       />
       {/* End Frmwrk Tracking Code */}
-
 
       {/* Google Tag Manager (noscript) */}
       <noscript>
