@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Document from "next/document";
+import Script from "next/script";
 import { AdScript, AdConfig } from "react-ad-manager";
 import { GetFavicon } from "../../queries/GetFavicon";
 import { useQuery } from "@apollo/client";
@@ -98,7 +100,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         />
 
         {/* Inter Font Family */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -107,41 +109,46 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap"
           rel="stylesheet"
-        />
+        /> */}
+      </Head>
+      {/* Google tag (gtag.js) */}
+      <Script
+        beforeInteractive
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-CYBBEL8JS1"
+      />
+      <Script
+        beforeInteractive
+        id="gtag-script"
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-CYBBEL8JS1');`,
+        }}
+      />
 
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-CYBBEL8JS1"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-CYBBEL8JS1');`,
-          }}
-        ></script>
+      {/* Google Tag Manager */}
+      <Script
+        beforeInteractive
+        id="gtm-script"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2MZPZT');`,
+        }}
+      />
+      {/* End Google Tag Manager */}
 
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2MZPZT');`,
-          }}
-        ></script>
-        {/* End Google Tag Manager */}
-
-        {/* Google Ad Manager */}
-        <AdScript />
-        <AdConfig
-          networkCode={6808792}
-          target={[["URL_Exact", locationPathname]]}
-          collapseEmptyDivs={true}
-          // eventImpressionViewable={(e) => console.log(e.slot)}
-          // eventSlotOnload={(e) => console.log(e.slot)}
-          // eventSlotRenderEnded={(e) => console.log(e.slot)}
-          // eventSlotRequested={(e) => console.log(e.slot)}
-          // eventSlotResponseReceived={(e) => console.log(e.slot)}
-          // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
-        />
-        {/* <script type="text/javascript">
+      {/* Google Ad Manager */}
+      <AdScript />
+      <AdConfig
+        networkCode={6808792}
+        target={[["URL_Exact", locationPathname]]}
+        collapseEmptyDivs={true}
+        // eventImpressionViewable={(e) => console.log(e.slot)}
+        // eventSlotOnload={(e) => console.log(e.slot)}
+        // eventSlotRenderEnded={(e) => console.log(e.slot)}
+        // eventSlotRequested={(e) => console.log(e.slot)}
+        // eventSlotResponseReceived={(e) => console.log(e.slot)}
+        // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
+      />
+      {/* <script type="text/javascript">
           {`
           var googletag = googletag || {};
           googletag.cmd = googletag.cmd || [];
@@ -156,7 +163,7 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           })();
         `}
         </script> */}
-        {/* <script>
+      {/* <script>
           {`
           googletag.cmd.push(function() {
             // Targeting based on your PHP logic
@@ -176,15 +183,28 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           });
         `}
         </script> */}
-        
-        {/* Frmwrk Tracking Code */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "h4u234tj5r");`,
-          }}
-        ></script>
-        {/* End Frmwrk Tracking Code */}
-      </Head>
+
+      {/* Frmwrk Tracking Code */}
+      <Script
+        beforeInteractive
+        id="frmwrk-script"
+        dangerouslySetInnerHTML={{
+          __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "h4u234tj5r");`,
+        }}
+      />
+      {/* End Frmwrk Tracking Code */}
+
+
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
+          height="0"
+          width="0"
+          className="invisible hidden"
+        ></iframe>
+      </noscript>
+      {/* End Google Tag Manager (noscript) */}
     </>
   );
 }

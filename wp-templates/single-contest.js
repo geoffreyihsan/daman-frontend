@@ -1,22 +1,15 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
+import { inter } from "../styles/fonts/fonts";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
-  EntryHeader,
-  ContentWrapper,
   FeaturedImage,
   SEO,
-  BorderDivider,
-  TwoColumns,
-  Left,
-  Right,
-  HalfPage1,
-  Outnow,
-  HalfPage2,
+  SingleLayout,
 } from "../components";
 
 export default function SingleContest(props) {
@@ -56,16 +49,6 @@ export default function SingleContest(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
-          height="0"
-          width="0"
-          className="invisible hidden"
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -73,24 +56,15 @@ export default function SingleContest(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
+      <Main className={inter.className}>
         <>
-          <BorderDivider />
-          <TwoColumns>
-            <Left>
-              <EntryHeader title={title} date={date} />
-              <ContentWrapper
-                content={content}
-                databaseId={databaseId}
-                single={"contest"}
-              />
-            </Left>
-            <Right>
-              <HalfPage1 />
-              <Outnow />
-              <HalfPage2 />
-            </Right>
-          </TwoColumns>
+          <SingleLayout
+            databaseId={databaseId}
+            title={title}
+            date={date}
+            content={content}
+            single={"contest"}
+          />
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />

@@ -1,19 +1,19 @@
 import category from "./category";
 import tag from "./tag";
-import frontPage from "./front-page";
+import FrontPage from "./front-page";
 import page from "./page";
-import pagePreviewHomepage from "./page-preview-homepage";
+import PagePreviewHomepage from "./page-preview-homepage";
 import single from "./single";
-import singleBackIssue from "./single-backissue";
-import singleContest from "./single-contest";
+import SingleBackIssue from "./single-backissue";
+import SingleContest from "./single-contest";
 
 export default {
   category,
   tag,
-  "front-page": frontPage,
+  "front-page": FrontPage,
   page,
-  "page-preview-homepage": pagePreviewHomepage,
+  "page-preview-homepage": PagePreviewHomepage,
   single,
-  "single-backissue": singleBackIssue,
-  "single-contest": singleContest,
+  "single-backissue": SingleBackIssue,
+  "single-contest": SingleContest,
 };

@@ -1,23 +1,15 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
+import { inter } from '../styles/fonts/fonts'
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
-  EntryHeader,
-  ContentWrapper,
   FeaturedImage,
   SEO,
-  TwoColumns,
-  Left,
-  Right,
-  OurRecommendations,
-  BorderDivider,
-  HalfPage1,
-  HalfPage2,
-  Outnow,
+  SingleLayout,
 } from "../components";
 
 export default function Single(props) {
@@ -65,16 +57,6 @@ export default function Single(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
-          height="0"
-          width="0"
-          className="invisible hidden"
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -82,25 +64,15 @@ export default function Single(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
+      <Main className={inter.className}>
         <>
-          <BorderDivider />
-          <TwoColumns>
-            <Left>
-              <EntryHeader
-                title={title}
-                date={date}
-                categories={categories?.edges[0]}
-              />
-              <ContentWrapper content={content} databaseId={databaseId} />
-            </Left>
-            <Right>
-              <HalfPage1 />
-              <Outnow />
-              <HalfPage2 />
-            </Right>
-          </TwoColumns>
-          <OurRecommendations databaseId={databaseId} />
+          <SingleLayout
+            databaseId={databaseId}
+            title={title}
+            date={date}
+            content={content}
+            categories={categories?.edges[0]}
+          />
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />

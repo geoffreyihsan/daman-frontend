@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
+import { inter } from "../styles/fonts/fonts";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
@@ -8,24 +9,10 @@ import {
   Main,
   FeaturedImage,
   SEO,
-  HeroSlider,
-  Updates,
-  TwoColumns,
-  Features,
-  Left,
-  Right,
-  DamanTv,
-  DamanStyle,
-  DamanCaliber,
-  HalfPage1,
-  HalfPage2,
-  Outnow,
-  Interscroller,
-  SubscribeBox,
-  InHouseAds,
+  FrontPageLayout,
 } from "../components";
 
-export default function frontPage(props) {
+export default function FrontPage(props) {
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -33,15 +20,6 @@ export default function frontPage(props) {
 
   const { databaseId, homepageComponent, uri, seo, featuredImage } =
     props?.data?.page ?? [];
-
-  // useEffect(() => {
-  //   const filteredHomepageSlide = HomepageSlider.filter((item) => item.type !== null)
-
-  //   if (filteredHomepageSlide.length > 0) {
-  //     const randomIndex = Math.floor(Math.random() * filteredHomepageSlide.length)
-  //     setCurrentHomepageSlide(filteredHomepageSlide[randomIndex])
-  //   }
-  // }, [])
 
   // Get menus
   const { data: menusData, loading: menusLoading } = useQuery(GetMenus, {
@@ -71,16 +49,6 @@ export default function frontPage(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
-          height="0"
-          width="0"
-          className="invisible hidden"
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -88,44 +56,18 @@ export default function frontPage(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <>
-          <HeroSlider databaseId={databaseId} />
-          <TwoColumns border={true}>
-            <Left>
-              <Updates />
-            </Left>
-            <Right>
-              <HalfPage1 />
-              <Outnow />
-            </Right>
-          </TwoColumns>
-          <Interscroller />
-          <DamanTv damanTvLogo={homepageComponent?.damanTvLogo} />
-          <TwoColumns border={true}>
-            <Left>
-              <Features />
-            </Left>
-            <Right>
-              <SubscribeBox />
-              <HalfPage2 />
-              <InHouseAds />
-            </Right>
-          </TwoColumns>
-          <TwoColumns border={true}>
-            <DamanStyle />
-          </TwoColumns>
-          <TwoColumns border={true}>
-            <DamanCaliber />
-          </TwoColumns>
-        </>
+      <Main className={inter.className}>
+        <FrontPageLayout
+          databaseId={databaseId}
+          damanTvLogo={homepageComponent?.damanTvLogo}
+        />
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
 }
 
-frontPage.query = gql`
+FrontPage.query = gql`
   ${BlogInfoFragment}
   ${FeaturedImage.fragments.entry}
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
@@ -157,7 +99,7 @@ frontPage.query = gql`
   }
 `;
 
-frontPage.variables = ({ databaseId }, ctx) => {
+FrontPage.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     asPreview: ctx?.asPreview,

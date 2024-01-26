@@ -1,22 +1,15 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
+import { inter } from '../styles/fonts/fonts'
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
   Header,
   Footer,
   Main,
-  EntryHeader,
   FeaturedImage,
   SEO,
-  BorderDivider,
-  TwoColumns,
-  Left,
-  Right,
-  ContentWrapperPage,
-  HalfPage1,
-  HalfPage2,
-  Outnow,
+  PageLayout,
 } from "../components";
 
 export default function Page(props) {
@@ -57,16 +50,6 @@ export default function Page(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
-          height="0"
-          width="0"
-          className="invisible hidden"
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -74,20 +57,9 @@ export default function Page(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
+      <Main className={inter.className}>
         <>
-          <BorderDivider />
-          <TwoColumns>
-            <Left>
-              <EntryHeader title={title} />
-              <ContentWrapperPage content={content} />
-            </Left>
-            <Right>
-              <HalfPage1 />
-              <Outnow />
-              <HalfPage2 />
-            </Right>
-          </TwoColumns>
+          <PageLayout title={title} content={content}/>
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
@@ -107,6 +79,7 @@ Page.query = gql`
   ${FeaturedImage.fragments.entry}
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      databaseId
       title
       content
       ...FeaturedImageFragment

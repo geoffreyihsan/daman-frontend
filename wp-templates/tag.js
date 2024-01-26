@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
+import { inter } from '../styles/fonts/fonts'
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
@@ -7,15 +8,7 @@ import {
   Footer,
   Main,
   SEO,
-  TwoColumns,
-  Left,
-  Right,
-  HalfPage1,
-  HalfPage2,
-  Outnow,
-  Interscroller,
-  PostTag,
-  EntryHeaderTag,
+  TagLayout,
 } from "../components";
 
 export default function Tag(props) {
@@ -48,16 +41,6 @@ export default function Tag(props) {
         url={uri}
         focuskw={seo?.focuskw}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-W2MZPZT"
-          height="0"
-          width="0"
-          className="invisible hidden"
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Header
         primaryMenuItems={primaryMenu}
         secondaryMenuItems={secondaryMenu}
@@ -65,20 +48,9 @@ export default function Tag(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
+      <Main className={inter.className}>
         <>
-          <EntryHeaderTag databaseId={databaseId}/>
-          <TwoColumns border={false}>
-            <Left>
-              <PostTag databaseId={databaseId} />
-            </Left>
-            <Right>
-              <HalfPage1 />
-              <Outnow />
-              <HalfPage2 />
-            </Right>
-          </TwoColumns>
-          <Interscroller />
+          <TagLayout databaseId={databaseId}/>
         </>
       </Main>
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
