@@ -40,10 +40,10 @@ export default function DamanTv({ damanTvLogo }) {
           <div className={cx("first-wrapper")}>
             <div className={cx("first-video-wrapper")}>
               {damanTvLogo && (
-                <div className={cx("daman-tv-logo-wrapper")}>
-                  <Link
-                    href={latestDamanTv?.node?.categories?.edges[0]?.node?.uri}
-                  >
+                <Link
+                  href={latestDamanTv?.node?.categories?.edges[0]?.node?.uri}
+                >
+                  <div className={cx("daman-tv-logo-wrapper")}>
                     <Image
                       src={damanTvLogo?.sourceUrl}
                       alt={
@@ -56,8 +56,8 @@ export default function DamanTv({ damanTvLogo }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               )}
               {latestDamanTv?.node?.content && (
                 <div className={cx("first-iframe-wrapper")}>

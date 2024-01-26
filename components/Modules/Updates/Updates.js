@@ -60,8 +60,8 @@ export default function Updates() {
               <SwiperSlide key={index}>
                 <div className={cx("slide-wrapper")}>
                   {post?.node?.featuredImage && (
-                    <div className={cx("slide-image-wrapper")}>
-                      <Link href={post?.node?.uri}>
+                    <Link href={post?.node?.uri}>
+                      <div className={cx("slide-image-wrapper")}>
                         <Image
                           src={post?.node?.featuredImage?.node?.sourceUrl}
                           alt={
@@ -74,8 +74,8 @@ export default function Updates() {
                           sizes="100%"
                           priority
                         />
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                   )}
                   {post?.node?.categories?.edges[0] && (
                     <div className={cx("slide-category-wrapper")}>
@@ -105,18 +105,22 @@ export default function Updates() {
             {firstUpdatePosts?.node?.featuredImage && (
               <div className={cx("post-image-wrapper")}>
                 <Link href={firstUpdatePosts?.node?.uri}>
-                  <Image
-                    src={firstUpdatePosts?.node?.featuredImage?.node?.sourceUrl}
-                    alt={
-                      firstUpdatePosts?.node?.featuredImage?.node?.altText
-                        ? firstUpdatePosts?.node?.featuredImage?.node?.altText
-                        : "Updates Image"
-                    }
-                    className={cx("featured-image")}
-                    fill
-                    sizes="100%"
-                    priority
-                  />
+                  <div className={cx("image-wrapper")}>
+                    <Image
+                      src={
+                        firstUpdatePosts?.node?.featuredImage?.node?.sourceUrl
+                      }
+                      alt={
+                        firstUpdatePosts?.node?.featuredImage?.node?.altText
+                          ? firstUpdatePosts?.node?.featuredImage?.node?.altText
+                          : "DAMAN Caliber Image"
+                      }
+                      className={cx("featured-image")}
+                      fill
+                      sizes="100%"
+                      priority
+                    />
+                  </div>
                 </Link>
               </div>
             )}
@@ -160,8 +164,8 @@ export default function Updates() {
             {otherUpdatePosts.map((post) => (
               <div className={cx("other-post-wrapper")}>
                 {post?.node?.featuredImage && (
-                  <div className={cx("post-image-wrapper")}>
-                    <Link href={post?.node?.uri}>
+                  <Link href={post?.node?.uri}>
+                    <div className={cx("post-image-wrapper")}>
                       <Image
                         src={post?.node?.featuredImage?.node?.sourceUrl}
                         alt={
@@ -174,8 +178,8 @@ export default function Updates() {
                         sizes="100%"
                         priority
                       />
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 )}
                 {post?.node?.categories?.edges[0] && (
                   <div className={cx("other-post-category-wrapper")}>

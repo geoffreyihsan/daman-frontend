@@ -121,8 +121,8 @@ export default function OurRecommendations({ databaseId }) {
             <SwiperSlide key={index}>
               <div className={cx("slide-wrapper")}>
                 {post?.node?.featuredImage && (
-                  <div className={cx("slide-image-wrapper")}>
-                    <Link href={post?.node?.uri}>
+                  <Link href={post?.node?.uri}>
+                    <div className={cx("slide-image-wrapper")}>
                       <Image
                         src={post?.node?.featuredImage?.node?.sourceUrl}
                         alt={
@@ -135,8 +135,8 @@ export default function OurRecommendations({ databaseId }) {
                         sizes="100%"
                         priority
                       />
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 )}
                 {post?.node?.categories?.edges[0] && (
                   <div className={cx("slide-category-wrapper")}>

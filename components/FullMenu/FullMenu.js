@@ -144,9 +144,9 @@ export default function FullMenu({
         <div className={cx("menu-wrapper")}>
           {/* New Cover Image */}
           <div className={cx("first-wrapper")}>
-            <div className={cx("image-wrapper")}>
-              {subsLink && newCover && (
-                <Link href={subsLink}>
+            {subsLink && newCover && (
+              <Link href={subsLink}>
+                <div className={cx("image-wrapper")}>
                   <Image
                     src={newCover}
                     alt={"New Issue Image"}
@@ -154,9 +154,9 @@ export default function FullMenu({
                     sizes="100%"
                     priority
                   />
-                </Link>
-              )}
-            </div>
+                </div>
+              </Link>
+            )}
           </div>
           {/* Newsletter & Subscribe */}
           <div className={cx("second-wrapper")}>

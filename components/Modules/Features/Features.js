@@ -59,8 +59,8 @@ export default function Features({}) {
               <SwiperSlide key={index}>
                 <div className={cx("slide-wrapper")}>
                   {post?.node?.featuredImage && (
-                    <div className={cx("slide-image-wrapper")}>
-                      <Link href={post?.node?.uri}>
+                    <Link href={post?.node?.uri}>
+                      <div className={cx("slide-image-wrapper")}>
                         <Image
                           src={post?.node?.featuredImage?.node?.sourceUrl}
                           alt={
@@ -73,8 +73,8 @@ export default function Features({}) {
                           sizes="100%"
                           priority
                         />
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                   )}
                   {post?.node?.categories?.edges[0] && (
                     <div className={cx("slide-category-wrapper")}>
@@ -105,18 +105,20 @@ export default function Features({}) {
               {post?.node?.featuredImage && (
                 <div className={cx("post-image-wrapper")}>
                   <Link href={post?.node?.uri}>
-                    <Image
-                      src={post?.node?.featuredImage?.node?.sourceUrl}
-                      alt={
-                        post?.node?.featuredImage?.node?.altText
-                          ? post?.node?.featuredImage?.node?.altText
-                          : "Features Image"
-                      }
-                      className={cx("featured-image")}
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <div className={cx("image-wrapper")}>
+                      <Image
+                        src={post?.node?.featuredImage?.node?.sourceUrl}
+                        alt={
+                          post?.node?.featuredImage?.node?.altText
+                            ? post?.node?.featuredImage?.node?.altText
+                            : "DAMAN Caliber Image"
+                        }
+                        className={cx("featured-image")}
+                        fill
+                        sizes="100%"
+                        priority
+                      />
+                    </div>
                   </Link>
                 </div>
               )}
