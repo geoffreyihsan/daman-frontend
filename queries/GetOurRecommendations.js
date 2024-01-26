@@ -7,12 +7,12 @@ export const GetOurRecommendations = gql`
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
   ) {
     post(id: $id, idType: DATABASE_ID) {
-      categories(first: 1, where: { childless: true }) {
+      categories(first: 1, where: { childless: true, exclude: $exclude }) {
         edges {
           node {
             parent {
               node {
-                posts(first: 20, where: { notIn: $notIn }) {
+                posts(first: 10, where: { notIn: $notIn }) {
                   edges {
                     node {
                       title
