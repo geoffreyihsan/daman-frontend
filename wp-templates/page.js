@@ -1,6 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
-import { inter } from '../styles/fonts/fonts'
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import {
@@ -57,7 +56,7 @@ export default function Page(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main className={inter.className}>
+      <Main>
         <>
           <PageLayout title={title} content={content}/>
         </>
