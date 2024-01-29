@@ -30,7 +30,6 @@ const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
 export default function ContentWrapper({
   content,
   databaseId,
-  className,
   single,
 }) {
   const [transformedContent, setTransformedContent] = useState("");
@@ -59,8 +58,8 @@ export default function ContentWrapper({
           <Image
             src={src}
             alt={alt}
-            width={width}
-            height={height}
+            width={width ? width : "500"}
+            height={height ? height : "500"}
             style={{ objectFit: "contain" }}
             priority
           />
@@ -100,7 +99,7 @@ export default function ContentWrapper({
 
   return (
     <>
-      <article className={cx(["component", className])}>
+      <article className={cx("component")}>
         <div dangerouslySetInnerHTML={{ __html: transformedContent ?? "" }} />
       </article>
       {/* Tag under post content */}
