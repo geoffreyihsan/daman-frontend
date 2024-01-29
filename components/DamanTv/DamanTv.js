@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import YouTube from 'react-youtube';
 import classNames from "classnames/bind";
 import styles from "./DamanTv.module.scss";
 import { GetDamanTv } from "../../queries/GetDamanTv";
@@ -61,15 +62,7 @@ export default function DamanTv({ damanTvLogo }) {
               )}
               {latestDamanTv?.node?.content && (
                 <div className={cx("first-iframe-wrapper")}>
-                  <iframe
-                    src={
-                      "https://www.youtube.com/embed/" +
-                      extractYouTubeVideoId(latestDamanTv?.node?.content)
-                    }
-                    title={latestDamanTv?.node?.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  <YouTube videoId={extractYouTubeVideoId(latestDamanTv?.node?.content)} />
                 </div>
               )}
               {latestDamanTv?.node?.title && (
