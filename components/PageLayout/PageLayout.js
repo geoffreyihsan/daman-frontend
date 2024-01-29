@@ -21,9 +21,11 @@ export default function PageLayout(title) {
           <ContentWrapperPage content={title?.content} />
         </div>
         <div className={cx("right-column")}>
-          <HalfPage1 />
-          <Outnow />
-          <HalfPage2 />
+          <aside className="h-auto sticky top-14 sm:top-20">
+            <HalfPage1 />
+            <Outnow />
+            <HalfPage2 />
+          </aside>
         </div>
       </div>
     </>

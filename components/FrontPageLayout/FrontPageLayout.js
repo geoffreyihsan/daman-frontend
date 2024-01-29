@@ -51,8 +51,10 @@ export default function FrontPageLayout(databaseId) {
           />
         </div>
         <div className={cx("right-column")}>
-          <HalfPage1 />
-          <Outnow />
+          <aside className="h-auto sticky top-14 sm:top-20">
+            <HalfPage1 />
+            <Outnow />
+          </aside>
         </div>
       </div>
       <ResponsiveComponent
@@ -69,9 +71,11 @@ export default function FrontPageLayout(databaseId) {
           />
         </div>
         <div className={cx("right-column")}>
-          <SubscribeBox />
-          <HalfPage2 />
-          <InHouseAds />
+          <aside className="h-auto sticky top-14 sm:top-20">
+            <SubscribeBox />
+            <HalfPage2 />
+            <InHouseAds />
+          </aside>
         </div>
       </div>
       <BorderDivider />

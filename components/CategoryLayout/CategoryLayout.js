@@ -36,9 +36,11 @@ export default function CategoryLayout(databaseId) {
           <PostCategory databaseId={databaseId?.databaseId} />
         </div>
         <div className={cx("right-column")}>
-          <HalfPage1 />
-          <Outnow />
-          <HalfPage2 />
+          <aside className="h-auto sticky top-14 sm:top-20">
+            <HalfPage1 />
+            <Outnow />
+            <HalfPage2 />
+          </aside>
         </div>
       </div>
       <ResponsiveComponent
