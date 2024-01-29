@@ -1,29 +1,30 @@
 import {
   EntryHeaderCategory,
   PostCategory,
-  TwoColumns,
-  Left,
-  Right,
   HalfPage1,
   HalfPage2,
   Outnow,
   Interscroller,
 } from "../../components";
+import styles from "./CategoryLayout.module.scss";
+import className from "classnames/bind";
+
+let cx = className.bind(styles);
 
 export default function CategoryLayout(databaseId) {
   return (
     <>
       <EntryHeaderCategory databaseId={databaseId?.databaseId} />
-      <TwoColumns border={false}>
-        <Left>
+      <div className={cx("two-columns")}>
+        <div className={cx("left-column")}>
           <PostCategory databaseId={databaseId?.databaseId} />
-        </Left>
-        <Right>
+        </div>
+        <div className={cx("right-column")}>
           <HalfPage1 />
           <Outnow />
           <HalfPage2 />
-        </Right>
-      </TwoColumns>
+        </div>
+      </div>
       <Interscroller />
     </>
   );

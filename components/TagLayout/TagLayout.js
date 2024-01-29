@@ -1,7 +1,4 @@
 import {
-  TwoColumns,
-  Left,
-  Right,
   HalfPage1,
   HalfPage2,
   Outnow,
@@ -9,21 +6,25 @@ import {
   PostTag,
   EntryHeaderTag,
 } from "../../components";
+import styles from "./TagLayout.module.scss";
+import className from "classnames/bind";
+
+let cx = className.bind(styles);
 
 export default function TagLayout(databaseId) {
   return (
     <>
       <EntryHeaderTag databaseId={databaseId?.databaseId} />
-      <TwoColumns border={false}>
-        <Left>
+      <div className={cx("two-columns")} border={false}>
+        <div className={cx("left-column")}>
           <PostTag databaseId={databaseId?.databaseId} />
-        </Left>
-        <Right>
+        </div>
+        <div className={cx("right-column")}>
           <HalfPage1 />
           <Outnow />
           <HalfPage2 />
-        </Right>
-      </TwoColumns>
+        </div>
+      </div>
       <Interscroller />
     </>
   );

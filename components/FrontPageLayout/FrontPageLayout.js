@@ -1,10 +1,7 @@
 import {
   HeroSlider,
   Updates,
-  TwoColumns,
   Features,
-  Left,
-  Right,
   DamanTv,
   DamanStyle,
   DamanCaliber,
@@ -15,11 +12,31 @@ import {
   SubscribeBox,
   InHouseAds,
   BorderDivider,
+  UpdatesMobile,
+  FeaturesMobile,
+  DamanStyleMobile,
+  DamanCaliberMobile,
 } from "../../components";
 import styles from "./FrontPageLayout.module.scss";
 import className from "classnames/bind";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false,
+});
 
 let cx = className.bind(styles);
+
+const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
+  <>
+    <MediaQuery maxWidth={767}>
+      <ComponentMobile />
+    </MediaQuery>
+    <MediaQuery minWidth={768}>
+      <ComponentDesktop />
+    </MediaQuery>
+  </>
+);
 
 export default function FrontPageLayout(databaseId) {
   return (
@@ -27,34 +44,46 @@ export default function FrontPageLayout(databaseId) {
       <HeroSlider databaseId={databaseId?.databaseId} />
       <BorderDivider />
       <div className={cx("two-columns")}>
-        <Left>
-          <Updates />
-        </Left>
-        <Right>
+        <div className={cx("left-column")}>
+          <ResponsiveComponent
+            ComponentMobile={UpdatesMobile}
+            ComponentDesktop={Updates}
+          />
+        </div>
+        <div className={cx("right-column")}>
           <HalfPage1 />
           <Outnow />
-        </Right>
+        </div>
       </div>
       <Interscroller />
       <DamanTv damanTvLogo={databaseId?.damanTvLogo} />
       <BorderDivider />
       <div className={cx("two-columns")}>
-        <Left>
-          <Features />
-        </Left>
-        <Right>
+        <div className={cx("left-column")}>
+          <ResponsiveComponent
+            ComponentMobile={FeaturesMobile}
+            ComponentDesktop={Features}
+          />
+        </div>
+        <div className={cx("right-column")}>
           <SubscribeBox />
           <HalfPage2 />
           <InHouseAds />
-        </Right>
+        </div>
       </div>
       <BorderDivider />
       <div className={cx("two-columns")}>
-        <DamanStyle />
+        <ResponsiveComponent
+          ComponentMobile={DamanStyleMobile}
+          ComponentDesktop={DamanStyle}
+        />
       </div>
       <BorderDivider />
       <div className={cx("two-columns")}>
-        <DamanCaliber />
+        <ResponsiveComponent
+          ComponentMobile={DamanCaliberMobile}
+          ComponentDesktop={DamanCaliber}
+        />
       </div>
     </div>
   );
