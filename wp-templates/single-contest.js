@@ -1,15 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import * as MENUS from "../constants/menus";import { inter } from "../styles/fonts/fonts";
+import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import {
-  Header,
-  Footer,
-  Main,
-  FeaturedImage,
-  SEO,
-  SingleLayout,
-} from "../components";
+import { Header, Footer, SEO, SingleLayout } from "../components";
 
 export default function SingleContest(props) {
   // Loading state for previews
@@ -55,17 +48,13 @@ export default function SingleContest(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <>
-          <SingleLayout
-            databaseId={databaseId}
-            title={title}
-            date={date}
-            content={content}
-            single={"contest"}
-          />
-        </>
-      </Main>
+      <SingleLayout
+        databaseId={databaseId}
+        title={title}
+        date={date}
+        content={content}
+        single={"contest"}
+      />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
@@ -73,7 +62,6 @@ export default function SingleContest(props) {
 
 SingleContest.query = gql`
   ${BlogInfoFragment}
-  ${FeaturedImage.fragments.entry}
   query GetContest($databaseId: ID!, $asPreview: Boolean = false) {
     contest(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
@@ -81,7 +69,17 @@ SingleContest.query = gql`
       content
       date
       uri
-      ...FeaturedImageFragment
+      featuredImage {
+        node {
+          id
+          sourceUrl
+          altText
+          mediaDetails {
+            width
+            height
+          }
+        }
+      }
       seo {
         title
         metaDesc

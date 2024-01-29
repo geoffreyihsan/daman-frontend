@@ -1,8 +1,6 @@
 import { gql } from "@apollo/client";
-import { FeaturedImage } from "../components";
 
 export const GetDamanTv = gql`
-  ${FeaturedImage.fragments.entry}
   query GetDamanTv(
     $id: ID!
     $first: Int!
@@ -29,7 +27,17 @@ export const GetDamanTv = gql`
               title
               uri
               content
-              ...FeaturedImageFragment
+              featuredImage {
+                node {
+                  id
+                  sourceUrl
+                  altText
+                  mediaDetails {
+                    width
+                    height
+                  }
+                }
+              }
               categories(where: { childless: true }) {
                 edges {
                   node {

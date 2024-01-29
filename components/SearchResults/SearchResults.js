@@ -60,7 +60,7 @@ export default function SearchResults({ searchResults, isLoading }) {
     );
   }
 
-  const calculateTrimmedExcerpt = (excerpt, uri, title) => {
+  const calculateTrimmedExcerpt = (excerpt) => {
     const MAX_EXCERPT_LENGTH = 100; // You can adjust this value according to your needs
 
     let trimmedExcerpt = excerpt?.substring(0, MAX_EXCERPT_LENGTH);
@@ -80,8 +80,8 @@ export default function SearchResults({ searchResults, isLoading }) {
           <div className={cx("content-wrapper")}>
             <div className={cx("left-wrapper")}>
               {node?.featuredImage?.node && (
-                <div className={cx("wrapper-image")}>
-                  <Link href={node?.uri}>
+                <Link href={node?.uri}>
+                  <div className={cx("wrapper-image")}>
                     <Image
                       src={node?.featuredImage?.node?.sourceUrl}
                       alt={
@@ -94,8 +94,8 @@ export default function SearchResults({ searchResults, isLoading }) {
                       sizes="100%"
                       priority
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               )}
             </div>
 

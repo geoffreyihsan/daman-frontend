@@ -22,8 +22,8 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
   return (
     <article className={cx("component")}>
       {featuredImage && uri && (
-        <div className={cx("image-wrapper")}>
-          <Link href={uri}>
+        <Link href={uri}>
+          <div className={cx("image-wrapper")}>
             <Image
               src={featuredImage?.sourceUrl}
               alt={featuredImage?.alt ?? "Post Featured Image"}
@@ -31,8 +31,8 @@ export default function Post({ title, uri, featuredImage, excerpt, category }) {
               sizes="100%"
               priority
             />
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
       {category && (
         <div className={cx("category-wrapper")}>

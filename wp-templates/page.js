@@ -2,14 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import {
-  Header,
-  Footer,
-  Main,
-  FeaturedImage,
-  SEO,
-  PageLayout,
-} from "../components";
+import { Header, Footer, SEO, PageLayout } from "../components";
 
 export default function Page(props) {
   // Loading state for previews
@@ -56,11 +49,7 @@ export default function Page(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <>
-          <PageLayout title={title} content={content}/>
-        </>
-      </Main>
+      <PageLayout title={title} content={content} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
@@ -75,13 +64,22 @@ Page.variables = ({ databaseId }, ctx) => {
 
 Page.query = gql`
   ${BlogInfoFragment}
-  ${FeaturedImage.fragments.entry}
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       databaseId
       title
       content
-      ...FeaturedImageFragment
+      featuredImage {
+        node {
+          id
+          sourceUrl
+          altText
+          mediaDetails {
+            width
+            height
+          }
+        }
+      }
       seo {
         title
         metaDesc

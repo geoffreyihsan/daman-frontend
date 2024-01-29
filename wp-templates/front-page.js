@@ -1,15 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import * as MENUS from "../constants/menus";import { inter } from "../styles/fonts/fonts";
+import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import {
-  Header,
-  Footer,
-  Main,
-  FeaturedImage,
-  SEO,
-  FrontPageLayout,
-} from "../components";
+import { Header, Footer, SEO, FrontPageLayout } from "../components";
 
 export default function FrontPage(props) {
   // Loading state for previews
@@ -55,12 +48,10 @@ export default function FrontPage(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <FrontPageLayout
-          databaseId={databaseId}
-          damanTvLogo={homepageComponent?.damanTvLogo}
-        />
-      </Main>
+      <FrontPageLayout
+        databaseId={databaseId}
+        damanTvLogo={homepageComponent?.damanTvLogo}
+      />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
@@ -68,13 +59,22 @@ export default function FrontPage(props) {
 
 FrontPage.query = gql`
   ${BlogInfoFragment}
-  ${FeaturedImage.fragments.entry}
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
       databaseId
-      ...FeaturedImageFragment
+      featuredImage {
+        node {
+          id
+          sourceUrl
+          altText
+          mediaDetails {
+            width
+            height
+          }
+        }
+      }
       seo {
         title
         metaDesc

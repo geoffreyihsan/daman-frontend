@@ -2,13 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import {
-  Header,
-  Footer,
-  Main,
-  SEO,
-  CategoryLayout,
-} from "../components";
+import { Header, Footer, SEO, CategoryLayout } from "../components";
 
 export default function Category(props) {
   const { databaseId, seo, uri } = props?.data?.category;
@@ -47,11 +41,7 @@ export default function Category(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <>
-          <CategoryLayout databaseId={databaseId}/>
-        </>
-      </Main>
+      <CategoryLayout databaseId={databaseId} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );

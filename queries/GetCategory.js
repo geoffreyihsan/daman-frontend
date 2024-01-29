@@ -1,8 +1,6 @@
 import { gql } from "@apollo/client";
-import { FeaturedImage } from "../components";
 
 export const GetCategory = gql`
-  ${FeaturedImage.fragments.entry}
   query GetCategory(
     $id: ID!
     $first: Int!
@@ -30,7 +28,17 @@ export const GetCategory = gql`
               title
               uri
               excerpt
-              ...FeaturedImageFragment
+              featuredImage {
+                node {
+                  id
+                  sourceUrl
+                  altText
+                  mediaDetails {
+                    width
+                    height
+                  }
+                }
+              }
               categories(where: { childless: true, exclude: $exclude }) {
                 edges {
                   node {

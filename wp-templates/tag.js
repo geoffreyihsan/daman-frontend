@@ -2,13 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import {
-  Header,
-  Footer,
-  Main,
-  SEO,
-  TagLayout,
-} from "../components";
+import { Header, Footer, SEO, TagLayout } from "../components";
 
 export default function Tag(props) {
   const { databaseId, seo, uri } = props?.data?.tag;
@@ -47,11 +41,7 @@ export default function Tag(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <Main>
-        <>
-          <TagLayout databaseId={databaseId}/>
-        </>
-      </Main>
+      <TagLayout databaseId={databaseId} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </>
   );
