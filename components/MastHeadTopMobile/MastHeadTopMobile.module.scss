@@ -1,7 +1,10 @@
-.desktop-banner {
+.mobile-banner {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--wpe--color--offwhite);
+  position: relative;
+  z-index: 5;
 }
 
 .masthead-banner {

@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import styles from "./OurRecommendations.module.scss";
 import { GetOurRecommendations } from "../../queries/GetOurRecommendations";
 import { GetOtherRecommendations } from "../../queries/GetOtherRecommendations";
-import { BorderDivider, Button } from "../../components";
+import { BorderDivider } from "../../components";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";

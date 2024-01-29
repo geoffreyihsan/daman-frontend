@@ -1,12 +1,27 @@
-import { useEffect, useState } from "react";
 import className from "classnames/bind";
 import styles from "./ContentWrapper.module.scss";
 import { Interscroller } from "../../components";
 import { GetSingleTags } from "../../queries/GetSingleTags";
 import { useQuery } from "@apollo/client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false,
+});
 
 let cx = className.bind(styles);
+
+const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
+  <>
+    <MediaQuery maxWidth={767}>
+      <ComponentMobile />
+    </MediaQuery>
+    <MediaQuery minWidth={768}>
+      <ComponentDesktop />
+    </MediaQuery>
+  </>
+);
 
 export default function ContentWrapper({
   content,
@@ -15,7 +30,6 @@ export default function ContentWrapper({
   className,
   single,
 }) {
-  // const [shouldShowInterscroller, setShouldShowInterscroller] = useState(false);
 
   // Get Tag in Single
   const { data, loading } = useQuery(GetSingleTags, {
@@ -33,20 +47,6 @@ export default function ContentWrapper({
 
   // All tags in single
   const singleTags = data?.post?.tags?.edges ?? [];
-
-  // useEffect(() => {
-  //   // Helper function to count paragraphs in the content
-  //   const countParagraphs = (html) => {
-  //     const div = document.createElement("div");
-  //     div.innerHTML = html;
-  //     const paragraphs = div.querySelectorAll("p");
-  //     return paragraphs.length;
-  //   };
-
-  //   // Determine if the Interscroller should be shown
-  //   const paragraphsCount = countParagraphs(content);
-  //   setShouldShowInterscroller(paragraphsCount >= 5);
-  // }, [content]);
 
   return (
     <>
@@ -81,7 +81,10 @@ export default function ContentWrapper({
           </div>
         </div>
       )}
-      <Interscroller />
+      <ResponsiveComponent
+        ComponentMobile={Interscroller}
+        ComponentDesktop={"null"}
+      />
     </>
   );
 }

@@ -2,7 +2,12 @@ import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { MastHeadBottom, NavigationMenu } from "../../components";
+import { MastHeadBottom, MastHeadBottomMobile, NavigationMenu } from "../../components";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false,
+});
 
 // DAMG Logo
 import damgLogo from "../../assets/logo/footer/damg_logo.png";
@@ -14,6 +19,17 @@ import scop3Logo from "../../assets/logo/footer/scop3_logo.png";
 
 let cx = classNames.bind(styles);
 
+const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
+  <>
+    <MediaQuery maxWidth={767}>
+      <ComponentMobile />
+    </MediaQuery>
+    <MediaQuery minWidth={768}>
+      <ComponentDesktop />
+    </MediaQuery>
+  </>
+);
+
 export default function Footer({ menuItems }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -21,7 +37,10 @@ export default function Footer({ menuItems }) {
 
   return (
     <>
-      <MastHeadBottom />
+      <ResponsiveComponent
+        ComponentMobile={MastHeadBottomMobile}
+        ComponentDesktop={MastHeadBottom}
+      />
       <footer className={cx("component")}>
         <div className={cx("footer-wrapper")}>
           <div className={cx("back-to-top")}>

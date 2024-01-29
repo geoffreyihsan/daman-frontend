@@ -8,8 +8,24 @@ import DaManLogo from "../../assets/logo/daman-logo.png";
 import { FullMenu, MastHeadTop, NavigationMenu } from "../../components";
 import * as MENUS from "../../constants/menus";
 import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false,
+});
 
 let cx = classNames.bind(styles);
+
+const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
+  <>
+    <MediaQuery maxWidth={767}>
+      <ComponentMobile />
+    </MediaQuery>
+    <MediaQuery minWidth={768}>
+      <ComponentDesktop />
+    </MediaQuery>
+  </>
+);
 
 export default function Header({
   primaryMenuItems,
@@ -58,7 +74,10 @@ export default function Header({
 
   return (
     <>
-      <MastHeadTop />
+      <ResponsiveComponent
+        ComponentMobile={MastHeadTop}
+        ComponentDesktop={MastHeadTop}
+      />
       {/* Main Header */}
       <header className={cx("component", { sticky: isScrolled })}>
         <div className={cx("wrapper")}>

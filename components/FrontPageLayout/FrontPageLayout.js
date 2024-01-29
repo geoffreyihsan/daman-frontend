@@ -55,7 +55,10 @@ export default function FrontPageLayout(databaseId) {
           <Outnow />
         </div>
       </div>
-      <Interscroller />
+      <ResponsiveComponent
+        ComponentMobile={Interscroller}
+        ComponentDesktop={"null"}
+      />
       <DamanTv damanTvLogo={databaseId?.damanTvLogo} />
       <BorderDivider />
       <div className={cx("two-columns")}>

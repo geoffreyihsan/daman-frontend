@@ -15,6 +15,7 @@
 
   @media (min-width: $breakpoint-small) {
     flex-direction: row;
+    max-width: 750px;
   }
 
   @media (min-width: $breakpoint-medium) {

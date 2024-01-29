@@ -67,7 +67,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide1?.title,
       excerpt: data?.page?.homepageSlider?.postSlide1?.excerpt,
       date: data?.page?.homepageSlider?.postSlide1?.date,
-      author: data?.page?.homepageSlider?.postSlide1?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide2,
@@ -75,7 +74,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide2?.title,
       excerpt: data?.page?.homepageSlider?.postSlide2?.excerpt,
       date: data?.page?.homepageSlider?.postSlide2?.date,
-      author: data?.page?.homepageSlider?.postSlide2?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide3,
@@ -83,7 +81,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide3?.title,
       excerpt: data?.page?.homepageSlider?.postSlide3?.excerpt,
       date: data?.page?.homepageSlider?.postSlide3?.date,
-      author: data?.page?.homepageSlider?.postSlide3?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide4,
@@ -91,7 +88,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide4?.title,
       excerpt: data?.page?.homepageSlider?.postSlide4?.excerpt,
       date: data?.page?.homepageSlider?.postSlide4?.date,
-      author: data?.page?.homepageSlider?.postSlide4?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide5,
@@ -99,7 +95,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide5?.title,
       excerpt: data?.page?.homepageSlider?.postSlide5?.excerpt,
       date: data?.page?.homepageSlider?.postSlide5?.date,
-      author: data?.page?.homepageSlider?.postSlide5?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide6,
@@ -107,7 +102,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide6?.title,
       excerpt: data?.page?.homepageSlider?.postSlide6?.excerpt,
       date: data?.page?.homepageSlider?.postSlide6?.date,
-      author: data?.page?.homepageSlider?.postSlide6?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide7,
@@ -115,7 +109,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide7?.title,
       excerpt: data?.page?.homepageSlider?.postSlide7?.excerpt,
       date: data?.page?.homepageSlider?.postSlide7?.date,
-      author: data?.page?.homepageSlider?.postSlide7?.author?.node?.name,
     },
     {
       featuredImage: data?.page?.homepageSlider?.imageSlide8,
@@ -123,7 +116,6 @@ export default function HeroSlider({ databaseId }) {
       title: data?.page?.homepageSlider?.postSlide8?.title,
       excerpt: data?.page?.homepageSlider?.postSlide8?.excerpt,
       date: data?.page?.homepageSlider?.postSlide8?.date,
-      author: data?.page?.homepageSlider?.postSlide8?.author?.node?.name,
     },
   ];
 

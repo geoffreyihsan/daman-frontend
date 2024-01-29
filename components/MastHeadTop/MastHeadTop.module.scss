@@ -1,27 +1,7 @@
-@import "styles/breakpoints";
-
-.mobile-banner {
+.desktop-banner {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--wpe--color--offwhite);
-  position: relative;
-  z-index: 5;
-
-  @media (min-width: $breakpoint-medium) {
-    display: none;
-  }
-}
-
-.desktop-banner {
-  display: none;
-  background-color: var(--wpe--color--offwhite);
-
-  @media (min-width: $breakpoint-medium) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 }
 
 .masthead-banner {
