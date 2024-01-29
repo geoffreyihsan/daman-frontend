@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import DaManLogo from "../../assets/logo/daman-logo.png";
-import { FullMenu, MastHeadTop, NavigationMenu } from "../../components";
+import { FullMenu, MastHeadTop, MastHeadTopMobile, NavigationMenu } from "../../components";
 import * as MENUS from "../../constants/menus";
 import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
 import dynamic from "next/dynamic";
@@ -75,7 +75,7 @@ export default function Header({
   return (
     <>
       <ResponsiveComponent
-        ComponentMobile={MastHeadTop}
+        ComponentMobile={MastHeadTopMobile}
         ComponentDesktop={MastHeadTop}
       />
       {/* Main Header */}
