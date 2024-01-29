@@ -10,6 +10,22 @@
     padding: 0 0 4rem;
   }
 
+  div {
+    position: relative;
+    z-index: 1;
+    background-color: var(--wpe--color--white);
+  }
+
+  p {
+    position: relative;
+    width: 100%;
+  }
+
+  figure {
+    position: relative;
+    width: 100%;
+  }
+
   :global {
     // Scope WordPress block styles within ContentWrapper.
     @import "styles/blocks";
