@@ -10,7 +10,7 @@ export const GetOtherRecommendations = gql`
       categories(first: 1, where: { childless: true, exclude: $exclude }) {
         edges {
           node {
-            posts(first: 10, where: { notIn: $notIn }) {
+            posts(first: 5, where: { notIn: $notIn }) {
               edges {
                 node {
                   title
