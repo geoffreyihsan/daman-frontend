@@ -43,8 +43,8 @@ export default function ContentWrapper({
       // Parse the HTML content
       const doc = parser.parseFromString(content, "text/html");
 
-      // Get all image elements
-      const imageElements = doc.querySelectorAll("img");
+      // Get only image elements with src containing "backend.daman.co.id"
+      const imageElements = doc.querySelectorAll('img[src*="backend.daman.co.id"]');
 
       // Replace <img> elements with <Image> components
       imageElements.forEach((img) => {
