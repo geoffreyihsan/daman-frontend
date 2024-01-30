@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
-import { Header, Footer, SEO, FrontPage } from "../components";
+import { Header, Footer, SEO, FrontPageLayout } from "../components";
 
 export default function PagePreviewHomepage(props) {
   // Loading state for previews
@@ -48,7 +48,7 @@ export default function PagePreviewHomepage(props) {
         navigationMenuItems={navigationMenu}
         menusLoading={menusLoading}
       />
-      <FrontPage
+      <FrontPageLayout
         databaseId={databaseId}
         damanTvLogo={homepageComponent?.damanTvLogo}
       />
