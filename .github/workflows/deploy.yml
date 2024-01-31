@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+env:
+    NEXT_PUBLIC_WORDPRESS_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_URL }}
+    FAUST_SECRET_KEY: ${{ secrets.FAUST_SECRET_KEY }}
+    FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
