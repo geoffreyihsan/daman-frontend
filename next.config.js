@@ -17,6 +17,7 @@ module.exports = withFaust({
         pathname: "/**",
       },
     ],
+    domains: [getWpHostname()],
   },
   i18n: {
     locales: ["en"],
