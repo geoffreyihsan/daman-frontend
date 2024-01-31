@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-env:
-    NEXT_PUBLIC_WORDPRESS_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_URL }}
-    FAUST_SECRET_KEY: ${{ secrets.FAUST_SECRET_KEY }}
-    FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -36,7 +32,7 @@ jobs:
           known_hosts: "unnecessary"
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/gh_actions
+        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
         run: rsync -avz --delete . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
