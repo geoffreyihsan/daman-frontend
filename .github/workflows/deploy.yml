@@ -24,6 +24,10 @@ jobs:
 
       - name: Build Website
         run: npm run build
+        env:
+            NEXT_PUBLIC_WORDPRESS_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_URL }}
+            FAUST_SECRET_KEY: ${{ secrets.FAUST_SECRET_KEY }}
+            FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
