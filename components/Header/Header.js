@@ -137,13 +137,7 @@ export default function Header({
               <div className={cx("navbar")}>
                 <Link href="/" className={cx("logo")}>
                   <div className={cx("brand")}>
-                    <Image
-                      src={DaManLogo}
-                      alt={"DaMan Logo"}
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfDamanHeader />
                   </div>
                 </Link>
               </div>
