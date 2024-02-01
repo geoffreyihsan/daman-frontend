@@ -3,12 +3,16 @@ import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useQuery } from "@apollo/client";
-import DaManLogo from "../../assets/logo/daman-logo.png";
-import { FullMenu, MastHeadTop, MastHeadTopMobile, NavigationMenu } from "../../components";
+import {
+  FullMenu,
+  MastHeadTop,
+  MastHeadTopMobile,
+  NavigationMenu,
+} from "../../components";
 import * as MENUS from "../../constants/menus";
 import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
-import dynamic from "next/dynamic";
 
 const MediaQuery = dynamic(() => import("react-responsive"), {
   ssr: false,
@@ -95,7 +99,7 @@ export default function Header({
                 <Link href="/" className={cx("logo")}>
                   <div className={cx("brand")}>
                     <Image
-                      src={DaManLogo}
+                      src={"/assets/logo/daman-logo.png"}
                       alt={"DaMan Logo"}
                       fill
                       sizes="100%"

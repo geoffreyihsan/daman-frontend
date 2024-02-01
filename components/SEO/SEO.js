@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Document from "next/document";
 import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { AdScript, AdConfig } from "react-ad-manager";
 import { GetFavicon } from "../../queries/GetFavicon";
 import { useQuery } from "@apollo/client";
@@ -105,84 +105,11 @@ export default function SEO({ title, description, imageUrl, url, focuskw }) {
           networkCode={6808792}
           target={[["URL_Exact", locationPathname]]}
           collapseEmptyDivs={true}
-          // eventImpressionViewable={(e) => console.log(e.slot)}
-          // eventSlotOnload={(e) => console.log(e.slot)}
-          // eventSlotRenderEnded={(e) => console.log(e.slot)}
-          // eventSlotRequested={(e) => console.log(e.slot)}
-          // eventSlotResponseReceived={(e) => console.log(e.slot)}
-          // eventSlotVisibilityChanged={(e) => console.log(e.slot)}
         />
-        {/* <script type="text/javascript">
-          {`
-          var googletag = googletag || {};
-          googletag.cmd = googletag.cmd || [];
-          (function() {
-              var gads = document.createElement("script");
-              gads.async = true;
-              gads.type = "text/javascript";
-              var useSSL = "https:" == document.location.protocol;
-              gads.src = (useSSL ? "https:" : "http:") + "//securepubads.g.doubleclick.net/tag/js/gpt.js";
-              var node = document.getElementsByTagName("script")[0];
-              node.parentNode.insertBefore(gads, node);
-          })();
-        `}
-        </script> */}
-        {/* <script>
-          {`
-          googletag.cmd.push(function() {
-            // Targeting based on your PHP logic
-            if (typeof window !== 'undefined') {
-              var address = window.location.pathname;
-              googletag.pubads().setTargeting("URL_Exact", address);
-            }
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP', [970, 250], 'div-gpt-ad-1701941037105-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_TOP_MOBILE', [300, 250], 'div-gpt-ad-1701941240723-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM', [970, 250], 'div-gpt-ad-1701941453692-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_MASTHEAD_BOTTOM_MOBILE', [300, 250], 'div-gpt-ad-1701941651336-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_01', [300, 600], 'div-gpt-ad-1701941862020-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_HALFPAGE_02', [300, 600], 'div-gpt-ad-1701941963018-0').addService(googletag.pubads());
-            googletag.defineSlot('/6808792/DAMAN_INTERSCROLLER', [300, 600], 'div-gpt-ad-1702016546215-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-          });
-        `}
-        </script> */}
-
-        {/* Inter Font Family */}
-        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        /> */}
       </Head>
-      {/* Google tag (gtag.js) */}
-      <Script
-        beforeInteractive
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-CYBBEL8JS1"
-      />
-      <Script
-        beforeInteractive
-        id="gtag-script"
-        dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-CYBBEL8JS1');`,
-        }}
-      />
 
       {/* Google Tag Manager */}
-      <Script
-        beforeInteractive
-        id="gtm-script"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2MZPZT');`,
-        }}
-      />
-      {/* End Google Tag Manager */}
+      <GoogleTagManager gtmId="GTM-W2MZPZT" />
 
       {/* Frmwrk Tracking Code */}
       <Script

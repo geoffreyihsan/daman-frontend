@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import YouTube from 'react-youtube';
+import { YouTubeEmbed } from "@next/third-parties/google";
 import classNames from "classnames/bind";
 import styles from "./DamanTv.module.scss";
 import { GetDamanTv } from "../../queries/GetDamanTv";
@@ -30,7 +30,7 @@ export default function DamanTv({ damanTvLogo }) {
   const otherDamanTv = (data?.category?.contentNodes?.edges ?? []).slice(1);
 
   const extractYouTubeVideoId = (embedUrl) => {
-    const match = embedUrl.match(/\/embed\/([^/"]+)/);
+    const match = embedUrl.match(/\/embed\/([^?"]+)/);
     return match ? match[1] : null;
   };
 
@@ -62,7 +62,11 @@ export default function DamanTv({ damanTvLogo }) {
               )}
               {latestDamanTv?.node?.content && (
                 <div className={cx("first-iframe-wrapper")}>
-                  <YouTube videoId={extractYouTubeVideoId(latestDamanTv?.node?.content)} />
+                  <YouTubeEmbed
+                    videoid={extractYouTubeVideoId(
+                      latestDamanTv?.node?.content
+                    )}
+                  />
                 </div>
               )}
               {latestDamanTv?.node?.title && (

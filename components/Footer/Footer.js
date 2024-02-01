@@ -9,14 +9,6 @@ const MediaQuery = dynamic(() => import("react-responsive"), {
   ssr: false,
 });
 
-// DAMG Logo
-import damgLogo from "../../assets/logo/footer/damg_logo.png";
-import daLogo from "../../assets/logo/footer/da_logo.png";
-import damanLogo from "../../assets/logo/footer/daman_logo.png";
-import daiLogo from "../../assets/logo/footer/dai_logo.png";
-import prsLogo from "../../assets/logo/footer/prestige_logo.png";
-import scop3Logo from "../../assets/logo/footer/scop3_logo.png";
-
 let cx = classNames.bind(styles);
 
 const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
@@ -51,7 +43,7 @@ export default function Footer({ menuItems }) {
               <Link href={"https://destinasianmediagroup.com/home/"}>
                 <div className={cx("damg-logo-wrapper")}>
                   <Image
-                    src={damgLogo.src}
+                    src={"/assets/logo/footer/damg_logo.png"}
                     alt="Destinasian Media Group Logo"
                     fill
                     sizes="100%"
@@ -74,7 +66,7 @@ export default function Footer({ menuItems }) {
                 <Link href={"https://daman.co.id/"}>
                   <div className={cx("logo-wrapper")}>
                     <Image
-                      src={damanLogo.src}
+                      src={"/assets/logo/footer/daman_logo.png"}
                       alt="DaMan Logo"
                       fill
                       sizes="100%"
@@ -85,7 +77,7 @@ export default function Footer({ menuItems }) {
                 <Link href={"https://destinasian.com/"}>
                   <div className={cx("logo-wrapper")}>
                     <Image
-                      src={daLogo.src}
+                      src={"/assets/logo/footer/da_logo.png"}
                       alt="Destinasian Logo"
                       fill
                       sizes="100%"
@@ -96,7 +88,7 @@ export default function Footer({ menuItems }) {
                 <Link href={"https://destinasian.co.id/"}>
                   <div className={cx("logo-wrapper")}>
                     <Image
-                      src={daiLogo.src}
+                      src={"/assets/logo/footer/dai_logo.png"}
                       alt="Destinasian Indonesia Logo"
                       fill
                       sizes="100%"
@@ -107,7 +99,7 @@ export default function Footer({ menuItems }) {
                 <Link href={"https://www.prestigeonline.com/id/"}>
                   <div className={cx("logo-wrapper")}>
                     <Image
-                      src={prsLogo.src}
+                      src={"/assets/logo/footer/prestige_logo.png"}
                       alt="Prestige Logo"
                       fill
                       sizes="100%"
@@ -118,7 +110,7 @@ export default function Footer({ menuItems }) {
                 <Link href={"https://scop3group.com/"}>
                   <div className={cx("logo-wrapper")}>
                     <Image
-                      src={scop3Logo.src}
+                      src={"/assets/logo/footer/scop3_logo.png"}
                       alt="Scop3Group Logo"
                       fill
                       sizes="100%"
