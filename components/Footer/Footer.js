@@ -1,9 +1,20 @@
 import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
-import Image from "next/image";
 import Link from "next/link";
-import { MastHeadBottom, MastHeadBottomMobile, NavigationMenu } from "../../components";
+import {
+  MastHeadBottom,
+  MastHeadBottomMobile,
+  NavigationMenu,
+} from "../../components";
 import dynamic from "next/dynamic";
+import {
+  LogoOfDa,
+  LogoOfDai,
+  LogoOfDamanFooter,
+  LogoOfDamg,
+  LogoOfPrestige,
+  LogoOfScop3,
+} from "../../public/logos/logos";
 
 const MediaQuery = dynamic(() => import("react-responsive"), {
   ssr: false,
@@ -42,13 +53,7 @@ export default function Footer({ menuItems }) {
             <div className={cx("first-wrapper")}>
               <Link href={"https://destinasianmediagroup.com/home/"}>
                 <div className={cx("damg-logo-wrapper")}>
-                  <Image
-                    src={"/assets/logo/footer/damg_logo.png"}
-                    alt="Destinasian Media Group Logo"
-                    fill
-                    sizes="100%"
-                    priority
-                  />
+                  <LogoOfDamg />
                 </div>
               </Link>
               <div className={cx("description-wrapper")}>
@@ -65,57 +70,27 @@ export default function Footer({ menuItems }) {
               <div className={cx("footer-logo-wrapper")}>
                 <Link href={"https://daman.co.id/"}>
                   <div className={cx("logo-wrapper")}>
-                    <Image
-                      src={"/assets/logo/footer/daman_logo.png"}
-                      alt="DaMan Logo"
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfDamanFooter />
                   </div>
                 </Link>
                 <Link href={"https://destinasian.com/"}>
                   <div className={cx("logo-wrapper")}>
-                    <Image
-                      src={"/assets/logo/footer/da_logo.png"}
-                      alt="Destinasian Logo"
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfDa />
                   </div>
                 </Link>
                 <Link href={"https://destinasian.co.id/"}>
                   <div className={cx("logo-wrapper")}>
-                    <Image
-                      src={"/assets/logo/footer/dai_logo.png"}
-                      alt="Destinasian Indonesia Logo"
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfDai />
                   </div>
                 </Link>
                 <Link href={"https://www.prestigeonline.com/id/"}>
                   <div className={cx("logo-wrapper")}>
-                    <Image
-                      src={"/assets/logo/footer/prestige_logo.png"}
-                      alt="Prestige Logo"
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfPrestige />
                   </div>
                 </Link>
                 <Link href={"https://scop3group.com/"}>
                   <div className={cx("logo-wrapper")}>
-                    <Image
-                      src={"/assets/logo/footer/scop3_logo.png"}
-                      alt="Scop3Group Logo"
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfScop3 />
                   </div>
                 </Link>
               </div>

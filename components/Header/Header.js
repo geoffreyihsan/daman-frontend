@@ -13,6 +13,7 @@ import {
 } from "../../components";
 import * as MENUS from "../../constants/menus";
 import { GetHeaderComponent } from "../../queries/GetHeaderComponent";
+import { LogoOfDamanHeader } from "../../public/logos/logos";
 
 const MediaQuery = dynamic(() => import("react-responsive"), {
   ssr: false,
@@ -98,13 +99,7 @@ export default function Header({
               <div className={cx("navbar")}>
                 <Link href="/" className={cx("logo")}>
                   <div className={cx("brand")}>
-                    <Image
-                      src={"/assets/logo/daman-logo.png"}
-                      alt={"DaMan Logo"}
-                      fill
-                      sizes="100%"
-                      priority
-                    />
+                    <LogoOfDamanHeader />
                   </div>
                 </Link>
               </div>
