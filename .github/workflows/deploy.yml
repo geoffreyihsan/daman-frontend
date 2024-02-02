@@ -35,7 +35,6 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz --delete . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
-
-      - name: Restart pm2 service
-        run: pm2 restart @daman-frontend
+        run: |
+          echo "SSH Key: ${{ secrets.SSH_KEY }}"
+          rsync -avz --delete . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
