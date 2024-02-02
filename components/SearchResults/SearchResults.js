@@ -36,11 +36,11 @@ export default function SearchResults({ searchResults, isLoading }) {
   if (isLoading) {
     return (
       <>
-        <div className="mx-auto my-0 flex max-w-[100vw] justify-center md:max-w-[700px]	">
+        <div className={cx("loading-wrapper")}>
           <div role="status">
             <svg
               aria-hidden="true"
-              className="mr-2 h-[80vh] w-8 animate-spin fill-black text-gray-200 dark:text-gray-600"
+              className={cx("loading-icon")}
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -72,6 +72,8 @@ export default function SearchResults({ searchResults, isLoading }) {
 
     return `${trimmedExcerpt}`;
   };
+
+  console.log(searchResults)
 
   return (
     <>

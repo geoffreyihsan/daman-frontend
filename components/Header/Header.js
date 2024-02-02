@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useQuery } from "@apollo/client";
 import {

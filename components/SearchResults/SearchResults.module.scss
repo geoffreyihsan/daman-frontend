@@ -2,6 +2,33 @@
 
 $color-grey: #777;
 
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(-30rem + 100vh);
+}
+
+.loading-icon {
+  color: transparent;
+  border: 0.3rem solid var(--wpe--color--light--grey);
+  border-top: 0.3rem solid transparent;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .component {
   background-color: var(--wpe--main--background-color);
   width: 100vw;
