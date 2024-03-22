@@ -4,7 +4,7 @@ export const GetDamanStyle = gql`
   query GetDamanStyle(
     $id: ID!
     $first: Int!
-    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
     category(id: $id, idType: DATABASE_ID) {
       name

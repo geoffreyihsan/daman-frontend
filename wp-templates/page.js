@@ -3,6 +3,7 @@ import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import { Header, Footer, SEO, PageLayout } from "../components";
+import { inter } from "../styles/fonts/fonts";
 
 export default function Page(props) {
   // Loading state for previews
@@ -34,7 +35,7 @@ export default function Page(props) {
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
-    <>
+    <main className={inter.className}>
       <SEO
         title={seo?.title}
         description={seo?.metaDesc}
@@ -51,7 +52,7 @@ export default function Page(props) {
       />
       <PageLayout title={title} content={content} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
-    </>
+    </main>
   );
 }
 

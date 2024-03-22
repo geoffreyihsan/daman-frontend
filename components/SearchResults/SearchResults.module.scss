@@ -82,7 +82,7 @@ $color-grey: #777;
 }
 
 .title {
-  font-family: var(--font-inter);
+  font-family: var(--font--inter);
   font-size: 1rem;
   line-height: 1.2;
   font-weight: 500;
@@ -108,7 +108,7 @@ $color-grey: #777;
   }
 
   * {
-    font-family: var(--font-inter);
+    font-family: var(--font--inter);
     font-weight: 500;
     font-size: 0.5rem;
 
@@ -148,7 +148,7 @@ $color-grey: #777;
   }
 
   p {
-    font-family: var(--font-inter);
+    font-family: var(--font--inter);
     font-weight: 500;
     font-size: 0.65rem;
 
@@ -158,7 +158,7 @@ $color-grey: #777;
   }
 
   .more-link {
-    font-family: var(--font-inter);
+    font-family: var(--font--inter);
     font-weight: 700;
   }
 }

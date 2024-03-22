@@ -16,6 +16,9 @@ import {
   FeaturesMobile,
   DamanStyleMobile,
   DamanCaliberMobile,
+  DamanPulse,
+  DamanPulseHero,
+  DamanPulseMobile,
 } from "../../components";
 import styles from "./FrontPageLayout.module.scss";
 import className from "classnames/bind";
@@ -92,6 +95,12 @@ export default function FrontPageLayout(databaseId) {
           ComponentDesktop={DamanCaliber}
         />
       </div>
+      <BorderDivider />
+      <DamanPulseHero databaseId={databaseId?.databaseId} />
+      <ResponsiveComponent
+        ComponentMobile={DamanPulseMobile}
+        ComponentDesktop={DamanPulse}
+      />
     </div>
   );
 }

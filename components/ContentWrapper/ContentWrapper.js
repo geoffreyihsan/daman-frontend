@@ -10,6 +10,18 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
+
 const MediaQuery = dynamic(() => import("react-responsive"), {
   ssr: false,
 });
@@ -27,15 +39,11 @@ const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
   </>
 );
 
-export default function ContentWrapper({
-  content,
-  databaseId,
-  single,
-}) {
+export default function ContentWrapper({ content, databaseId, single }) {
   const [transformedContent, setTransformedContent] = useState("");
 
   useEffect(() => {
-    // Function to extract image data and replace <img> with <Image>
+    // Function to extract image data and replace <img> with <Swiper> components
     const extractImageData = () => {
       // Create a DOMParser
       const parser = new DOMParser();
@@ -44,7 +52,129 @@ export default function ContentWrapper({
       const doc = parser.parseFromString(content, "text/html");
 
       // Get only image elements with src containing "backend.daman.co.id"
-      const imageElements = doc.querySelectorAll('img[src*="backend.daman.co.id"]');
+      const imageElements = doc.querySelectorAll(
+        'img[src*="backend.daman.co.id"]'
+      );
+
+      // Get elements with class 'gallery-columns-3' containing images with src containing "backend.daman.co.id"
+      const galleryWrapper = doc.querySelector(".gallery.gallery-columns-3");
+
+      if (galleryWrapper) {
+        // Create an array to hold the Swiper slides
+        const swiperSlides = [];
+
+        // Get elements with class 'gallery-item' containing images with src containing "backend.daman.co.id"
+        const galleryItems = galleryWrapper.querySelectorAll(
+          '.gallery-item img[src*="backend.daman.co.id"]'
+        );
+
+        // Map through gallery items and generate a SwiperSlide for each item
+        galleryItems.forEach((img, index) => {
+          const src = img.getAttribute("src");
+          const alt = img.getAttribute("alt");
+          // Get the corresponding figcaption based on the index
+          const figcaption =
+            galleryWrapper.querySelectorAll(".gallery-caption")[index]
+              ?.textContent || "";
+
+          // Replace the <img> element with the empty string to remove it from the HTML content
+          img.innerHTML = "";
+
+          // Push the slide object into swiperSlides array
+          swiperSlides.push({
+            src: src,
+            alt: alt,
+            figcaption: figcaption,
+          });
+        });
+
+        // Create the final Swiper component with all the slides
+        const swiperComponent = (
+          <Swiper
+            effect={"fade"}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: true,
+            }}
+            loop={true}
+            pagination={{
+              el: ".swiper-custom-pagination",
+              type: "fraction",
+            }}
+            navigation={{
+              prevEl: ".swiper-custom-button-prev",
+              nextEl: ".swiper-custom-button-next",
+            }}
+            modules={[EffectFade, Autoplay, Pagination, Navigation]}
+            className="gallery-swiper-wrapper"
+          >
+            {swiperSlides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className={cx("slide-wrapper")}>
+                  {slide?.src && (
+                    <div className={cx("image-wrapper")}>
+                      <Image
+                        src={slide?.src}
+                        alt={
+                          slide?.alt
+                            ? slide?.alt
+                            : "Gallery Image " + (index + 1)
+                        }
+                        className={cx("featured-image")}
+                        width={500}
+                        height={500}
+                        style={{ objectFit: "contain" }}
+                        priority
+                      />
+                    </div>
+                  )}
+                  {slide?.figcaption && (
+                    <div className={cx("figcaption")}>{slide?.figcaption}</div>
+                  )}
+                </div>
+              </SwiperSlide>
+            ))}
+            <div className="swiper-custom-pagination"></div>
+            <div className="swiper-custom-button-prev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="65"
+                height="65"
+                viewBox="0 0 65 65"
+                fill="none"
+              >
+                <rect width="65" height="65" fill="black" />
+                <path d="M45 12L21 31L45 49" stroke="white" strokeWidth="3" />
+              </svg>
+            </div>
+            <div className="swiper-custom-button-next">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="65"
+                height="65"
+                viewBox="0 0 65 65"
+                fill="none"
+              >
+                <rect
+                  x="65"
+                  y="65"
+                  width="65"
+                  height="65"
+                  transform="rotate(-180 65 65)"
+                  fill="black"
+                />
+                <path d="M20 53L44 34L20 16" stroke="white" strokeWidth="3" />
+              </svg>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+          </Swiper>
+        );
+
+        // Append the Swiper component to the gallery wrapper
+        const galleryWrapperContent = renderToStaticMarkup(swiperComponent);
+
+        galleryWrapper.outerHTML = galleryWrapperContent;
+      }
 
       // Replace <img> elements with <Image> components
       imageElements.forEach((img) => {

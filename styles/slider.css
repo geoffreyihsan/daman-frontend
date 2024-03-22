@@ -161,6 +161,48 @@
   object-position: top;
 }
 
+.gallery-swiper-wrapper {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-swiper-wrapper > .swiper-wrapper {
+  height: auto;
+}
+
+.gallery-swiper-wrapper > .swiper-wrapper > .swiper-slide {
+  background-color: #000000;
+}
+
+.gallery-swiper-wrapper > .swiper-custom-button-prev,
+.gallery-swiper-wrapper > .swiper-custom-button-next {
+  position: absolute !important;
+  top: var(--swiper-navigation-top-offset, 40%);
+  width: 3rem;
+  height: 3rem;
+}
+
+.gallery-swiper-wrapper > .swiper-custom-pagination {
+  padding-left: 0;
+}
+
+.gallery-swiper-wrapper > .swiper-pagination-fraction {
+  width: 100%;
+  bottom: var(--swiper-pagination-bottom, 0px);
+  padding: 1rem 0;
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+}
+
+.gallery-swiper-wrapper
+  > .swiper-pagination-fraction
+  > .swiper-pagination-current {
+  font-size: 1.5rem;
+}
+
 @media only screen and (min-width: 768px) {
   .carousel-swiper {
     padding: 0;

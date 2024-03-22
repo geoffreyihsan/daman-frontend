@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import className from "classnames/bind";
 import styles from "./HeroSlider.module.scss";
 import { useQuery } from "@apollo/client";

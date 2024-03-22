@@ -5,21 +5,17 @@ export const GetSearchResults = gql`
     $first: Int!
     $after: String
     $terms: [String]
-    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
     contentNodes(
       first: $first
       after: $after
       where: {
         status: PUBLISH
+        orderby: { field: DATE, order: DESC }
         taxQuery: {
           relation: OR
-          taxArray: {
-            field: NAME
-            operator: IN
-            taxonomy: TAG
-            terms: $terms
-          }
+          taxArray: { field: NAME, operator: IN, taxonomy: TAG, terms: $terms }
         }
       }
     ) {

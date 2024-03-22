@@ -1,9 +1,10 @@
 import { gql } from "@apollo/client";
 
-export const GetUpdates = gql`
-  query GetUpdates(
+export const GetDamanPulse = gql`
+  query GetDamanPulse(
     $id: ID!
     $first: Int!
+    $after: String
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
     category(id: $id, idType: DATABASE_ID) {
@@ -11,6 +12,7 @@ export const GetUpdates = gql`
       uri
       contentNodes(
         first: $first
+        after: $after
         where: {
           contentTypes: POST
           status: PUBLISH
@@ -18,6 +20,7 @@ export const GetUpdates = gql`
         }
       ) {
         pageInfo {
+          startCursor
           hasNextPage
           endCursor
         }
@@ -47,6 +50,7 @@ export const GetUpdates = gql`
                     parent {
                       node {
                         name
+                        uri
                       }
                     }
                   }

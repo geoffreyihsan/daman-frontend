@@ -3,6 +3,7 @@ import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import { Header, Footer, SEO, TagLayout } from "../components";
+import { inter } from "../styles/fonts/fonts";
 
 export default function Tag(props) {
   const { databaseId, seo, uri } = props?.data?.tag;
@@ -27,7 +28,7 @@ export default function Tag(props) {
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
-    <>
+    <main className={inter.className}>
       <SEO
         title={seo?.title}
         description={seo?.metaDesc}
@@ -43,7 +44,7 @@ export default function Tag(props) {
       />
       <TagLayout databaseId={databaseId} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
-    </>
+    </main>
   );
 }
 

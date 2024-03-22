@@ -3,6 +3,7 @@ import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import { Header, Footer, SEO, SingleLayout } from "../components";
+import { inter } from "../styles/fonts/fonts";
 
 export default function Single(props) {
   // Loading state for previews
@@ -41,7 +42,7 @@ export default function Single(props) {
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
-    <>
+    <main className={inter.className}>
       <SEO
         title={seo?.title}
         description={seo?.metaDesc}
@@ -64,7 +65,7 @@ export default function Single(props) {
         categories={categories?.edges[0]}
       />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
-    </>
+    </main>
   );
 }
 
@@ -73,7 +74,7 @@ Single.query = gql`
   query GetPost(
     $databaseId: ID!
     $asPreview: Boolean = false
-    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title

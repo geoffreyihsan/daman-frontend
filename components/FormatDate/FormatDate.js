@@ -1,3 +1,5 @@
+import { inter } from "../../styles/fonts/fonts";
+
 export default function FormatDate({ date }) {
   let formattedDate = new Date(date);
 
@@ -19,5 +21,9 @@ export default function FormatDate({ date }) {
   const year = formattedDate.toLocaleDateString("en-US", { year: "numeric" });
   const time = formattedDate.toLocaleTimeString("en-US", timeformat);
 
-  return <>{`${weekday} ${time} ${day} ${month} ${year}`}</>;
+  return (
+    <div
+      className={inter.className}
+    >{`${weekday} ${time} ${day} ${month} ${year}`}</div>
+  );
 }

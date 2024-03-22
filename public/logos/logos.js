@@ -10,6 +10,10 @@ export function LogoOfDamanHeader() {
   return <Logo id={"daman_header_logo"} alt={"DaMan Logo"} />;
 }
 
+export function LogoOfDamanPulse() {
+  return <Logo id={"daman_pulse_logo"} alt={"DaMan Pulse Logo"} />;
+}
+
 export function LogoOfDamg() {
   return <Logo id={"damg_logo"} alt={"Destinasian Media Group Logo"} />;
 }

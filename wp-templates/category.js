@@ -3,6 +3,7 @@ import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import { Header, Footer, SEO, CategoryLayout } from "../components";
+import { inter } from "../styles/fonts/fonts";
 
 export default function Category(props) {
   const { databaseId, seo, uri } = props?.data?.category;
@@ -27,7 +28,7 @@ export default function Category(props) {
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
-    <>
+    <main className={inter.className}>
       <SEO
         title={seo?.title}
         description={seo?.metaDesc}
@@ -43,7 +44,7 @@ export default function Category(props) {
       />
       <CategoryLayout databaseId={databaseId} />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
-    </>
+    </main>
   );
 }
 

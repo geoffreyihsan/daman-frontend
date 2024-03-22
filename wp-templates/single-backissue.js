@@ -3,6 +3,7 @@ import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { GetMenus } from "../queries/GetMenus";
 import { Header, Footer, SEO, SingleLayout } from "../components";
+import { inter } from "../styles/fonts/fonts";
 
 export default function SingleBackIssue(props) {
   // Loading state for previews
@@ -33,7 +34,7 @@ export default function SingleBackIssue(props) {
   const footerMenu = menusData?.footerMenuItems?.nodes ?? [];
 
   return (
-    <>
+    <main className={inter.className}>
       <SEO
         title={seo?.title}
         description={seo?.metaDesc}
@@ -56,7 +57,7 @@ export default function SingleBackIssue(props) {
         single={"backissue"}
       />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
-    </>
+    </main>
   );
 }
 

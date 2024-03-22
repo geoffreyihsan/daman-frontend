@@ -5,7 +5,7 @@ export const GetPostCategory = gql`
     $first: Int!
     $after: String
     $id: ID!
-    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149]
+    $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
     category(id: $id, idType: DATABASE_ID) {
       name

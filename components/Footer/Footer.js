@@ -38,6 +38,8 @@ export default function Footer({ menuItems }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const year = new Date().getFullYear();
+
   return (
     <>
       <ResponsiveComponent
@@ -57,8 +59,9 @@ export default function Footer({ menuItems }) {
                 </div>
               </Link>
               <div className={cx("description-wrapper")}>
+                {"© "} {year}
                 {
-                  "© 2023 DestinAsian Media Group All rights reserved. Use of this site constitutes acceptance of our User Agreement (effective 21/12/2015) and Privacy Policy (effective 21/12/2015). The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with prior written permission of DestinAsian Media Group."
+                  " DestinAsian Media Group All rights reserved. Use of this site constitutes acceptance of our User Agreement (effective 21/12/2015) and Privacy Policy (effective 21/12/2015). The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with prior written permission of DestinAsian Media Group."
                 }
               </div>
             </div>
@@ -98,7 +101,9 @@ export default function Footer({ menuItems }) {
           </div>
           <p className={cx("copyright")}>
             {/* {`${title} © ${year}`} */}
-            {"DAMAN.CO.ID © 2023 design by lettercase creative network"}
+            {"DAMAN.CO.ID © "}
+            {year}
+            {" design by lettercase creative network"}
           </p>
         </div>
       </footer>
