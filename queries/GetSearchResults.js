@@ -4,58 +4,53 @@ export const GetSearchResults = gql`
   query GetSearchResults(
     $first: Int!
     $after: String
-    $terms: [String]
+    $search: String
     $exclude: [ID] = [4, 12921, 9821, 9803, 13125, 1, 8743, 8744, 19149, 19392]
   ) {
-    contentNodes(
-      first: $first
-      after: $after
-      where: {
-        status: PUBLISH
-        orderby: { field: DATE, order: DESC }
-        taxQuery: {
-          relation: OR
-          taxArray: { field: NAME, operator: IN, taxonomy: TAG, terms: $terms }
-        }
-      }
-    ) {
+    tags(first: $first, after: $after, where: { search: $search }) {
       pageInfo {
         endCursor
         hasNextPage
       }
       edges {
         node {
-          ... on Post {
-            id
-            databaseId
-            title
-            date
-            uri
-            excerpt
-            featuredImage {
+          contentNodes(where: { status: PUBLISH, contentTypes: [POST] }) {
+            edges {
               node {
-                id
-                sourceUrl
-                altText
-                mediaDetails {
-                  width
-                  height
-                }
-              }
-            }
-            author {
-              node {
-                name
-              }
-            }
-            categories(where: { childless: true, exclude: $exclude }) {
-              edges {
-                node {
-                  name
+                ... on Post {
+                  id
+                  databaseId
+                  title
+                  date
                   uri
-                  parent {
+                  excerpt
+                  featuredImage {
+                    node {
+                      id
+                      sourceUrl
+                      altText
+                      mediaDetails {
+                        width
+                        height
+                      }
+                    }
+                  }
+                  author {
                     node {
                       name
+                    }
+                  }
+                  categories(where: { childless: true, exclude: $exclude }) {
+                    edges {
+                      node {
+                        name
+                        uri
+                        parent {
+                          node {
+                            name
+                          }
+                        }
+                      }
                     }
                   }
                 }

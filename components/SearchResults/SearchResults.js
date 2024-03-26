@@ -73,8 +73,6 @@ export default function SearchResults({ searchResults, isLoading }) {
     return `${trimmedExcerpt}`;
   };
 
-  console.log(searchResults)
-
   return (
     <>
       <div className={cx("component")}>

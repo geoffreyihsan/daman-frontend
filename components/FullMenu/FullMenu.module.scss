@@ -358,11 +358,11 @@
     transform: translate3d(-50%, 0, 0);
     width: 100vw;
     text-align: left;
-    padding: 0;
+    padding: 1rem 0;
     justify-content: center;
 
     @media (min-width: $breakpoint-medium) {
-      padding: 0 1rem;
+      padding: 1rem;
     }
 
     .alert-error {

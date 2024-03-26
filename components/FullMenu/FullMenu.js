@@ -55,7 +55,7 @@ export default function FullMenu({
 
   // Search function content
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const postsPerPage = 5;
+  const postsPerPage = 100;
   // Input text
   const inputRef = useRef(null);
   // Function to focus on the input when a button is clicked
@@ -73,7 +73,7 @@ export default function FullMenu({
     variables: {
       first: postsPerPage,
       after: null,
-      terms: searchQuery
+      search: searchQuery,
     },
     skip: searchQuery.length === 0,
     fetchPolicy: "network-only",
@@ -82,32 +82,26 @@ export default function FullMenu({
 
   // Update query when load more button clicked
   const updateQuery = (previousResult, { fetchMoreResult }) => {
-    if (!fetchMoreResult.contentNodes.edges.length) {
-      return previousResult.contentNodes;
+    if (!fetchMoreResult.tags.edges.length) {
+      return previousResult.tags;
     }
 
     return {
-      contentNodes: {
-        ...previousResult.contentNodes,
-        edges: [
-          ...previousResult.contentNodes.edges,
-          ...fetchMoreResult.contentNodes.edges,
-        ],
-        pageInfo: fetchMoreResult.contentNodes.pageInfo,
+      tags: {
+        ...previousResult.tags,
+        edges: [...previousResult.tags.edges, ...fetchMoreResult.tags.edges],
+        pageInfo: fetchMoreResult.tags.pageInfo,
       },
     };
   };
 
   // Function to fetch more posts
   const fetchMorePosts = () => {
-    if (
-      !isFetchingMore &&
-      searchResultsData?.contentNodes?.pageInfo?.hasNextPage
-    ) {
+    if (!isFetchingMore && searchResultsData?.tags?.pageInfo?.hasNextPage) {
       setIsFetchingMore(true);
       fetchMore({
         variables: {
-          after: searchResultsData?.contentNodes?.pageInfo?.endCursor,
+          after: searchResultsData?.tags?.pageInfo?.endCursor,
         },
         updateQuery,
       }).then(() => {
@@ -131,14 +125,26 @@ export default function FullMenu({
   const contentNodesPosts = [];
 
   // Loop through all the contentNodes posts
-  searchResultsData?.contentNodes?.edges.forEach((post) => {
-    const { databaseId } = post.node;
+  searchResultsData?.tags?.edges.forEach((contentNodes) => {
+    contentNodes.node?.contentNodes?.edges.forEach((post) => {
+      const { databaseId } = post.node;
 
-    // Check if the databaseId is unique (not in the Set)
-    if (!uniqueDatabaseIds.has(databaseId)) {
-      uniqueDatabaseIds.add(databaseId); // Add the databaseId to the Set
-      contentNodesPosts.push(post.node); // Push the unique post to the array
-    }
+      // Check if the databaseId is unique (not in the Set)
+      if (!uniqueDatabaseIds.has(databaseId)) {
+        uniqueDatabaseIds.add(databaseId); // Add the databaseId to the Set
+        contentNodesPosts.push(post.node); // Push the unique post to the array
+      }
+    });
+  });
+
+  // Sort contentNodesPosts array by date
+  contentNodesPosts.sort((a, b) => {
+    // Assuming your date is stored in 'date' property of the post objects
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    // Compare the dates
+    return dateB - dateA;
   });
 
   return (
@@ -361,8 +367,8 @@ m2911 -442 c114 -32 268 -112 343 -177 146 -129 227 -253 285 -441 l22 -70 3
               isLoading={searchResultsLoading}
             />
           )}
-          {searchResultsData?.contentNodes?.pageInfo?.hasNextPage &&
-            searchResultsData?.contentNodes?.pageInfo?.endCursor && (
+          {searchResultsData?.tags?.pageInfo?.hasNextPage &&
+            searchResultsData?.tags?.pageInfo?.endCursor && (
               <div className="mx-auto my-0 flex w-[100vw] justify-center	">
                 <Button onClick={fetchMorePosts} className="gap-x-4 my-4">
                   {isFetchingMore ? "Loading..." : "Load More"}
