@@ -79,7 +79,7 @@
   position: relative;
 
   @media (min-width: $breakpoint-small) {
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 2 / 1.264;
   }
 }
 
@@ -109,9 +109,9 @@
 
   @media (min-width: $breakpoint-small) {
     position: absolute;
-    width: 60%;
+    width: 50%;
     height: 100%;
-    margin: 0 40% 0 0;
+    margin: 0 50% 0 0;
   }
 }
 
@@ -130,18 +130,18 @@
 
   @media (min-width: $breakpoint-small) {
     position: absolute;
-    width: 40%;
+    width: 50%;
     height: 100%;
     gap: 1rem;
     padding: 0 4rem 0 6rem;
     justify-content: center;
-    margin: 0 0 0 60%;
+    margin: 0 0 0 50%;
   }
 }
 
 .image-wrapper {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 390 / 496;
 
   @media (min-width: $breakpoint-small) {
     position: relative;
@@ -151,7 +151,7 @@
   }
 
   img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: top;
   }
 }

@@ -16,10 +16,10 @@ export default function DamanPulseMobile() {
   // Get DAMAN Pulse Offset
   const { data: firstData } = useQuery(GetDamanPulse, {
     variables: {
-      // DAMAN Pulse category id
-      id: 19392,
-      // // Caliber category id for testing
-      // id: 9821,
+      // // DAMAN Pulse category id
+      // id: 19392,
+      // Caliber category id for testing
+      id: 9821,
       after: null,
       first: offsetPosts,
     },
@@ -32,10 +32,10 @@ export default function DamanPulseMobile() {
   // Get DAMAN Pulse Posts
   const { data } = useQuery(GetDamanPulse, {
     variables: {
-      // DAMAN Pulse category id
-      id: 19392,
-      // // Caliber category id for testing
-      // id: 9821,
+      // // DAMAN Pulse category id
+      // id: 19392,
+      // Caliber category id for testing
+      id: 9821,
       after: startCursor,
       first: postsPerPage,
     },
@@ -52,7 +52,7 @@ export default function DamanPulseMobile() {
           <Swiper
             slidesPerView={2.5}
             spaceBetween={16}
-            className="carousel-swiper"
+            className="pulse-carousel-swiper"
           >
             {damanPulsePosts.map((post, index) => (
               <SwiperSlide key={index}>

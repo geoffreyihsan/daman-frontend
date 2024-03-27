@@ -149,8 +149,13 @@
   text-transform: uppercase;
   line-height: 1;
 }
+
 .carousel-swiper {
   padding: 0 1rem;
+}
+
+.pulse-carousel-swiper {
+  padding: 0 2rem;
 }
 
 .daman-tv-swiper {
@@ -205,6 +210,10 @@
 
 @media only screen and (min-width: 768px) {
   .carousel-swiper {
+    padding: 0;
+  }
+
+  .pulse-carousel-swiper {
     padding: 0;
   }
 }
