@@ -12,6 +12,7 @@
 
 .desktop-wrapper {
   display: none;
+  background-color: var(--wpe--color--black);
 
   @media (min-width: $breakpoint-small) {
     display: flex;
