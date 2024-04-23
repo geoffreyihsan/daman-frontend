@@ -57,14 +57,14 @@ export default function DamanPulseMobile() {
             {damanPulsePosts.map((post, index) => (
               <SwiperSlide key={index}>
                 <div className={cx("slide-wrapper")}>
-                  {post?.node?.featuredImage && (
+                  {post?.node?.featuredCover && (
                     <Link href={post?.node?.uri}>
                       <div className={cx("slide-image-wrapper")}>
                         <Image
-                          src={post?.node?.featuredImage?.node?.sourceUrl}
+                          src={post?.node?.featuredCover?.featuredCover?.sourceUrl}
                           alt={
-                            post?.node?.featuredImage?.node?.altText
-                              ? post?.node?.featuredImage?.node?.altText
+                            post?.node?.featuredCover?.featuredCover?.altText
+                              ? post?.node?.featuredCover?.featuredCover?.altText
                               : "Updates Image"
                           }
                           className={cx("featured-image")}

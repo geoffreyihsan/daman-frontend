@@ -16,17 +16,17 @@ export default function DamanPulseHero({ databaseId }) {
   const postsPerPage = 6;
 
   // Get DAMAN Pulse First Content
-  const { data: firstData, loading } = useQuery(GetDamanPulseHero, {
-    variables: {
-      // Homepage id
-      id: databaseId,
-    },
-    fetchPolicy: "network-only",
-    nextFetchPolicy: "cache-and-network",
-  });
+  // const { data: firstData, loading } = useQuery(GetDamanPulseHero, {
+  //   variables: {
+  //     // Homepage id
+  //     id: databaseId,
+  //   },
+  //   fetchPolicy: "network-only",
+  //   nextFetchPolicy: "cache-and-network",
+  // });
 
   // Get DAMAN Pulse Posts
-  const { data } = useQuery(GetDamanPulse, {
+  const { data, loading } = useQuery(GetDamanPulse, {
     variables: {
       // DAMAN Pulse category id
       id: 19392,
@@ -66,12 +66,14 @@ export default function DamanPulseHero({ databaseId }) {
 
   const firstContent = [
     {
-      featuredImage: firstData?.page?.daManPulse?.image1,
-      uri: firstData?.page?.daManPulse?.post1?.uri,
-      title: firstData?.page?.daManPulse?.post1?.title,
-      excerpt: firstData?.page?.daManPulse?.post1?.excerpt,
-      date: firstData?.page?.daManPulse?.post1?.date,
-      categories: firstData?.page?.daManPulse?.post1?.categories,
+      featuredImage:
+        data?.category?.contentNodes?.edges[0]?.node?.featuredCover
+          ?.featuredCover,
+      uri: data?.category?.contentNodes?.edges[0]?.node?.uri,
+      title: data?.category?.contentNodes?.edges[0]?.node?.title,
+      excerpt: data?.category?.contentNodes?.edges[0]?.node?.excerpt,
+      date: data?.category?.contentNodes?.edges[0]?.node?.date,
+      categories: data?.category?.contentNodes?.edges[0]?.node?.categories,
     },
   ];
 

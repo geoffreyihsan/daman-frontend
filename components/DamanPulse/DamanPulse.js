@@ -63,15 +63,15 @@ export default function DamanPulse() {
         <div className={cx("desktop-wrapper")}>
           {damanPulsePosts.map((post) => (
             <div className={cx("post-wrapper")}>
-              {post?.node?.featuredImage && (
+              {post?.node?.featuredCover && (
                 <div className={cx("post-image-wrapper")}>
                   <Link href={post?.node?.uri}>
                     <div className={cx("image-wrapper")}>
                       <Image
-                        src={post?.node?.featuredImage?.node?.sourceUrl}
+                        src={post?.node?.featuredCover?.featuredCover?.sourceUrl}
                         alt={
-                          post?.node?.featuredImage?.node?.altText
-                            ? post?.node?.featuredImage?.node?.altText
+                          post?.node?.featuredCover?.featuredCover?.altText
+                            ? post?.node?.featuredCover?.featuredCover?.altText
                             : "DAMAN Caliber Image"
                         }
                         className={cx("featured-image")}

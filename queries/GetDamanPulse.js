@@ -31,15 +31,10 @@ export const GetDamanPulse = gql`
               title
               uri
               excerpt
-              featuredImage {
-                node {
-                  id
+              featuredCover {
+                featuredCover {
                   sourceUrl
                   altText
-                  mediaDetails {
-                    width
-                    height
-                  }
                 }
               }
               categories(where: { childless: true, exclude: $exclude }) {
