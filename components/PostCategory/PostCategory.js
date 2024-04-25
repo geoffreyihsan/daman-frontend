@@ -39,7 +39,7 @@ export default function PostCategory(databaseId) {
         contentNodes: {
           ...data?.category?.contentNodes,
           edges: [...prevEdges, ...newEdges],
-          pageInfo: fetchMoreResult.category.contentNodes.pageInfo,
+          pageInfo: fetchMoreResult?.category?.contentNodes?.pageInfo,
         },
       },
     };
