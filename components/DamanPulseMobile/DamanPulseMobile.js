@@ -50,7 +50,7 @@ export default function DamanPulseMobile() {
       <div className={cx("component")}>
         <div className={cx("mobile-wrapper")}>
           <Swiper
-            slidesPerView={2.5}
+            slidesPerView={1.5}
             spaceBetween={16}
             className="pulse-carousel-swiper"
           >
