@@ -29,15 +29,15 @@ export default function PostCategory(databaseId) {
   const updateQuery = (prev, { fetchMoreResult }) => {
     if (!fetchMoreResult) return prev;
 
-    const prevEdges = prev?.category?.contentNodes?.edges || [];
+    const prevEdges = data?.category?.contentNodes?.edges || [];
     const newEdges = fetchMoreResult?.category?.contentNodes?.edges || [];
 
     return {
-      ...prev,
+      ...data,
       category: {
-        ...prev.category,
+        ...data?.category,
         contentNodes: {
-          ...prev.category.contentNodes,
+          ...data?.category?.contentNodes,
           edges: [...prevEdges, ...newEdges],
           pageInfo: fetchMoreResult.category.contentNodes.pageInfo,
         },
@@ -99,7 +99,7 @@ export default function PostCategory(databaseId) {
         <div className="my-0 flex max-w-[100vw] justify-start lg:max-w-[1024px] ">
           {data?.category?.contentNodes?.pageInfo?.hasNextPage &&
             data?.category?.contentNodes?.pageInfo?.endCursor && (
-              <Button onClick={fetchMorePosts} className="gap-x-4	">
+              <Button onClick={fetchMorePosts} className={cx("load-more")}>
                 {isFetchingMore ? "Loading..." : "Load More"}
               </Button>
             )}
