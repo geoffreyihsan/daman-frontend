@@ -13,6 +13,8 @@ import className from "classnames/bind";
 let cx = className.bind(styles);
 
 export default function SingleLayout(databaseId) {
+
+  console.log(databaseId?.tags)
   return (
     <>
       <BorderDivider />
@@ -27,6 +29,7 @@ export default function SingleLayout(databaseId) {
             content={databaseId?.content}
             databaseId={databaseId?.databaseId}
             single={databaseId?.single}
+            tags={databaseId?.tags}
           />
         </div>
         <div className={cx("right-column")}>

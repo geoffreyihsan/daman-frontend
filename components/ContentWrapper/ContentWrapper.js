@@ -39,7 +39,7 @@ const ResponsiveComponent = ({ ComponentMobile, ComponentDesktop }) => (
   </>
 );
 
-export default function ContentWrapper({ content, databaseId, single }) {
+export default function ContentWrapper({ content, databaseId, single, tags }) {
   const [transformedContent, setTransformedContent] = useState("");
 
   useEffect(() => {
@@ -211,21 +211,21 @@ export default function ContentWrapper({ content, databaseId, single }) {
   }, [content]);
 
   // Get Tag in Single
-  const { data, loading } = useQuery(GetSingleTags, {
-    variables: {
-      // Single id
-      id: databaseId,
-    },
-    fetchPolicy: "network-only",
-    nextFetchPolicy: "cache-and-network",
-  });
+  // const { data, loading } = useQuery(GetSingleTags, {
+  //   variables: {
+  //     // Single id
+  //     id: databaseId,
+  //   },
+  //   fetchPolicy: "network-only",
+  //   nextFetchPolicy: "cache-and-network",
+  // });
 
-  if (loading) {
-    return null;
-  }
+  // if (loading) {
+  //   return null;
+  // }
 
   // All tags in single
-  const singleTags = data?.post?.tags?.edges ?? [];
+  const singleTags = tags?.edges ?? [];
 
   return (
     <>

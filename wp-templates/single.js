@@ -17,6 +17,7 @@ export default function Single(props) {
     featuredImage,
     date,
     categories,
+    tags,
     databaseId,
     seo,
     uri,
@@ -63,6 +64,7 @@ export default function Single(props) {
         date={date}
         content={content}
         categories={categories?.edges[0]}
+        tags={tags}
       />
       <Footer menuItems={footerMenu} menusLoading={menusLoading} />
     </main>
@@ -103,6 +105,14 @@ Single.query = gql`
           mediaDetails {
             width
             height
+          }
+        }
+      }
+      tags(first: 100, where: { orderby: NAME, order: ASC }) {
+        edges {
+          node {
+            name
+            uri
           }
         }
       }
