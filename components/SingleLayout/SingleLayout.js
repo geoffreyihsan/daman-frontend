@@ -13,8 +13,6 @@ import className from "classnames/bind";
 let cx = className.bind(styles);
 
 export default function SingleLayout(databaseId) {
-
-  console.log(databaseId?.tags)
   return (
     <>
       <BorderDivider />
