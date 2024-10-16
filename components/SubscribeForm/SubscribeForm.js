@@ -21,7 +21,6 @@ export default function SubscribeForm() {
   // Function to handle reCAPTCHA changes
   const onRecaptchaChange = (value) => {
     setCaptchaValue(value);
-    console.log("Captcha value:", value);
   };
 
   const onSubmit = async (data) => {
@@ -72,11 +71,9 @@ export default function SubscribeForm() {
 
       // Parse the response from the server
       const resJson = await response.json();
-      console.log(resJson); // Log the entire response for debugging
 
       // Handle response errors
       if (resJson.errors) {
-        console.error(resJson.errors); // Log any GraphQL errors
         setFormMessage(
           "Failed to send your subscription request. Please try again."
         );
@@ -91,7 +88,6 @@ export default function SubscribeForm() {
       reset(); // Reset form after submission
     } catch (error) {
       // Log and display any unexpected errors
-      console.error("Error submitting form:", error);
       setFormMessage(
         "Failed to send your subscription request. Please try again."
       );
