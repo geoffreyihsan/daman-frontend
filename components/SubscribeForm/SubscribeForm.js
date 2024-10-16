@@ -26,6 +26,11 @@ export default function SubscribeForm() {
 
   const onSubmit = async (data) => {
     try {
+      if (!captchaValue) {
+        setFormMessage("Please complete the reCAPTCHA");
+        return;
+      }
+
       const response = await fetch(graphQLEndpoint, {
         method: "POST",
         headers: {
@@ -35,12 +40,12 @@ export default function SubscribeForm() {
           query: `
             mutation SubmitSubscriptionForm(
               $name: String!, $email: String!, $address: String, $city: String!, $country: String!, 
-              $zipcode: String, $number: String, $subscriptionPeriod: String!, $startingFrom: String!, $message: String!
+              $zipcode: String, $number: String, $subscriptionPeriod: String!, $startingFrom: String!, $message: String!, $captchaToken: String!
             ) {
               submitSubscriptionForm(input: {
                 name: $name, email: $email, address: $address, city: $city, country: $country, 
                 zipcode: $zipcode, number: $number, subscriptionPeriod: $subscriptionPeriod, 
-                startingFrom: $startingFrom, message: $message
+                startingFrom: $startingFrom, message: $message, captchaToken: $captchaToken
               }) {
                 success
                 message
@@ -78,6 +83,7 @@ export default function SubscribeForm() {
       }
 
       reset(); // Reset form after submission
+      setCaptchaValue(null); // Reset reCAPTCHA value
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormMessage(
@@ -574,7 +580,7 @@ export default function SubscribeForm() {
           {/* reCAPTCHA Component */}
           <div className={cx("subs-forms-field")}>
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} // Use your reCAPTCHA site key here
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
               onChange={onRecaptchaChange}
             />
           </div>
