@@ -26,11 +26,13 @@ export default function SubscribeForm() {
 
   const onSubmit = async (data) => {
     try {
+      // Check if captcha has been completed
       if (!captchaValue) {
         setFormMessage("Please complete the reCAPTCHA");
         return;
       }
 
+      // Perform the GraphQL mutation with the form data and captcha token
       const response = await fetch(graphQLEndpoint, {
         method: "POST",
         headers: {
@@ -63,19 +65,23 @@ export default function SubscribeForm() {
             subscriptionPeriod: data.subscriptionPeriod,
             startingFrom: data.startingFrom,
             message: data.message,
+            captchaToken: captchaValue, // Include captcha token in the request
           },
         }),
       });
 
+      // Parse the response from the server
       const resJson = await response.json();
       console.log(resJson); // Log the entire response for debugging
 
+      // Handle response errors
       if (resJson.errors) {
         console.error(resJson.errors); // Log any GraphQL errors
         setFormMessage(
           "Failed to send your subscription request. Please try again."
         );
       } else {
+        // If the request was successful, display success message
         setFormMessage(
           resJson?.data?.submitSubscriptionForm?.message ||
             "Thank you for your subscription request! We will be in touch with you shortly."
@@ -83,12 +89,15 @@ export default function SubscribeForm() {
       }
 
       reset(); // Reset form after submission
-      setCaptchaValue(null); // Reset reCAPTCHA value
     } catch (error) {
+      // Log and display any unexpected errors
       console.error("Error submitting form:", error);
       setFormMessage(
         "Failed to send your subscription request. Please try again."
       );
+    } finally {
+      // Always reset the reCAPTCHA value, whether request was successful or not
+      setCaptchaValue(null);
     }
   };
 
