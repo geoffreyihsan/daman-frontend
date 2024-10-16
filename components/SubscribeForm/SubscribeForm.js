@@ -2,10 +2,14 @@ import classNames from "classnames/bind";
 import styles from "./SubscribeForm.module.scss";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ReCAPTCHA from "react-google-recaptcha";
 
 let cx = classNames.bind(styles);
 
 export default function SubscribeForm() {
+  const [captchaValue, setCaptchaValue] = useState(null); // State to hold reCAPTCHA value
+  const [formMessage, setFormMessage] = useState(""); // State for the response message
+
   const graphQLEndpoint = process.env.NEXT_PUBLIC_WORDPRESS_URL + "/graphql";
   const {
     register,
@@ -14,7 +18,11 @@ export default function SubscribeForm() {
     reset,
   } = useForm();
 
-  const [formMessage, setFormMessage] = useState(""); // State for the response message
+  // Function to handle reCAPTCHA changes
+  const onRecaptchaChange = (value) => {
+    setCaptchaValue(value);
+    console.log("Captcha value:", value);
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -562,12 +570,20 @@ export default function SubscribeForm() {
               {"Submit"}
             </button>
           </div>
-        </form>
 
-        {/* Conditionally render the response message */}
-        {formMessage && (
-          <div className={cx("subs-forms-response")}>{formMessage}</div>
-        )}
+          {/* reCAPTCHA Component */}
+          <div className={cx("subs-forms-field")}>
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} // Use your reCAPTCHA site key here
+              onChange={onRecaptchaChange}
+            />
+          </div>
+
+          {/* Conditionally render the response message */}
+          {formMessage && (
+            <div className={cx("subs-forms-response")}>{formMessage}</div>
+          )}
+        </form>
       </div>
     </>
   );
