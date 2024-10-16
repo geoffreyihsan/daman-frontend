@@ -75,6 +75,12 @@
   }
 }
 
+.subs-forms-recaptcha {
+  .subs-forms-field {
+    justify-content: flex-end;
+  }
+}
+
 .subs-forms-radio-disabled {
   display: none;
 }

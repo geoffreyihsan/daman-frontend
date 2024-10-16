@@ -580,18 +580,20 @@ export default function SubscribeForm() {
             />
           </div>
 
+          {/* reCAPTCHA Component */}
+          <div className={cx("subs-forms-recaptcha")}>
+            <div className={cx("subs-forms-field")}>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={onRecaptchaChange}
+              />
+            </div>
+          </div>
+
           <div className={cx("subs-forms-submit-container")}>
             <button type="submit" className={cx("subs-forms-submit")}>
               {"Submit"}
             </button>
-          </div>
-
-          {/* reCAPTCHA Component */}
-          <div className={cx("subs-forms-field")}>
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              onChange={onRecaptchaChange}
-            />
           </div>
 
           {/* Conditionally render the response message */}
